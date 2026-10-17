@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!--
+https://kuzlog.com/2017/12/29/1796/
+-->
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Calendar</title>
+	<!-- favicons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+	<link rel="manifest" href="assets/manifest.json">
+
+	<!-- reset css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reseter.css/2.0.0/reseter.min.css" />
+
+	<!-- library -->
+	<script charset="utf-8" src="assets/js/promiseIndexedDB.js"></script>
+	<script>
+		let idbnoop = new URLSearchParams(window.location.search).get("idbnoop");
+		promiseIndexedDB_noop(idbnoop);
+	</script>
+
+	<!-- hq-calendar core -->
+	<script charset="utf-8" src="assets/js/hq-calendar-core.js"></script>
+
+	<!-- user setting parameter -->
+	<script charset="utf-8" src="assets/js/hq-calendar-slide-show.js"></script>
+	<script>
+		// スライドショーなし
+		__GlovalSlideShowArray = [];
+		// デフォルトパラメータ設定
+		var	___PARAMETER___ = {
+				background_select_slide: "-",
+				dark_mode: true,
+				saturday_coloring: false,
+		};
+		if(idbnoop) {
+			___PARAMETER___ = { ...___PARAMETER___, ...{
+				background_opacity_range: 0.5,
+				background_slide_show_interval: 30*1000,
+				country: "JP",
+				latin_font: "Helvetica",
+				japanese_font: "Kosugi-Maru",
+				fest_name_hidden: false,
+				holiday_name_hidden: false,
+				large_time_format: "hh:mm:ss",
+				monday_start: false,
+				moon_hidden: true,
+				schedule_name_hidden: false,
+				small_time_format: "hh:mm:ss",
+				tips_disp: true,
+				__big_time: false,
+				__calendar_column: 1,
+				__calendar_row: 1,
+			}};
+		}
+	</script>
+	<script charset="utf-8" src="assets/js/hq-calendar-user-parameter.js"></script>
+	<script>
+		Parameter.background_select_slide = ___PARAMETER___.background_select_slide;
+		Parameter.dark_mode = ___PARAMETER___.dark_mode;
+		Parameter.saturday_coloring = ___PARAMETER___.saturday_coloring;
+	</script>
+
+	<!-- hq-calendar menu -->
+	<link rel="stylesheet" href="assets/css/hq-calendar-menu.css" />
+	<script charset="utf-8" src="assets/js/hq-calendar-menu.js"></script>
+
+	<!-- hq-calendar clock -->
+	<link rel="stylesheet" href="assets/css/hq-calendar-clock.css" />
+	<script charset="utf-8" src="assets/js/hq-calendar-clock.js"></script>
+
+	<!-- hq-calendar design -->
+	<link rel="stylesheet" href="assets/css/hq-calendar-design-1.css" />
+	<script charset="utf-8" src="assets/js/hq-calendar-design-1.js"></script>
+
+	<!-- hq-calendar UI -->
+	<link rel="stylesheet" href="assets/css/hq-calendar-design-1-UI-1.css" />
+	<script charset="utf-8" src="assets/js/hq-calendar-design-1-UI-1.js"></script>
+
+<style>
+body {
+	background: #9d9da4;
+}
+* {
+	background-color: transparent;
+}
+.year-title span,
+.hq-clock,
+.hq-clock span,
+.mc1,
+.mc2,
+.mc3,
+.week span,
+.a1,
+.a3 span,
+.a3 .schedule-name
+ {
+	color: #fff	 !important;
+	text-shadow:
+		0 1px #bbb,
+		0 3px #333,
+		0 5px #999,
+		0 7px #222,
+		0 9px #777,
+		0 11px #111,
+		0 13px #555,
+		0 15px #000,
+		0 17px #333,
+		0 17px 8px #000;
+}
+.m-header .cell {
+	border: var(--cell-border-width) solid #aaa !important;
+	background-clip: border-box;
+	box-shadow: 1px 1px 1px rgba( 255, 255, 255, 0.5);
+}
+</style>
+
+</head>
+<body>
+
+	<!-- プリローダー（preloader）
+    ================================================== -->
+	<div id="preloader">
+		<div id="loader" class="dots-fade">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+
+	<!-- カレンダー
+    ================================================== -->
+	<article class="hq-article">
+		<section class="header-section">
+			<div class="year-title">
+				<span class="editable-label" data-format="YYYY | YYYY-MM"></span>
+			</div>
+			<div class="clock-title">
+				<div class="hq-clock">
+					<time class="time"></time>
+					<span class="time-standard"></span>
+				</div>
+			</div>
+		</section>
+		<section class="body-section">
+			<div class="hq-calendar"></div>
+		</section>
+	</article>
+
+<script>
+function loadEvent_04() {
+	// [スライドショー]セレクトボックス非活性
+	const select_slide = document.querySelector(".slide-show select");
+	select_slide.disabled = true;
+	// [スライドショー切替インターバル]セレクトボックス非活性
+	const slide_show_interval = document.querySelector("#interval");
+	slide_show_interval.disabled = true;
+	// [ダークモード切換え]チェック非活性
+	const darkmode_toggle = document.querySelector("#darkmode-toggle");
+	if (darkmode_toggle.classList.contains('active') !== ___PARAMETER___.dark_mode) {
+		darkmode_toggle.dispatchEvent(new Event('click'));
+	}
+	darkmode_toggle.classList.add('disabled');
+	// [背景の透過度切換え]レンジ非活性
+	const opacity_range = document.querySelector("#input-background-opacity-range");
+	setTimeout(() => {
+		opacity_range.value = ___PARAMETER___.background_opacity_range;
+		opacity_range.dispatchEvent(new Event('input'));
+	}, 100);
+	setTimeout(() => {
+		opacity_range.disabled = true;
+	}, 300);
+	// [土曜日色付け]チェック非活性
+	const input_saturday_coloring = document.querySelector("#input-saturday-coloring");
+	setTimeout(() => {
+		input_saturday_coloring.value = !___PARAMETER___.saturday_coloring;
+		input_saturday_coloring.dispatchEvent(new Event('click'));
+	}, 100);
+	setTimeout(() => {
+		input_saturday_coloring.disabled = true;
+	}, 300);
+}
+GlovalParameterLoadPromise.then(() => {
+	window.addEventListener('load', loadEvent_04);
+	if (document.readyState == "complete") {
+		setTimeout(loadEvent_04, 0);
+	}
+});
+</script>
+
+</body></html>

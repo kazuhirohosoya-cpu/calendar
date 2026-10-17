@@ -1,0 +1,329 @@
+@charset "utf-8";
+/* ===================================================================
+ *  High Quality Calendar Main Stylesheet
+ *  Ver. 1.0.0
+ *  2025-01-17
+ * ------------------------------------------------------------------
+ *
+ *  TOC:
+ *  # SETTINGS
+ *      ## fonts
+ *      ## size
+ *  # MONTH CALENDAR
+ *      ## month hq-calendar
+ *      ## month hq-calendar caption
+ *      ## month hq-calendar border
+ *      ## month hq-calendar header
+ *      ## month hq-calendar body
+ *
+ * ------------------------------------------------------------------ */
+
+/* ===================================================================
+ * # SETTINGS
+ *
+ *
+ * ------------------------------------------------------------------- */
+
+ /* -------------------------------------------------------------------
+  * ## font
+  * ------------------------------------------------------------------- */
+:root {
+
+	/* color
+	 */
+	--hq-calendar-color-general			:	#000;
+	--hq-calendar-color-sun				:	#f00;
+	--hq-calendar-color-sat				:	#09f;
+	--hq-calendar-color-holiday			:	var(--hq-calendar-color-sun);
+	--hq-calendar-color-fest			:	var(--hq-calendar-color-general);
+	--hq-calendar-color-schedule		:	ForestGreen;
+	--hq-calendar-color-border			:	var(--hq-calendar-color-general);
+	--hq-calendar-color-background-now 	:	rgb(255, 215, 0, 0.1);
+}
+ /* -------------------------------------------------------------------
+  * ## size for month
+  * ------------------------------------------------------------------- */
+:root {
+
+	/*プログラムで状態により縮尺率を変更するための変数*/
+	--hq-calendar-settings-multiplier	:	1;
+
+	--hq-calendar-multiplier			:	calc( var(--hq-calendar-settings-multiplier) * var(--hq-calendar-screen-multiplier) );
+
+	/* grid variables
+	 */
+	--month-border-width				:	2px;
+	--cell-border-width					:	1px;
+	--cell-width						:	calc(120px * var(--hq-calendar-multiplier));
+	--cell-height-general				:	calc(24px * var(--hq-calendar-multiplier));
+	--cell-height-caption				:	calc(26.3px * var(--hq-calendar-multiplier));
+
+	/* hq-calendar font size
+	 */
+	--cell-font-size-day-multiplie		:	1;	/*JavaScriptにて表示領域が狭くなった場合に自動で大きくするが参照しない。*/
+	--cell-font-size-base				:	calc(16px * var(--hq-calendar-multiplier));
+	--cell-font-size-year				:	calc(10px * var(--hq-calendar-multiplier));
+	--cell-font-size-month				:	calc(17px * var(--hq-calendar-multiplier));
+	--cell-font-size-local-month		:	calc(10px * var(--hq-calendar-multiplier));
+	--cell-font-size-holiday-name		:	calc(8px * var(--hq-calendar-multiplier));
+
+	/* hq-calendar height size
+	 */
+	/*
+		※この値は1か月カレンダーの幅×高さを定義している
+	 */
+	/*
+	 *    ┌───────────┐
+	 *    │ 2025年   １  睦月    │
+	 *    └───────────┘
+	 *    ┌──┬──┬─────┐
+	 *    │３１│○  │祝日      │
+	 *    │    │    │祭日      │
+	 *    │    │    │予定日    │
+	 *    ├──┼──┼─────┤
+	 *     |<-------------------->|
+	 *                ^
+	 *                |
+	 *                +-- --cell-width
+	*/
+	--hq-calendar-month-width			:	var(--cell-width);
+
+    /*
+	 *    ┌───────────┐---
+	 *    │ 2025年   １  睦月    │ |--cell-height-caption
+	 *    └───────────┘---
+	 *    ┌──┬──┬─────┐---  --------------------------
+	 *    │３１│○  │祝日      │ |--cell-height-general      ^
+	 *    │    │    │祭日      │ |                           |
+	 *    │    │    │予定日    │ |                           |
+	 *    ├──┼──┼─────┤---                          |
+	 *                ：                                         | 31日×--cell-height-general
+	 *                ：                                         |
+	 *                ：                                         |
+	 *    ├──┼──┼─────┤---                          |
+	 *    │３１│○  │祝日      │ |--cell-height-general      |
+	 *    │    │    │祭日      │ |                           |
+	 *    │    │    │予定日    │ |                           v
+	 *    └──┴──┴─────┘---  --------------------------
+	 *      ━━━━━━━━━━━  <-- --month-border-width
+     */
+	--hq-calendar-month-height			:	calc( var(--cell-height-caption) + 31 * var(--cell-height-general) );
+}
+
+ /* -------------------------------------------------------------------
+  * ## size for year
+  * ------------------------------------------------------------------- */
+:root {
+	/* grid variables
+	 */
+	--hq-calendar-month-margin-1		:	calc( 3px * var(--hq-calendar-multiplier));
+	--hq-calendar-month-margin-2		:	calc( 8px * var(--hq-calendar-multiplier));
+}
+
+
+/* ===================================================================
+ * # MONTH CALENDAR
+ *
+ *
+ * ------------------------------------------------------------------- */
+/* --------------------------------------------------------------------
+ * ## month hq-calendar
+ *	１か月のカレンダー
+ * -------------------------------------------------------------------- */
+.hq-calendar-month {
+	display								:	flex;
+	flex-direction						:	column;
+	width								:	var(--hq-calendar-month-width);
+	box-sizing							:	border-box;
+	color								:	var(--hq-calendar-color-general);
+	word-break							:	break-all;
+	font-family							:	var(--hq-calendar-font);
+}
+
+	/* --------------------------------------------------------------------
+	 * ## month hq-calendar caption
+	 *	月の見出し（月名、年、月の英名、月の和名）
+	 * -------------------------------------------------------------------- */
+	.hq-calendar-month .m-caption {
+		width							:	100%;
+		height							:	var(--cell-height-caption);
+		display							:	flex;
+		flex-direction					:	row;
+		justify-content					:	space-evenly;
+		text-align						:	center;
+		border-bottom					:	var(--month-border-width) solid var(--hq-calendar-color-border);
+	}
+
+		.hq-calendar-month .m-caption .mc1 {
+			width						:	35%;
+			padding-right 				:	5px;
+			font-size					:	var(--cell-font-size-year);
+			text-align					:	end;
+			align-content				:	end;
+		}
+
+		.hq-calendar-month .m-caption .mc2 {
+			width						:	30%;
+			font-size					:	var(--cell-font-size-month);
+			text-align					:	center;
+			align-content				:	end;
+		}
+
+		.hq-calendar-month .m-caption .mc3 {
+			width						:	35%;
+			padding-left 				:	5px;
+			font-size					:	var(--cell-font-size-local-month);
+			text-align					:	start;
+			align-content				:	end;
+		}
+
+/* --------------------------------------------------------------------
+ * ## month hq-calendar border
+ * -------------------------------------------------------------------- */
+/*
+  最後の行を除いてcellに下枠に線を引く
+*/
+.hq-calendar-month .m-header .cell,
+.hq-calendar-month .m-body .cell {
+	border-bottom						:	var(--cell-border-width) solid var(--hq-calendar-color-border);
+}
+.hq-calendar-month .m-body .cell:nth-of-type(1) {
+	border-top							:	var(--cell-border-width) solid var(--hq-calendar-color-border);
+}
+/*
+	最初の行の上枠、最後の行の下枠は太線を引く
+*/
+.hq-calendar-month .m-body {
+	border-bottom						:	var(--month-border-width) solid var(--hq-calendar-color-border);
+}
+/*
+  最後の列を除いてcellに右枠に線を引く
+*/
+.hq-calendar-month .m-header .cell,
+.hq-calendar-month .m-body .cell {
+	border-left							:	var(--cell-border-width) solid var(--hq-calendar-color-border);
+	border-right						:	var(--cell-border-width) solid var(--hq-calendar-color-border);
+}
+
+/* --------------------------------------------------------------------
+ * ## month hq-calendar header
+ *	週名
+ * -------------------------------------------------------------------- */
+.hq-calendar-month .m-header {
+	display								:	none;
+}
+
+/* --------------------------------------------------------------------
+ * ## month hq-calendar body
+ *	日
+ * -------------------------------------------------------------------- */
+.hq-calendar-month .m-body {
+	display								:	flex;
+	flex-direction						:	column;
+	flex-wrap							:	wrap;
+}
+
+	.hq-calendar-month .m-body .cell {
+		width							:	var(--cell-width);
+		height							:	var(--cell-height-general);
+		display							:	flex;
+		flex-direction					:	row;
+		flex-wrap						:	wrap;
+		box-sizing						:	border-box;
+	}
+
+	.hq-calendar-month .m-body .cell.sun {
+		color							:	var(--hq-calendar-color-sun);
+	}
+	.hq-calendar-month .m-body .cell.sat {
+		color							:	var(--hq-calendar-color-sat);
+	}
+	.hq-calendar-month .m-body .cell.holiday {
+		color							:	var(--hq-calendar-color-holiday);
+	}
+	.hq-calendar-month .m-body .cell.now {
+		border							:	3px ridge hsla(var(--hq-calendar-color-hue-now), 100%, 50%, 1.0);
+		background-color				:	var(--hq-calendar-color-background-now);
+	}
+	.hq-calendar-month .m-body .cell.out {
+		display							:	none;
+	}
+
+		.hq-calendar-month .m-body .cell .a1 {
+			width						:	18%;
+			height						:	100%;
+			text-align					:	end;
+		}
+
+			.hq-calendar-month .m-body .cell:not(.out) .a1 .day {
+				display					:	inline-block;
+				font-size				:	var(--cell-font-size-base);
+				vertical-align			:	top;
+			}
+
+		.hq-calendar-month .m-body .cell .a2 {
+			width						:	20%;
+			height						:	100%;
+			display						:	flex;
+			flex-direction				:	column-reverse;
+			text-align					:	start;
+		}
+
+		.hq-calendar-month .m-body .cell .a3 {
+			width						:	62%;
+			height						:	100%;
+			text-align					:	start;
+			display						:	flex;
+			flex-direction				:	column;
+		}
+			.hq-calendar-month .m-body .cell .a3 .holiday-name,
+			.hq-calendar-month .m-body .cell .a3 .fest-name,
+			.hq-calendar-month .m-body .cell .a3 .schedule-name {
+				display					:	inline-block;
+				font-size				:	var(--cell-font-size-holiday-name);
+				text-align				:	start;
+			}
+			.hq-calendar-month .m-body .cell .a3 .fest-name {
+				color					:	var(--hq-calendar-color-fest);
+			}
+			.hq-calendar-month .m-body .cell .a3 .schedule-name {
+				color					:	var(--hq-calendar-color-schedule);
+			}
+
+/* ===================================================================
+ * # YEAR CALENDAR
+ *
+ *
+ * ------------------------------------------------------------------- */
+/* --------------------------------------------------------------------
+ * ## year hq-calendar
+ *	１年のカレンダー
+ * -------------------------------------------------------------------- */
+.hq-calendar {
+	display								:	flex;
+	flex-direction						:	row;
+	justify-content						:	center;
+	flex-wrap							:	wrap;
+	font-family							:	var(--hq-calendar-font);
+
+	overflow							:	hidden;
+	background-color					:	transparent;
+	width								:	calc( 12 * ( var(--hq-calendar-month-width) + 12 * 2 * var(--hq-calendar-month-margin-2) ) );
+}
+
+	/* --------------------------------------------------------------------
+	 * ## month hq-calendar
+	 *	１か月のカレンダー
+	 *	※ 複数定義した場合に必要となる
+	 *	※１か月のみの場合は予定な定義になるのでコメントアウトすること。
+	 * -------------------------------------------------------------------- */
+	.hq-calendar .hq-calendar-month {
+		height							:	var(--hq-calendar-month-height);
+		margin							:	var(--hq-calendar-month-margin-1) var(--hq-calendar-month-margin-2);
+	}
+/* -------------------------------------------------------------------
+ * ## タイムラインチャート	バー 吹き出し
+ * ------------------------------------------------------------------- */
+.hq-tips {
+	display								:	none;
+}

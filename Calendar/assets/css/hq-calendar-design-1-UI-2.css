@@ -1,0 +1,237 @@
+@charset "utf-8";
+/* ===================================================================
+ *  High Quality Calendar Main Stylesheet
+ *  Ver. 1.0.0
+ *  2025-01-17
+ * ------------------------------------------------------------------ */
+
+body {
+	/*以下の定義はスクロールバーを消して、wheelでスクロールできなくする*/
+	overflow-y							:	hidden;
+}
+
+/* ===================================================================
+ * # CLOCK & CALENDAR
+ *
+ *
+ * ------------------------------------------------------------------- */
+.hq-article {
+ 	width								:	100%;
+}
+/*時計*/
+.hq-article .body-section  {
+	display								:	flex;
+	flex-direction						:	column;
+	align-items							:	center;
+}
+	.hq-article .body-section .hq-clock .time,
+	.hq-article .body-section .hq-clock .time-standard {
+		opacity								:	1;
+	}
+	.hq-article .body-section .hq-clock .wareki {
+		opacity							:	0;
+	}
+
+	/* --------------------------------------------------------------------
+	 * ## year caption
+	 *	カレンダーの年
+	 * -------------------------------------------------------------------- */
+	.body-section .year-title {
+		width							:	100%;
+		justify-content					:	center;
+
+		font-size						:	var(--cell-font-size-year-title);
+		font-weight						:	700;
+		letter-spacing					:	2px;
+		color							:	var(--hq-calendar-color-general);
+	}
+
+/* ===================================================================
+ *	■時計あり カレンダー１行
+ * ------------------------------------------------------------------- */
+/*時計*/
+.hq-article.big-clock .body-section .hq-clock {
+	animation							:	big-clock-title_anime 1s ease 1;
+	padding								:	var(--clock-padding-time-1) 0;
+}
+@keyframes big-clock-title_anime {
+	0% {
+		padding							:	0;
+	}
+	100% {
+		padding							:	var(--clock-padding-time-1) 0;
+	}
+}
+	.hq-article.big-clock .body-section .hq-clock .time {
+		animation						:	big-clock-time_anime 1s ease 1;
+		font-size						:	var(--clock-font-size-main-time);
+		opacity							:	1;
+	}
+	@keyframes big-clock-time_anime {
+		0% {
+			font-size					:	0;
+			opacity						:	0;
+		}
+		100% {
+			font-size					:	var(--clock-font-size-main-time);
+			opacity						:	1;
+		}
+	}
+	.hq-article.big-clock .body-section .hq-clock .time-standard {
+		animation						:	big-clock-time-standard_anime 1s ease 1;
+		font-size						:	1vw;
+		margin-left						:	1.5vw;
+		opacity							:	1;
+	}
+	@keyframes big-clock-time-standard_anime {
+		0% {
+			font-size					:	0;
+			margin-left					:	0;
+			opacity						:	0;
+		}
+		100% {
+			font-size					:	1vw;
+			margin-left					:	1.5vw;
+			opacity						:	1;
+		}
+	}
+	.hq-article.big-clock .body-section .hq-clock .wareki {
+		animation						:	big-clock-wareki_anime 1s ease 1;
+		font-size						:	0;
+		opacity							:	0;
+	}
+	@keyframes big-clock-wareki_anime {
+		0% {
+			font-size					:	unset;
+			opacity						:	1;
+		}
+		100% {
+			font-size					:	0;
+			opacity						:	0;
+		}
+	}
+
+/*月カレンダー 2×3*/
+.hq-article.big-clock .body-section .hq-calendar  {
+	animation							:	big-clock-calendar_anime 1s ease 1;
+	height								:	calc( ( 0.5 * var(--hq-calendar-N-months-row) ) * (var(--hq-calendar-month-height) + var(--hq-calendar-month-margin-1) ) );
+}
+@keyframes big-clock-calendar_anime {
+	0% {
+		height							:	calc( ( 1   * var(--hq-calendar-N-months-row) ) * (var(--hq-calendar-month-height) + var(--hq-calendar-month-margin-1) ) );
+	}
+	100% {
+		height							:	calc( ( 0.5 * var(--hq-calendar-N-months-row) ) * (var(--hq-calendar-month-height) + var(--hq-calendar-month-margin-1) ) );
+	}
+}
+
+/* ===================================================================
+ *	■時計無し カレンダー２行
+ * ------------------------------------------------------------------- */
+/*時計*/
+.hq-article:not(.big-clock) .body-section .hq-clock {
+	animation							:	not-big-clock-title_anime 1s ease 1;
+	padding								:	0;
+}
+@keyframes not-big-clock-title_anime {
+	0% {
+		padding							:	var(--clock-padding-time-1) 0;
+	}
+	100% {
+		padding							:	0;
+	}
+}
+	.hq-article:not(.big-clock) .body-section .hq-clock .time {
+		animation						:	not-big-clock-time_anime 1s ease 1;
+		font-size						:	0;
+		opacity							:	0;
+	}
+	@keyframes not-big-clock-time_anime {
+		0% {
+			font-size					:	var(--clock-font-size-main-time);
+			opacity						:	1;
+		}
+		100% {
+			font-size					:	0;
+			opacity						:	0;
+		}
+	}
+	.hq-article:not(.big-clock) .body-section .hq-clock .time-standard {
+		animation						:	not-big-clock-time-standard_anime 1s ease 1;
+			font-size					:	0;
+			margin-left					:	0;
+			opacity						:	0;
+	}
+	@keyframes not-big-clock-time-standard_anime {
+		0% {
+			font-size					:	1vw;
+			margin-left					:	1.5vw;
+			opacity						:	1;
+		}
+		100% {
+			font-size					:	0;
+			margin-left					:	0;
+			opacity						:	0;
+		}
+	}
+	.hq-article:not(.big-clock) .body-section .hq-clock .wareki {
+		animation						:	not-big-clock-wareki_anime 1s ease 1;
+		font-size						:	unset;
+		opacity							:	1;
+	}
+	@keyframes not-big-clock-wareki_anime {
+		0% {
+			font-size					:	0;
+			opacity						:	0;
+		}
+		100% {
+			font-size					:	unset;
+			opacity						:	1;
+		}
+	}
+
+/*YYYY年の編集*/
+.editable-label {
+	display: inline-block;
+	padding: 4px 8px;
+	border-radius: 4px;
+	cursor: pointer;
+	border: 1px solid transparent;
+}
+
+.editable-label:hover {
+	border-color: #ccc;
+}
+
+.edit-container {
+	display: inline-block;
+}
+
+.edit-input {
+	padding: 4px 8px;
+	width: calc(170px * var(--hq-calendar-multiplier));
+	border-radius: 4px;
+	border: 1px solid #999;
+	font-size: var(--cell-font-size-year-title);
+}
+
+.format-guide {
+	font-size: 12px;
+	color: #666;
+	margin-top: 4px;
+}
+
+
+/*月カレンダー 2×3*/
+.hq-article:not(.big-clock) .body-section .hq-calendar  {
+	animation							:	not-big-clock-calendar_anime 1s ease 1;
+	height								:	calc( ( 1   * var(--hq-calendar-N-months-row) ) * (var(--hq-calendar-month-height) + var(--hq-calendar-month-margin-1) ) );
+}
+@keyframes not-big-clock-calendar_anime {
+	0% {
+		height							:	calc( ( 0.5 * var(--hq-calendar-N-months-row) ) * (var(--hq-calendar-month-height) + var(--hq-calendar-month-margin-1) ) );
+	}
+	100% {
+		height							:	calc( ( 1   * var(--hq-calendar-N-months-row) ) * (var(--hq-calendar-month-height) + var(--hq-calendar-month-margin-1) ) );
+	}
+}

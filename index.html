@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="js" class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Home - Calendar</title>
+	<!-- favicons
+    ================================================== -->
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+	<link rel="manifest" href="assets/manifest.json">
+
+	<!-- reset css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reseter.css/2.0.0/reseter.min.css" />
+
+	<!--- basic page needs
+    ================================================== -->
+	<script>
+		document.documentElement.classList.remove('no-js');
+		document.documentElement.classList.add('js');
+	</script>
+	<!-- CSS
+    ================================================== -->
+	<link rel="stylesheet" href="assets/css/vendor.css">
+	<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body id="top">
+	<!-- プリローダー（preloader）
+    ================================================== -->
+	<div id="preloader">
+		<div id="loader" class="dots-fade">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<!-- page wrap
+    ================================================== -->
+	<div id="page" class="s-pagewrap ss-home">
+		<!-- メニューの下にある画面全体を覆う背景要素 -->
+		<div class="menu-underlay"></div>
+		<!-- # site header
+        ================================================== -->
+		<header class="s-header">
+			<!-- サイトヘッダー (Site Header)ページ最上部領域
+            ================================================== -->
+			<div class="s-header__block">
+				<!-- [ページ最上部ヘッダー]左のメニューの開閉アイコン -->
+				<a class="s-header__menu-toggle" href="#0"><span>Browse</span></a>
+				<!-- [ページ最上部ヘッダー]右のCTA (Call To Action) -->
+				<div class="s-header__cta">
+					<a href="#" __href="Calendar.zip" class="btn btn--primary s-header__cta-btn" id="downloadLink">Donwload</a>
+				</div>
+			</div> <!-- end s-header__block -->
+			<!-- ページ左アコーディオン ナビゲーションメニュー
+            ================================================== -->
+			<nav class="s-header__nav">
+				<!-- [ページ左アコーディオンメニュー]閉じる❌ボタン -->
+				<a href="#0" class="s-header__nav-close-btn" title="close"><span>Close</span></a>
+				<!-- [ページ左アコーディオンメニュー]上部のロゴ -->
+				<div class="s-header__nav-logo">
+					<a href="index.html">
+						<img src="assets/images/logo-with-icon.svg" alt="Homepage">
+					</a>
+				</div> <!-- s-header__nav-logo -->
+				<!-- [ページ左アコーディオンメニュー]リンク -->
+				<ul class="s-header__nav-links">
+					<li class="current"><a href="index.html">Home</a></li>
+					<li><a href="gallery.html">Gallery</a></li>
+					<li><a href="specification.html">Specification</a></li>
+					<li><a href="usage.html">Usage</a></li>
+					<li><a href="country-Japan.html">Japan</a></li>
+					<li><a href="country-GreatBritain.html">Great Britain</a></li>
+					<li><a href="country-America.html">America</a></li>
+				</ul> <!-- s-header__nav-links -->
+				<!-- [ページ左アコーディオンメニュー]リンク -->
+			</nav> <!-- end s-header__nav -->
+		</header> <!-- end s-header -->
+		<!-- # サイトの冒頭部分
+        ================================================== -->
+		<section id="intro" class="s-intro">
+			<!-- # サイトの冒頭部分の背景イメージ -->
+			<div class="s-intro__bg"></div>
+			<!-- # サイトの内容のテキスト -->
+			<div class="row s-intro__content">
+				<div class="column xl-12">
+					<div class="s-intro__pretitle">Gregorian</div>
+					<h1 class="s-intro__title">Calendar</h1>
+					<p class="s-intro__desc lead"> 各国の異なる祝祭日やタイムゾーンに対応。 カレンダーアプリで、国ごとの正しいスケジュールを把握できます。 </p>
+				</div>
+			</div> <!-- s-intro__content -->
+			<!-- # ⬇下にスクロール -->
+			<div class="s-intro__scroll-down">
+				<a href="#calendar-history" class="smoothscroll">
+					<span class="u-screen-reader-text">Scroll Down</span>
+					<div class="scroll-icon">
+						<svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path d="m5.214 14.522s4.505 4.502 6.259 6.255c.146.147.338.22.53.22s.384-.073.53-.22c1.754-1.752 6.249-6.244 6.249-6.244.144-.144.216-.334.217-.523 0-.193-.074-.386-.221-.534-.293-.293-.766-.294-1.057-.004l-4.968 4.968v-14.692c0-.414-.336-.75-.75-.75s-.75.336-.75.75v14.692l-4.979-4.978c-.289-.289-.761-.287-1.054.006-.148.148-.222.341-.221.534 0 .189.071.377.215.52z" fill-rule="nonzero" />
+						</svg>
+					</div>
+				</a>
+			</div> <!-- s-intro__scroll-down -->
+		</section> <!-- end s-intro -->
+
+		<!--------------------------------------------------------------------------
+		▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽
+		▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲
+		---------------------------------------------------------------------------->
+
+		<!-- # calendar history
+        ================================================== -->
+		<section id="calendar-history" class="page">
+			<div class="container-top row1">
+				<div class="container column2">
+					<header class="section-header">
+						<h2 class="text-display-title with-line">精密な暦へ</h2>
+						<p>カレンダー（暦）は、天体観測に基づいて発展し、農耕や宗教、政治的要因によって進化してきました。 月の満ち欠けを基にした太陰暦から始まり、現在世界的に広く使用されているグレゴリオ暦のような太陽暦に至るまで、様々な種類の暦が存在します。 <span class="underline">カレンダーアプリでは国ごとの改暦を実現しています。</span>
+						</p>
+					</header>
+					<div class="card">
+						<h2>ユリウス暦</h2>
+						<p>紀元前46年、ローマのユリウス・カエサルがエジプト暦を基に制定しました。 1年を365.25日とし、4年に1回のうるう年を設ける太陽暦でした。 この暦は、16世紀のグレゴリオ暦制定までヨーロッパで広く使われました。</p>
+					</div>
+					<div class="card">
+						<h2>グレゴリオ暦（現代の暦）</h2>
+						<p>ユリウス暦は太陽年との間に約11分のずれがあり、1582年までに約10日分の季節のずれが蓄積し、特にキリスト教における重要な祝祭「復活祭」の日付が春分と合わなくなる問題となっていました。</p>
+						<p>このずれを修正するため、1582年にローマ教皇グレゴリウス13世が教会の権威を保ち、宗教行事の統一を図るために改暦を命じました。</p>
+						<p>400年間にうるう年を97回とし、100で割り切れる年のうち400で割り切れない年は平年とする規則を導入。</p>
+						<p>現在、世界中で標準的に使用されている暦がこのグレゴリオ暦です。</p>
+					</div>
+				</div>
+				<!-- /container -->
+				<div class="container column2 column2e">
+					<div class="card">
+						<h2>1582年の改暦（ユリウス暦からグレゴリオ暦へ）</h2>
+						<p>改暦は1582年10月に実施され、 <span class="date-info">ユリウス暦の10月4日の翌日をグレゴリオ暦の10月15日</span>としました。 つまり、暦の上では 10月5日から14日までの10日間が存在しないことになります。 </p>
+						<p>これは曜日の連続性を保ちつつ、季節のずれを一気に修正するための措置でした。 実際の時間は途切れることなく流れていましたが、暦の上では「消えた日」が生じたのです。 </p>
+						<p>この改暦はまずイタリア・スペイン・ポルトガルなどカトリック諸国で導入され、 他の国々は数十年から数百年遅れて採用しました。 </p>
+					</div>
+					<div class="device">
+						<!-- # Alienware 27 (ゲーミングモニター)
+				        ================================================== -->
+						<a class="figure" href="assets/html/gallery-design-1-UI-1-yyyy=1582-10.html?idbnoop=true" target="_blank">
+							<figure class="device-alienware27-style" aria-label="Alienware 27 ゲーミングモニター風フレーム">
+								<div class="monitor__shell" aria-hidden="true"></div>
+								<div class="monitor__bezel" aria-hidden="true"></div>
+								<div class="monitor__screen">
+									<!-- 表示したいURLをsrcに設定 -->
+									<iframe title="コンテンツビュー" src="assets/html/gallery-design-1-UI-1-yyyy=1582-10.html?idbnoop=true" allow="fullscreen; autoplay; encrypted-media" referrerpolicy="no-referrer" loading="lazy">
+									</iframe>
+								</div>
+								<div class="stand" aria-hidden="true"></div>
+								<div class="lightbar" aria-hidden="true"></div>
+							</figure>
+						</a>
+					</div>
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /container-top -->
+		</section>
+
+		<!--------------------------------------------------------------------------
+		▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽
+		▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲
+		---------------------------------------------------------------------------->
+
+		<div class="parallax bg-03" id="parallax-01"></div>
+
+		<!--------------------------------------------------------------------------
+		▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽
+		▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲
+		---------------------------------------------------------------------------->
+
+		<section class="page" id="P3">
+			<div class="container-top row1">
+				<div class="container column2">
+					<header class="section-header">
+						<h2 class="text-display-title with-line">イースター（復活祭）</h2>
+						<p>ヨーロッパでは、祝日や祭日の基準となるカレンダーを作成するうえで、イースターは非常に重要な日とされています。 イースターの日付は固定ではなく、次のルールによって毎年変動します。 <a href="https://ja.wikipedia.org/wiki/%E5%BE%A9%E6%B4%BB%E7%A5%AD" target="_blank" rel="noopener noreferrer"> 春分の日以降に訪れる最初の満月の次の日曜日 <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png" alt="Wikipedia" width="20" height="20" style="vertical-align: middle; margin-left: 4px;">
+							</a>この日付計算の方法は古代から 「<a href="https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%97%E3%83%88%E3%82%A5%E3%82%B9" target="_blank" rel="noopener noreferrer"> コンプトゥス（Computus） <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png" alt="Wikipedia" width="20" height="20" style="vertical-align: middle; margin-left: 4px;">
+							</a>」 と呼ばれ、キリスト教圏における最も重要な暦計算のひとつとして発展してきました。 </p>
+						<p>
+							<span class="underline">カレンダーアプリではコンプトゥスを使用してイースターを計算しています。</span>
+						</p>
+					</header>
+					<div class="device">
+						<!-- # Surface
+					        ================================================== -->
+						<a class="figure" href="assets/html/gallery-design-1-UI-1-yyyy=next-Easter.html?idbnoop=true" target="_blank">
+							<figure class="device-surface-style">
+								<div class="display">
+									<div class="camera"></div>
+									<div class="screen">
+										<iframe src="assets/html/gallery-design-1-UI-1-yyyy=next-Easter.html?idbnoop=true" title="コンテンツビュー"></iframe>
+									</div>
+								</div>
+								<div class="keyboard-cover">
+									<!-- 簡易的にキーを並べる -->
+									<div class="keys keys1">
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+									</div>
+									<div class="keys keys2">
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+									</div>
+									<div class="keys keys3">
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+										<div class="key"></div>
+									</div>
+									<div class="trackpad"></div>
+								</div>
+							</figure>
+						</a><!-- a class="figure" -->
+					</div><!--div class="device"-->
+				</div><!--div class="container"-->
+				<div class="container column2">
+					<div class="card">
+						<h2 class="text-display-title with-line">イースター関連行事（日程ルール） </h2>
+						<p>イースターは移動祝日であり、その前後の行事もすべてイースターの日付を基準に決まります。</p>
+						<table class="easter-table">
+							<thead>
+								<tr>
+									<th>行事名</th>
+									<th>日程ルール</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>カーニバル期間</td>
+									<td>国・地域により異なるが、一般に「灰の水曜日の前の数日〜数週間」</td>
+								</tr>
+								<tr>
+									<td>灰の水曜日（Ash Wednesday）</td>
+									<td>イースターの46日前（四旬節の開始）</td>
+								</tr>
+								<tr>
+									<td>四旬節（Lent）</td>
+									<td>灰の水曜日からイースター前日までの約40日間</td>
+								</tr>
+								<tr>
+									<td>枝の主日（Palm Sunday）</td>
+									<td>イースターの1週間前の日曜日</td>
+								</tr>
+								<tr>
+									<td>聖木曜日（Maundy Thursday）</td>
+									<td>イースターの3日前（木曜日）</td>
+								</tr>
+								<tr>
+									<td>聖金曜日（Good Friday）</td>
+									<td>イースターの2日前（金曜日）</td>
+								</tr>
+								<tr>
+									<td>聖土曜日（Holy Saturday）</td>
+									<td>イースター前日</td>
+								</tr>
+								<tr>
+									<td>
+										<strong>イースター（Easter Sunday）</strong>
+									</td>
+									<td>
+										<strong>春分の日以降の最初の満月の次の日曜日</strong>
+									</td>
+								</tr>
+								<tr>
+									<td>イースターマンデー（Easter Monday）</td>
+									<td>イースター翌日の月曜日</td>
+								</tr>
+								<tr>
+									<td>昇天日（Ascension Day）</td>
+									<td>イースターの39日後（木曜日）</td>
+								</tr>
+								<tr>
+									<td>聖霊降臨祭（Pentecost / Whitsunday）</td>
+									<td>イースターの49日後（日曜日）</td>
+								</tr>
+								<tr>
+									<td>聖霊降臨祭翌日の月曜日（Whit Monday）</td>
+									<td>ペンテコステ翌日の月曜日</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- div class="card"-->
+				</div>
+				<!--div class="container"-->
+		</section>
+
+		<!--------------------------------------------------------------------------
+		▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽
+		▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲
+		---------------------------------------------------------------------------->
+
+		<!-- # Public holidays and substitute holidays
+        ================================================== -->
+		<section class="page s-rules-holidays">
+			<div class="container-top column1">
+				<div class="container">
+					<header class="section-header">
+						<h2 class="text-display-title with-line">世界の祝日と振替休日</h2>
+						<p>
+							<span class="underline">カレンダーアプリでは日本以外にイギリス、アメリカのカレンダーを用意しています。</span>
+						</p>
+					</header>
+				</div><!-- class="container"-->
+				<div class="container row2">
+					<div class="card card-col3">
+						<h2>日本の基本ルール</h2>
+						<p class="lead">祝日が日曜日と重なると、翌日の月曜日が「振替休日」となります。 もし月曜日も祝日であれば、翌火曜日へと順次繰り下げられ、休日が減らないよう設計されています。 </p>
+						<p class="lead">なお、祝日が土曜日と重なった場合の振替設定はありません。</p>
+						<span class="label">ハッピーマンデー制度（移動祝日）</span>
+						<p>一部の祝日は、国民の生活に合わせて月曜日に移動する制度が導入されています。年間で数回、連休（いわゆる「三連休」）が発生しやすい設計です。 </p>
+					</div>
+					<div class="card card-col3">
+						<h2>イギリスの基本ルール</h2>
+						<p class="lead">祝日は「バンクホリデー」と呼ばれ、週末に重なると通常は翌週の平日に「代替日（Substitute day）」が設けられます。</p>
+						<span class="label">地域差</span>
+						<p> イングランド、スコットランド、ウェールズ、北アイルランドで祝日の種類や日付が異なります。 </p>
+						<span class="label">代替日の原則</span>
+						<p> 土日と重なった場合に翌平日へ振り替える運用が広く定着しています。 </p>
+					</div>
+					<div class="card card-col3">
+						<h2>アメリカの基本ルール</h2>
+						<p class="lead">連邦祝日が週末に重なる場合の「振替休日（Observed）」は、土曜なら前日金曜、日曜なら翌日月曜に設定されるのが一般的です。</p>
+						<p class="lead">日曜日と月曜日が祝日の場合、又は土曜日と金曜日が祝日の場合は、祝日が重なってもそのまま消えます。</p>
+						<span class="label">代替日の原則</span>
+						<p>
+							<span class="label">土曜日に祝日が当たる場合</span>前日の金曜日が休み
+						</p>
+						<p>
+							<span class="label">日曜日に祝日が当たる場合</span>翌日の月曜日が休み
+						</p>
+					</div>
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /container-top -->
+			<div class="country">
+				<style>
+					:root {
+						--easing: cubic-bezier(.2, 1, .2, 1);
+						--transition: .8s var(--easing);
+						--color-base: #f8f8f8;
+						--color-gray: #ddd;
+						--color-theme: #f5695f;
+						--color-theme-darken: #f12617;
+						--box-shadow: .8rem .8rem 1.2rem rgba(0, 0, 0, .05), -.8rem -.8rem 1.2rem #fff;
+						--box-shadow-hover: 1rem 1rem 1.5rem rgba(0, 0, 0, .08), -1rem -1rem 1.5rem #fff;
+						--box-shadow-inset: inset .8rem .8rem 1.2rem rgba(0, 0, 0, .05), inset -.8rem -.8rem 1.2rem #fff;
+						--box-shadow-dark: .8rem .8rem 1.2rem rgba(0, 0, 0, .1), -.8rem -.8rem 1.2rem rgba(#fff, .2);
+						--img-float-slightly: 16px;
+					}
+					.l-inner {
+						position: relative;
+						-webkit-box-sizing: content-box;
+						box-sizing: content-box;
+						max-width: 1200px;
+						margin: 0 auto;
+						padding: 0 10rem;
+					}
+					.l-section {
+						border-top: 1px solid #eee;
+					}
+					.l-section .l-inner {
+						padding-top: 8rem;
+						padding-bottom: 8rem;
+					}
+					[class*=swiper]:focus {
+						outline: none;
+					}
+					.slide-media {
+						position: relative;
+						overflow: hidden;
+					}
+					.slide-media img {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						-o-object-fit: cover;
+						object-fit: cover;
+					}
+					.card05 {
+						width: 100vw;
+						overflow: hidden;
+					}
+					.card05 .swiper {
+						overflow: visible;
+					}
+					.card05 .swiper-wrapper {
+						-webkit-transition-timing-function: linear !important;
+						transition-timing-function: linear !important;
+					}
+					.swiper-slide {
+						text-decoration: none;
+					}
+					.card05 .swiper-slide {
+						width: -webkit-max-content;
+						width: -moz-max-content;
+						width: max-content;
+					}
+					.card05 .slide {
+						overflow: hidden;
+						width: 36rem;
+						width: 40vw;
+						aspect-ratio: 16 / 9;
+						object-fit: cover;
+						object-position: bottom;
+						/* 基準 */
+						overflow: hidden;
+						/* はみ出た部分を隠す */
+						border-radius: 4px;
+						-webkit-box-shadow: var(--box-shadow);
+						box-shadow: var(--box-shadow);
+					}
+					.card05 .slide-media {
+						padding-top: 62.5%;
+					}
+					.card05 .slide-media img {
+						height: calc(100% + var(--img-float-slightly));
+						height: calc(87% + var(--img-float-slightly));
+						aspect-ratio: 16 / 9;
+						object-fit: cover;
+						object-position: bottom;
+						/* 基準 */
+						-webkit-transform: translateY(calc(-1 * var(--img-float-slightly)));
+						transform: translateY(calc(-1 * var(--img-float-slightly)));
+					}
+					@media only screen and (max-width: 1024px) {
+						.l-inner {
+							padding: 0 4rem;
+						}
+					}
+					@media only screen and (max-width: 599px) {
+						.card05 .slide {
+							width: 24rem;
+						}
+					}
+					@media only screen and (min-width: 1025px) {
+						.card05 .slide {
+							-webkit-transition: var(--transition);
+							transition: var(--transition);
+						}
+						.card05 .slide img {
+							-webkit-transition: var(--transition);
+							transition: var(--transition);
+						}
+						.card05 .slide:hover {
+							-webkit-transform: translateY(calc(-1 * var(--img-float-slightly)));
+							transform: translateY(calc(-1 * var(--img-float-slightly)));
+							-webkit-box-shadow: var(--box-shadow-hover);
+							box-shadow: var(--box-shadow-hover);
+						}
+						.card05 .slide:hover img {
+							-webkit-transform: translateY(0);
+							transform: translateY(0);
+						}
+						.card05 .swiper:hover .slide:not(:hover) {
+							opacity: 0.3;
+						}
+					}
+					.swiper .l-country-title.gb {
+						--country-letter-spacing: 2rem;
+					}
+					.swiper .l-country-title.us {
+						--country-letter-spacing: 4rem;
+					}
+					.swiper .l-country-title.jp {
+						--country-letter-spacing: 16rem;
+					}
+					.swiper .l-country-title {
+						font-size: 4rem;
+						letter-spacing: var(--country-letter-spacing);
+						left: 50%;
+						position: relative;
+						text-align: center;
+						top: -35vh;
+						#transform: translateX(-50%);
+						transform: translateX(calc(-50% + var(--country-letter-spacing) / 2));
+					}
+				</style>
+				<div class="card05 l-section">
+					<div class="l-inner">
+						<div class="swiper">
+							<div class="swiper-wrapper">
+								<a href="country-Japan.html" class="swiper-slide">
+									<article class="slide">
+										<div class="slide-media img-cover">
+											<img src="https://images.colorpea.com/a484b5654a6e4ba8b00ea20f8f1cca94.jpg" alt="">
+											<div class="country-title l-country-title jp">日本</div>
+										</div>
+									</article>
+								</a>
+								<a href="country-GreatBritain.html" class="swiper-slide">
+									<article class="slide">
+										<div class="slide-media img-cover">
+											<img src="https://images.colorpea.com/c4e57cd8fc554834889d57eef82b690b.jpg" alt="">
+											<div class="country-title l-country-title gb">Great Britain</div>
+										</div>
+									</article>
+								</a>
+								<a href="country-America.html" class="swiper-slide">
+									<article class="slide">
+										<div class="slide-media img-cover">
+											<img src="https://images.colorpea.com/5d3d0ede060a4fe6a4583330baa08bb6.jpg" alt="">
+											<div class="country-title l-country-title us">America</div>
+										</div>
+									</article>
+								</a>
+							</div>
+							<!-- /swiper-wrapper -->
+							<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+						</div>
+						<!-- /swiper -->
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!--------------------------------------------------------------------------
+		▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽
+		▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲
+		---------------------------------------------------------------------------->
+
+		<style>
+			.page.s-rules-holidays {
+				padding-bottom: var(--vspace-5);
+				padding-bottom: var(--vspace-0_5);
+			    margin-bottom: 0;
+				padding-bottom: 0;
+			}
+			.s-calendar-accuracy .section-header {
+				width: 52vw;
+			}
+		</style>
+		<!-- # Calendar accuracy
+        ================================================== -->
+		<section class="page s-calendar-accuracy">
+			<div class="container-top column1">
+				<div class="container">
+					<header class="section-header">
+						<h2 class="text-display-title with-line">カレンダーの精度</h2>
+						<p> 海外の祝日は、近年のものは確認可能ですが、数百年前から続く祝日は「いつから休みになったか」が不明確な場合が多いです。 </p>
+						<p> これはグレゴリオ暦導入後も、各国で祝日制定の根拠が法律ではなく慣習に依存していたためです。 日本はグレゴリウス暦導入以降、祝日が法律で明記されているため比較的明確に把握できます。 一方、ヨーロッパやアメリカでは数百年前からグレゴリウス暦を使用しているものの、 古くから存在する祝日については 「いつから休みとして扱われたのか」が必ずしも明確ではありません。 </p>
+					</header>
+				</div>
+				<div class="container row2">
+					<div class="card card-col3">
+						<h2>国内祝日の照合結果</h2>
+						<p>祝日は、政府が公開している <a href="https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html" target="_blank" rel="noopener noreferrer">昭和30年（1955年）から令和9年（2027年）国民の祝日 <span class="external-link fa-solid fa-arrow-up-right-from-square"></span>
+							</a>と照合し、一致していることを確認しています。 さらに、民間団体が公開している <a href="https://national-holidays.jp/about.html" target="_blank" rel="noopener noreferrer">1948年（昭和23年）7月20日以降の全データ <span class="external-link fa-solid fa-arrow-up-right-from-square"></span>
+							</a>とも突き合わせを行い（政府公開分と重複しますが）、 合計1007日の祝日が正しいことを検証しました。 </p>
+					</div>
+					<div class="card card-col3">
+						<h2>イギリスの祝日の照合結果</h2>
+						<p>イギリスの祝日は、政府が公開している <a href="https://www.gov.uk/bank-holidays" target="_blank" rel="noopener noreferrer">2019年から2028年までのデータ <span class="external-link fa-solid fa-arrow-up-right-from-square"></span>
+							</a>
+							<a href="https://www.publicholidayguide.com/bank-holiday/previous-years-bank-holidays/" target="_blank" rel="noopener noreferrer">2016年から2025年までのデータ <span class="external-link fa-solid fa-arrow-up-right-from-square"></span>
+							</a> と照合し、2016年から2028年までの祝日が一致していることを確認しています。
+						</p>
+					</div>
+					<div class="card card-col3">
+						<h2>アメリカの祝日の照合結果</h2>
+						<p>アメリカの祝日は、非公式ですが、郵便情報まとめサイト <a href="https://us-postoffice.com/holidays" target="_blank" rel="noopener noreferrer">2018年から2030年までのデータ <span class="external-link fa-solid fa-arrow-up-right-from-square"></span>
+							</a>民間の祝日情報サイト <a href="https://publicholidays.com/district-of-columbia/" target="_blank" rel="noopener noreferrer">2026年から2028年までのデータ <span class="external-link fa-solid fa-arrow-up-right-from-square"></span>
+							</a> と照合し、祝日が一致していることを確認しています。 公式のサイトの祝日は州のサイトに記載があり、形式に統一性が無い。どこに記載されているか探すのが大変であり確認が困難でした。 </p>
+					</div>
+				</div>
+			</div>
+			<!-- /container-top -->
+		</section> <!-- end s-calendar-accuracy -->
+
+		<!--------------------------------------------------------------------------
+		▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽
+		▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲
+		---------------------------------------------------------------------------->
+
+		<!-- # footer
+        ================================================== -->
+		<footer id="footer" class="s-footer">
+			<div class="row">
+				<div class="column xl-6 md-12 s-footer__block s-footer__about">
+					<div class="s-footer__logo">
+						<a class="logo" href="index.html">
+							<img src="assets/images/logo-with-icon.svg" alt="Homepage">
+						</a>
+					</div>
+				</div> <!-- end s-footer__about -->
+			</div> <!-- end  row -->
+			<div class="row s-footer__bottom">
+				<div class="column xl-6 lg-12">
+					<ul class="s-footer__social social-list">
+						<li>
+							<a href="#0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+									<path d="M20,3H4C3.447,3,3,3.448,3,4v16c0,0.552,0.447,1,1,1h8.615v-6.96h-2.338v-2.725h2.338v-2c0-2.325,1.42-3.592,3.5-3.592 c0.699-0.002,1.399,0.034,2.095,0.107v2.42h-1.435c-1.128,0-1.348,0.538-1.348,1.325v1.735h2.697l-0.35,2.725h-2.348V21H20 c0.553,0,1-0.448,1-1V4C21,3.448,20.553,3,20,3z"></path>
+								</svg>
+								<span class="u-screen-reader-text">Facebook</span>
+							</a>
+						</li>
+						<li>
+							<a href="#0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+									<path d="M19.633,7.997c0.013,0.175,0.013,0.349,0.013,0.523c0,5.325-4.053,11.461-11.46,11.461c-2.282,0-4.402-0.661-6.186-1.809 c0.324,0.037,0.636,0.05,0.973,0.05c1.883,0,3.616-0.636,5.001-1.721c-1.771-0.037-3.255-1.197-3.767-2.793 c0.249,0.037,0.499,0.062,0.761,0.062c0.361,0,0.724-0.05,1.061-0.137c-1.847-0.374-3.23-1.995-3.23-3.953v-0.05 c0.537,0.299,1.16,0.486,1.82,0.511C3.534,9.419,2.823,8.184,2.823,6.787c0-0.748,0.199-1.434,0.548-2.032 c1.983,2.443,4.964,4.04,8.306,4.215c-0.062-0.3-0.1-0.611-0.1-0.923c0-2.22,1.796-4.028,4.028-4.028 c1.16,0,2.207,0.486,2.943,1.272c0.91-0.175,1.782-0.512,2.556-0.973c-0.299,0.935-0.936,1.721-1.771,2.22 c0.811-0.088,1.597-0.312,2.319-0.624C21.104,6.712,20.419,7.423,19.633,7.997z"></path>
+								</svg>
+								<span class="u-screen-reader-text">Twitter</span>
+							</a>
+						</li>
+						<li>
+							<a href="#0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+									<path d="M11.999,7.377c-2.554,0-4.623,2.07-4.623,4.623c0,2.554,2.069,4.624,4.623,4.624c2.552,0,4.623-2.07,4.623-4.624 C16.622,9.447,14.551,7.377,11.999,7.377L11.999,7.377z M11.999,15.004c-1.659,0-3.004-1.345-3.004-3.003 c0-1.659,1.345-3.003,3.004-3.003s3.002,1.344,3.002,3.003C15.001,13.659,13.658,15.004,11.999,15.004L11.999,15.004z"></path>
+									<circle cx="16.806" cy="7.207" r="1.078"></circle>
+									<path d="M20.533,6.111c-0.469-1.209-1.424-2.165-2.633-2.632c-0.699-0.263-1.438-0.404-2.186-0.42 c-0.963-0.042-1.268-0.054-3.71-0.054s-2.755,0-3.71,0.054C7.548,3.074,6.809,3.215,6.11,3.479C4.9,3.946,3.945,4.902,3.477,6.111 c-0.263,0.7-0.404,1.438-0.419,2.186c-0.043,0.962-0.056,1.267-0.056,3.71c0,2.442,0,2.753,0.056,3.71 c0.015,0.748,0.156,1.486,0.419,2.187c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45 c0.963,0.042,1.268,0.055,3.71,0.055s2.755,0,3.71-0.055c0.747-0.015,1.486-0.157,2.186-0.419c1.209-0.469,2.164-1.424,2.633-2.633 c0.263-0.7,0.404-1.438,0.419-2.186c0.043-0.962,0.056-1.267,0.056-3.71s0-2.753-0.056-3.71C20.941,7.57,20.801,6.819,20.533,6.111z M19.315,15.643c-0.007,0.576-0.111,1.147-0.311,1.688c-0.305,0.787-0.926,1.409-1.712,1.711c-0.535,0.199-1.099,0.303-1.67,0.311 c-0.95,0.044-1.218,0.055-3.654,0.055c-2.438,0-2.687,0-3.655-0.055c-0.569-0.007-1.135-0.112-1.669-0.311 c-0.789-0.301-1.414-0.923-1.719-1.711c-0.196-0.534-0.302-1.099-0.311-1.669c-0.043-0.95-0.053-1.218-0.053-3.654 c0-2.437,0-2.686,0.053-3.655c0.007-0.576,0.111-1.146,0.311-1.687c0.305-0.789,0.93-1.41,1.719-1.712 c0.534-0.198,1.1-0.303,1.669-0.311c0.951-0.043,1.218-0.055,3.655-0.055c2.437,0,2.687,0,3.654,0.055 c0.571,0.007,1.135,0.112,1.67,0.311c0.786,0.303,1.407,0.925,1.712,1.712c0.196,0.534,0.302,1.099,0.311,1.669 c0.043,0.951,0.054,1.218,0.054,3.655c0,2.436,0,2.698-0.043,3.654H19.315z"></path>
+								</svg>
+								<span class="u-screen-reader-text">Instagram</span>
+							</a>
+						</li>
+						<li>
+							<a href="#0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+									<path d="M8.31 10.28a2.5 2.5 0 1 0 2.5 2.49 2.5 2.5 0 0 0-2.5-2.49zm0 3.8a1.31 1.31 0 1 1 0-2.61 1.31 1.31 0 1 1 0 2.61zm7.38-3.8a2.5 2.5 0 1 0 2.5 2.49 2.5 2.5 0 0 0-2.5-2.49zM17 12.77a1.31 1.31 0 1 1-1.31-1.3 1.31 1.31 0 0 1 1.31 1.3z"></path>
+									<path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm7.38 10.77a3.69 3.69 0 0 1-6.2 2.71L12 16.77l-1.18-1.29a3.69 3.69 0 1 1-5-5.44l-1.2-1.3H7.3a8.33 8.33 0 0 1 9.41 0h2.67l-1.2 1.31a3.71 3.71 0 0 1 1.2 2.72z"></path>
+									<path d="M14.77 9.05a7.19 7.19 0 0 0-5.54 0A4.06 4.06 0 0 1 12 12.7a4.08 4.08 0 0 1 2.77-3.65z"></path>
+								</svg>
+								<span class="u-screen-reader-text">Tripadvisor</span>
+							</a>
+						</li>
+					</ul>
+				</div> <!-- end section-footer__social -->
+				<div class="column xl-6 lg-12">
+					<p class="ss-copyright">
+						<span>© Copyright 2026 Hosoya. All rights reserved.</span>
+					</p>
+				</div>
+			</div> <!-- end section-footer__bottom -->
+			<div class="ss-go-top">
+				<a class="smoothscroll" title="Back to Top" href="#top">
+					<svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+						<path d="m14.523 18.787s4.501-4.505 6.255-6.26c.146-.146.219-.338.219-.53s-.073-.383-.219-.53c-1.753-1.754-6.255-6.258-6.255-6.258-.144-.145-.334-.217-.524-.217-.193 0-.385.074-.532.221-.293.292-.295.766-.004 1.056l4.978 4.978h-14.692c-.414 0-.75.336-.75.75s.336.75.75.75h14.692l-4.979 4.979c-.289.289-.286.762.006 1.054.148.148.341.222.533.222.19 0 .378-.072.522-.215z" fill-rule="nonzero" />
+					</svg>
+				</a>
+				<span>Back To Top</span>
+			</div> <!-- end ss-go-top -->
+		</footer> <!-- end s-footer -->
+	</div> <!-- end page-wrap -->
+	<!-- Java Script
+    ================================================== -->
+	<script src="assets/js/plugins.js"></script>
+	<script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="js" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>インシデント - Calendar</title>
+	<!-- favicons
+    ================================================== -->
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+	<link rel="manifest" href="assets/manifest.json">
+
+	<!-- reset css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reseter.css/2.0.0/reseter.min.css" />
+
+	<!-- library -->
+	<script charset="utf-8" src="Calendar/assets/js/promiseIndexedDB.js"></script>
+	<style>
+	body {
+		font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+		background: #f3efe9;
+		/* 上品なベージュ */
+		padding: 40px;
+		color: #3a3a3a;
+		line-height: 1.7;
+	}
+	section {
+		padding: 28px 32px;
+		margin-bottom: 32px;
+		background: linear-gradient(135deg, #ffffff, #ece8e2);
+		border-left: 4px solid var(--accent);
+		border-radius: 10px;
+		border: 1px solid var(--border);
+	}
+	p {
+		text-indent: 1em;
+	}
+	/* タイトル行（タイトル + ボタン） */
+	.header-row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 18px;
+	}
+	h1 {
+		font-weight: 500;
+		font-size: 22px;
+		margin-bottom: 24px;
+		color: #4a4a4a;
+		letter-spacing: 0.04em;
+	}
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		background: #ffffff;
+		border-radius: 12px;
+		overflow: hidden;
+		border: 1px solid #e2ddd5;
+		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+		table-layout: fixed;
+	}
+	thead {
+		background: #e8e2d9;
+		/* 優雅なグレージュ */
+		border-bottom: 1px solid #d8d2c8;
+	}
+	th {
+		padding: 16px 20px;
+		text-align: left;
+		font-size: 14px;
+		font-weight: 600;
+		color: #5a5248;
+		letter-spacing: 0.03em;
+	}
+	th:nth-of-type(1) {
+		width: 10em;
+	}
+	th:nth-of-type(3) {
+		width: 16em;
+	}
+	th:nth-of-type(4) {
+		width: 14em;
+	}
+	td {
+		padding: 16px 20px;
+		font-size: 14px;
+		color: #4a4a4a;
+		border-bottom: 1px solid #f0ece6;
+		word-break: break-all;
+	}
+	tbody tr:last-child td {
+		border-bottom: none;
+	}
+	tbody tr:hover {
+		background: #f5f1eb;
+		/* ほんのり明るい優雅な色 */
+		transition: background 0.25s ease;
+	}
+	/* 共通スタイル */
+	.btn {
+		position: relative;
+		padding: 0.55rem 1.6rem;
+		border-radius: 999px;
+		border: 1px solid rgba(120, 120, 120, 0.35);
+		background: linear-gradient(135deg,
+				rgba(255, 255, 255, 0.75),
+				rgba(245, 245, 245, 0.6));
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+		color: #444;
+		font-size: 0.9rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		cursor: pointer;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		box-shadow:
+			0 8px 20px rgba(0, 0, 0, 0.08),
+			inset 0 1px 0 rgba(255, 255, 255, 0.7);
+		transition:
+			transform 0.18s ease,
+			box-shadow 0.18s ease,
+			border-color 0.18s ease,
+			background 0.18s ease,
+			color 0.18s ease;
+	}
+	/* --- disabled デザイン --- */
+	.btn:disabled {
+		background: #d5d5d5;
+		/* 柔らかいグレー */
+		color: #9a9a9a;
+		/* 文字も淡く */
+		cursor: not-allowed;
+		/* 無効カーソル */
+		box-shadow: none;
+		/* 影を消して存在感を弱める */
+		opacity: 0.7
+	}
+	.btn:not(:disabled):hover {
+		transform: translateY(-1px);
+		background: linear-gradient(135deg,
+				rgba(255, 255, 255, 0.95),
+				rgba(245, 245, 245, 0.9));
+		border-color: rgba(80, 80, 80, 0.6);
+		box-shadow:
+			0 10px 26px rgba(0, 0, 0, 0.12),
+			inset 0 1px 0 rgba(255, 255, 255, 0.9);
+		color: #222;
+	}
+	.btn:active {
+		transform: translateY(1px) scale(0.985);
+		box-shadow:
+			0 4px 14px rgba(0, 0, 0, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.7);
+	}
+	.btn:focus-visible {
+		outline: 2px solid rgba(0, 120, 255, 0.6);
+		outline-offset: 3px;
+	}
+	/* クリアボタン専用スタイル */
+	.clear-btn {
+		margin-bottom: 1em;
+	}
+	.clear-btn::before {
+		content: "✕";
+		font-size: 0.85rem;
+		opacity: 0.8;
+	}
+	/* 削除ボタン専用スタイル */
+	.delete-btn {
+		border-color: rgba(200, 60, 60, 0.45);
+		color: #b33;
+	}
+	.delete-btn::before {
+		content: "🗑️";
+		font-size: 0.95rem;
+		opacity: 0.85;
+	}
+	/* --- disabled デザイン --- */
+	.delete-btn:disabled {
+		background: #d5d5d5;
+		/* 柔らかいグレー */
+		color: #9a9a9a;
+		/* 文字も淡く */
+		cursor: not-allowed;
+		/* 無効カーソル */
+		box-shadow: none;
+		/* 影を消して存在感を弱める */
+		opacity: 0.7
+	}
+	.delete-btn:not(:disabled):hover {
+		background: linear-gradient(135deg,
+				rgba(255, 240, 240, 0.95),
+				rgba(255, 225, 225, 0.9));
+		border-color: rgba(200, 40, 40, 0.7);
+		color: #a00;
+	}
+	.list {
+		padding-left: 20px;
+		line-height: 1.8;
+		font-size: 16px;
+		list-style-type: none;
+	}
+	.list li {
+		margin-bottom: 4px;
+	}
+	</style>
+</head>
+
+<body>
+	<h1>IndexedDB</h1>
+	<p> 本アプリは、設定を維持するためにブラウザ内のIndexedDBを利用しています。これに伴いわずかなリソースを消費するため、アプリをご利用にならない場合はデータベースの削除をお勧めします。 </p>
+	<br />
+	<section class="incident-list">
+		<div class="header-row">
+			<h1>インシデント一覧</h1>
+			<!-- ✅ クリアボタン -->
+			<button class="btn clear-btn" type="button">Clear</button>
+		</div>
+		<p> hq-calendar-slide-show.js に設定された画像URLを、カレンダーアプリでスライドショーとして表示しています。 もし指定されたURL先の画像が存在しない場合は、#INCIDENT データベースに 'Invalid URL' として記録し、 その情報をインシデント一覧に表示します。
+		<p> 'Invalid URL'と判定された画像URLは、hq-calendar-slide-show.js をテキストエディタなどで開き、設定を削除してください。 また、削除した設定については、一覧表の［Resolved(対処済み)］ボタンを押してインシデントからも削除してください。 </p>
+		<table class="incident">
+			<thead>
+				<tr>
+					<th>インシデント</th>
+					<th>詳細</th>
+					<th>最終更新日</th>
+					<th>操作</th> <!-- ✅ 削除ボタン列 -->
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</section>
+	<section class="db-drop">
+		<div class="header-row">
+			<h1>データベース削除</h1>
+			<!-- ✅ 削除ボタン -->
+			<button class="btn delete-btn" type="button">削除</button>
+		</div>
+		<p>次のデータベースを削除します。
+		<ul class="list">
+			<li><span class="accent">#CALENDOR</span></li>
+		</ul>
+		</p>
+		<p>
+		</p>
+		<p> IndexedDBはブラウザごと（正確には「オリジン」ごと）に独立してデータベースを作成・管理します。 同じPC（ユーザー環境）であっても、Chromeで作成したIndexedDBのデータに、FirefoxやEdgeからアクセスすることはできません。各ブラウザは独自のストレージ領域を持っているためです。 </p>
+		<p> カレンダーアプリのデータを削除するには、データベース削除を実行してください。 カレンダーアプリを起動して設定を行えば再度データベースを作成します。</p>
+	</section>
+	<script>
+		const DB_NAME = '#CALENDOR';
+		const VERSION = 1;
+		const OBJ_STORE_PARAMETER = '#PARAMETER';
+		const OBJ_STORE_INCIDENT = '#INCIDENT';
+
+		//	promiseIndexedDB_debug(true);
+	</script>
+	<script>
+		const clearBtn = document.querySelector(".incident-list button.clear-btn");
+		const dropBtn = document.querySelector(".db-drop button.delete-btn");
+
+		function incidentTableCreat() {
+			idbCheckStoreExists(DB_NAME, OBJ_STORE_INCIDENT).then(exists => {
+				if(exists) {
+					idbGetAll(DB_NAME, OBJ_STORE_INCIDENT).then(data => {
+						console.log(data);
+						var	html_tr = "";
+						if(data.length > 0) {
+							data.forEach(e => html_tr += `<tr><td>${e.incident}</td><td>${e.detail}</td><td>${e.last_updated}</td><td><button class="btn resolved-btn" type="button">Resolved</button></td></tr>`);
+						} else {
+							clearBtn.disabled = true;
+							html_tr += `<td colspan=4>インシデントはありません。</td>`;
+						}
+						const tbody = document.querySelector(".incident-list table.incident tbody");
+						tbody.innerHTML = html_tr;
+						console.log("インシデントを作成しました！！" + (new Date()));
+
+						// ✅ クリアボタン：行を削除
+						const resolved_btn = document.querySelectorAll(".incident-list table.incident button.resolved-btn");
+						resolved_btn.forEach( b => {
+							b.addEventListener('click', (e) => {
+								const tr = e.target.closest('tr');
+								var	key_url = tr.querySelector("td:nth-of-type(2)");
+								idbDelete(DB_NAME, OBJ_STORE_INCIDENT, key_url.innerText);
+								const row = e.target.closest('tr');
+								row.remove();
+							});
+						});
+					});
+				} else {
+					clearBtn.disabled = true;
+					const tbody = document.querySelector(".incident-list table.incident tbody");
+					tbody.innerHTML = `<td colspan=4>${OBJ_STORE_INCIDENT}オブジェクトストアがありません。</td>`;
+				}
+			}).catch (e => {
+				console.error("エラーが発生しました:", e);
+			});
+
+		}
+
+		async function eventListener() {
+			try {
+
+				// ✅ 一括クリアボタン：テーブルの内容を空にする
+				clearBtn.addEventListener('click', (e) => {
+					idbClear(DB_NAME, OBJ_STORE_INCIDENT);
+					incidentTableCreat();
+				});
+
+				// ✅ 削除ボタン：行を削除
+				dropBtn.addEventListener('click', (e) => {
+					try {
+						// DB削除
+						const req = window.indexedDB.deleteDatabase(DB_NAME);
+						req.onerror = e => {
+							console.error("【"+(req.constructor.name)+"】[onerror]", e);
+						}
+						req.onblocked = e => console.warn("【"+(req.constructor.name)+"】[onblocked]", e);
+						req.onupgradeneeded = e => console.info("【"+(req.constructor.name)+"】[onupgradeneeded]", e);
+						req.onsuccess = e => {
+							console.info("【"+(req.constructor.name)+"】[onsuccess]");
+							dropBtn.disabled = true;
+							incidentTableCreat();
+						}
+					} catch (e) {
+						console.error(e);
+					}
+				});
+
+			} catch (e) {
+				console.error("エラーが発生しました:", e);
+			}
+		}
+
+		// ✅ クリアボタンの活性制御
+		async function toggleClearButton() {
+			var	exist = await idbCheckStoreExists(DB_NAME, OBJ_STORE_INCIDENT);
+			if(exist) {
+				clearBtn.disabled = false;
+			} else {
+				clearBtn.disabled = true;
+			}
+		}
+
+		// ✅ 削除ボタンの活性制御
+		async function toggleDropButton() {
+			var	exist = await idbCheckDBExists(DB_NAME);
+			if(exist) {
+				dropBtn.disabled = false;
+			} else {
+				dropBtn.disabled = true;
+			}
+		}
+
+		// インシデント作成
+		incidentTableCreat();
+		// イベント登録
+		eventListener();
+		// ボタンの活性制御
+		toggleClearButton();
+		toggleDropButton();
+	</script>
+</body>
+
+</html>

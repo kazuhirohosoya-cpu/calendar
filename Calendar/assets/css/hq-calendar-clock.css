@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* ===================================================================
+ *  High Quality Calendar Main Stylesheet
+ *  Ver. 1.0.0
+ *  2025-01-17
+ * ------------------------------------------------------------------
+ *
+ *  TOC:
+ *  # SETTINGS
+ *      ## fonts
+ *      ## size
+ *  # CLOCK
+ *
+ * ------------------------------------------------------------------ */
+
+/* ===================================================================
+ * # SETTINGS
+ *
+ *
+ * ------------------------------------------------------------------- */
+ /* -------------------------------------------------------------------
+  * ## size
+  * ------------------------------------------------------------------- */
+:root {
+
+	/*時刻の文字数により縮尺率を変更するための変数*/
+	--clock-length-multiplier			:	1;
+
+	/*プログラムで状態により縮尺率を変更するための変数*/
+	--clock-settings-multiplier			:	1;
+
+	--clock-multiplier					:	calc( var(--clock-settings-multiplier) * var(--hq-calendar-screen-multiplier) * var(--clock-length-multiplier) );
+
+	/* clock font size
+	 */
+	--clock-font-size-main-base			:	288px;
+	--clock-font-size-main-time			:	calc(var(--clock-font-size-main-base) * var(--clock-multiplier));
+	--clock-margin-main-1				:	calc(50px * var(--clock-multiplier));
+	--clock-padding-time-1				:	calc(60px * var(--clock-multiplier));
+}
+
+/* ===================================================================
+ * # CLOCK
+ *
+ *
+ * ------------------------------------------------------------------- */
+.hq-clock {
+	font-weight							:	700;
+	font-size							:	var(--clock-font-size-main-time);
+	color								:	var(--hq-calendar-color-general);
+	display								:	flex;
+	align-items							:	baseline;
+}
+
+	.hq-clock .time {
+		display							:	inline-block;
+		text-align						:	center;
+		white-space						:	pre-wrap;
+	}
+
+	.hq-clock .time-standard {
+		margin-left						:	1.5vw;
+		font-size						:	1vw;
+		letter-spacing					:	2px;
+	}

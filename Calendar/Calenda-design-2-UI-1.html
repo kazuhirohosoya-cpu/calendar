@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Calendar</title>
+	<!-- favicons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+	<link rel="manifest" href="assets/manifest.json">
+
+	<!-- reset css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reseter.css/2.0.0/reseter.min.css" />
+
+	<!-- library -->
+	<script charset="utf-8" src="assets/js/promiseIndexedDB.js"></script>
+	<script>
+		let idbnoop = new URLSearchParams(window.location.search).get("idbnoop");
+		promiseIndexedDB_noop(idbnoop);
+	</script>
+
+	<!-- hq-calendar core -->
+	<script charset="utf-8" src="assets/js/hq-calendar-core.js"></script>
+
+	<!-- user setting parameter -->
+	<script charset="utf-8" src="assets/js/hq-calendar-slide-show.js"></script>
+	<script>
+		// デフォルトパラメータ設定
+		var	___PARAMETER___ = {};
+		if(idbnoop) {
+			___PARAMETER___ = { ...___PARAMETER___, ...{
+				background_opacity_range: 0.5,
+				background_select_slide: "illustration",
+				background_slide_show_interval: 10 * 1000,
+				country: "JP",
+				dark_mode: false,
+				latin_font: "Helvetica",
+				japanese_font: "Kosugi-Maru",
+				fest_name_hidden: true,
+				holiday_name_hidden: false,
+				large_time_format: "hh:mm:ss",
+				monday_start: false,
+				moon_hidden: true,
+				saturday_coloring: true,
+				schedule_name_hidden: true,
+				small_time_format: "hh:mm:ss",
+				tips_disp: true,
+				__big_time: false,
+				__calendar_column: 1,
+				__calendar_row: 1,
+			}};
+		}
+	</script>
+	<script charset="utf-8" src="assets/js/hq-calendar-user-parameter.js"></script>
+
+	<!-- hq-calendar menu -->
+	<link rel="stylesheet" href="assets/css/hq-calendar-menu.css" />
+	<script charset="utf-8" src="assets/js/hq-calendar-menu.js"></script>
+
+	<!-- hq-calendar clock -->
+	<link rel="stylesheet" href="assets/css/hq-calendar-clock.css" />
+	<script charset="utf-8" src="assets/js/hq-calendar-clock.js"></script>
+
+	<!-- hq-calendar design -->
+	<link rel="stylesheet" href="assets/css/hq-calendar-design-2.css" />
+	<script charset="utf-8" src="assets/js/hq-calendar-design-1.js"></script>
+
+	<!-- hq-calendar UI -->
+	<link rel="stylesheet" href="assets/css/hq-calendar-design-1-UI-1.css" />
+	<script charset="utf-8" src="assets/js/hq-calendar-design-1-UI-1.js"></script>
+
+</head>
+<body>
+
+	<!-- プリローダー（preloader）
+    ================================================== -->
+	<div id="preloader">
+		<div id="loader" class="dots-fade">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+
+	<!-- カレンダー
+    ================================================== -->
+	<article class="hq-article">
+		<section class="header-section">
+			<div class="year-title">
+				<span class="editable-label" data-format="YYYY | YYYY-MM"></span>
+			</div>
+			<div class="clock-title">
+				<div class="hq-clock">
+					<time class="time"></time>
+					<span class="time-standard"></span>
+				</div>
+			</div>
+		</section>
+		<section class="body-section">
+			<div class="hq-calendar"></div>
+		</section>
+	</article>
+
+</body></html>

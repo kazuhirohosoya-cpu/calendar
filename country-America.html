@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="js" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>America - Calendar</title>
+	<!-- favicons
+    ================================================== -->
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+	<link rel="manifest" href="assets/manifest.json">
+
+	<!-- reset css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reseter.css/2.0.0/reseter.min.css" />
+
+	<!--- basic page needs
+    ================================================== -->
+	<script>
+		document.documentElement.classList.remove('no-js');
+		document.documentElement.classList.add('js');
+	</script>
+	<!-- CSS
+    ================================================== -->
+	<link rel="stylesheet" href="assets/css/vendor.css">
+	<link rel="stylesheet" href="assets/css/styles.css">
+	<style>
+	/* GB map */
+	.content-block__media {
+		max-width: 320px;
+	}
+	/* ===================================================================
+	 * # GALLERY
+	 * ------------------------------------------------------------------- */
+	.s-gallery {
+		#margin-top: auto;
+		#margin-bottom: 10vh;
+		#margin-bottom: 0;
+		position: relative;
+	}
+	.s-gallery::before {
+		content: "";
+		display: block;
+		background-color: var(--color-body-bg);
+		width: 100%;
+		height: 50%;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	.s-gallery--column {
+		padding: 0;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		z-index: 2;
+	}
+	.s-gallery--wrap {
+		--l-calendar-width: 560px;
+		width: var(--l-calendar-width);
+		height: calc(var(--l-calendar-width) * 9 / 16);
+		box-shadow: 20px 20px 10px 0px rgba(0, 0, 0, 0.4);
+	}
+	.s-gallery--wrap iframe {
+		aspect-ratio: 16 / 9;
+		border: 0;
+		pointer-events: none;
+	}
+	#.s-pagecontent {
+		padding-top: var(--vspace-1_75);
+		padding-bottom: var(--vspace-1_75);
+	}
+	#.s-pagecontent table {
+		table-layout: fixed;
+		width: 100%;
+	}
+	#.s-pagecontent table .c1 {
+		width: 30%;
+	}
+	#.s-pagecontent table caption {
+		font-size: 1.6rem;
+		font-weight: 700;
+		text-align: justify;
+	}
+	#.s-pagecontent table th,
+	#.s-pagecontent table td {
+		padding: var(--vspace-0_25) 3.2rem calc(var(--vspace-0_25) - 1px);
+		font-size: 1.6rem;
+		line-height: 1;
+	}
+	#.s-pagecontent table th {
+		font-weight: unset;
+		text-indent: 1em;
+	}
+	.row {
+		width: min(60%, var(--width-grid-max));
+	}
+	</style>
+</head>
+<!--
+
+
+	-->
+
+<body id="top">
+	<!-- プリローダー（preloader）
+    ================================================== -->
+	<div id="preloader">
+		<div id="loader" class="dots-fade">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<!-- page wrap
+    ================================================== -->
+	<div id="page" class="s-pagewrap">
+		<!-- メニューの下にある画面全体を覆う背景要素 -->
+		<div class="menu-underlay"></div>
+		<!-- # site header
+        ================================================== -->
+		<header class="s-header">
+			<!-- サイトヘッダー (Site Header)ページ最上部領域
+            ================================================== -->
+			<div class="s-header__block">
+				<!-- [ページ最上部ヘッダー]中央のロゴ -->
+				<div class="s-header__logo">
+					<a class="logo" href="index.html">
+						<img src="assets/images/logo.svg" alt="Homepage">
+					</a>
+				</div>
+				<!-- [ページ最上部ヘッダー]左のメニューの開閉アイコン -->
+				<a class="s-header__menu-toggle" href="#0"><span>Browse</span></a>
+				<!-- [ページ最上部ヘッダー]右のCTA (Call To Action) -->
+				<div class="s-header__cta">
+					<a href="#" __href="Calendar.zip" class="btn btn--primary s-header__cta-btn" id="downloadLink">Donwload</a>
+				</div>
+			</div> <!-- end s-header__block -->
+			<!-- ページ左アコーディオン ナビゲーションメニュー
+            ================================================== -->
+			<nav class="s-header__nav">
+				<!-- [ページ左アコーディオンメニュー]閉じる❌ボタン -->
+				<a href="#0" class="s-header__nav-close-btn" title="close"><span>Close</span></a>
+				<!-- [ページ左アコーディオンメニュー]上部のロゴ -->
+				<div class="s-header__nav-logo">
+					<a href="index.html">
+						<img src="assets/images/logo-with-icon.svg" alt="Homepage">
+					</a>
+				</div> <!-- s-header__nav-logo -->
+				<!-- [ページ左アコーディオンメニュー]リンク -->
+				<ul class="s-header__nav-links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="gallery.html">Gallery</a></li>
+					<li><a href="specification.html">Specification</a></li>
+					<li><a href="usage.html">Usage</a></li>
+					<li><a href="country-Japan.html">Japan</a></li>
+					<li><a href="country-GreatBritain.html">Great Britain</a></li>
+					<li class="current"><a href="country-America.html">America</a></li>
+				</ul> <!-- s-header__nav-links -->
+				<!-- [ページ左アコーディオンメニュー]リンク -->
+			</nav> <!-- end s-header__nav -->
+		</header> <!-- end s-header -->
+		<!-- # main content
+        ================================================== -->
+		<!-- ## pageheader -->
+		<section class="s-pageheader pageheader" style="background-image:url(https://images.colorpea.com/5d3d0ede060a4fe6a4583330baa08bb6.jpg)">
+			<div class="row">
+				<div class="column xl-12 s-pageheader__content">
+					<h1 class="country-title page-title us">America</h1>
+				</div>
+			</div>
+		</section>
+		<section class="page s-pagecontent page pagecontent">
+			<div class="container-top column1">
+				<div class="container">
+					<header class="section-header">
+						<h2 class="text-display-title with-line">アメリカにおけるグレゴリオ暦の採用</h2>
+					</header>
+				</div><!-- class="container"-->
+				<div class="container row2">
+					<div class="card card-col2">
+						<h2>改暦の主な内容</h2>
+						<p class="lead">
+						<ul>
+							<li><strong>11日間の消去：</strong>それまで使用していたユリウス暦とのずれを解消するため、<span class="date-info">ユリウス暦の1752年9月2日の翌日をグレゴリオ暦の9月14日</span>としました。</li>
+						</ul>
+						</p>
+					</div>
+					<div class="card card-col2">
+						<h2>背景と影響</h2>
+						<p class="lead"> 当時、アメリカはイギリスの植民地であったため、イギリス本国で制定された「1750年暦法改正法」に従い、1752年9月にグレゴリオ暦を正式に採用しました。 そのため、イギリス議会が制定した<strong><a href="https://www.legislation.gov.uk/apgb/Geo2/24/23?utm_source=copilot.com" target="_blank" rel="noopener noreferrer">「1750年改暦法（Calendar (New Style) Act 1750）」</a></strong>がそのまま植民地にも適用されました。 </p>
+					</div>
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /container-top -->
+		</section>
+		<style>
+			:root {
+			    --primary-blue: #002147;
+			    --primary-red: #b22234;
+			    --state-green: #2e7d32;
+			    --private-orange: #ef6c00;
+			    --light-bg: #f4f7f9;
+			    --white: #ffffff;
+			}
+			.federal {
+				color : var(--primary-red);
+				font-weight: 900;
+			}
+			.state {
+				color : var(--state-green);
+				font-weight: 900;
+			}
+		</style>
+		<section class="page s-pagecontent page pagecontent">
+			<div class="container-top column1">
+				<div class="container">
+					<header class="section-header">
+						<h2 class="text-display-title with-line">アメリカの祝日</h2>
+						<p>※連邦法や州法によって公的に定められた休日を指しますが、民間企業における休日の運用は個別の雇用契約や就業規則に基づきます。 </p>
+					</header>
+				</div>
+				<div class="container row2">
+					<div class="card card-col2">
+						<h2>連邦祝日と州祝日の違い</h2>
+						<p class="lead">アメリカの祝日には、連邦政府が定める <strong class="federal">連邦祝日 (Federal Holidays)</strong>と、 各州政府が独自に定める <strong class="state">州祝日 (State Holidays)</strong>の2種類があります。 </p>
+						<p class="lead"><strong class="federal">連邦祝日</strong>は、本来「連邦政府職員」を対象としたものですが、 金融機関（FRB）や郵便局（USPS）が閉まるため、 多くの民間企業や教育機関もこれに準じて休業します。 </p>
+						<p class="lead"><strong class="state">州祝日</strong>は連邦政府の祝日と並ぶ重要な休日体系です。 これらは各州の歴史、文化、地理的背景を強く反映しており、 全米画一的なカレンダーではなく、 それぞれの地域に根ざした「州ごとのカレンダー」を形成しています。 州ごとに異なり、連邦祝日をすべて採用する州もあれば、独自の記念日 （例：ハワイ州のカメハメハ・デーなど）を設けている州もあります。 </p>
+					</div>
+					<div class="card card-col2">
+						<h2>祝日の決定権限と特徴</h2>
+						<p class="lead">
+							<strong>「恒久的な連邦祝日」</strong>は議会が制定する法律によって決定されますが、 <strong>「単発・一時的な連邦祝日」</strong>は大統領令（Executive Order）によって指定されることがあります。
+						</p>
+						<p class="lead">例えば、大統領の葬儀に伴う国葬の日や、クリスマスの前後に特別休暇を付与する場合などに大統領令が発令されます。 </p>
+						<p class="lead">州レベルにおいても、知事の布告（Proclamation）によってその年限りの祝日が設定されるケースがあるのも米国カレンダーの特徴です。 </p>
+					</div>
+				</div>
+			</div>
+			<!--
+			</section>
+-->
+			<style>
+				#.s-rules-federal-holidays {
+				    padding-top: var(--vspace-1);
+				    padding-bottom: var(--vspace-1);
+				    padding-top: 0;
+				    padding-bottom: 0;
+				}
+				.status-tag {
+					#display: inline-block;
+					background-color: #eee;
+					padding: 2px 8px;
+					border-radius: 4px;
+					font-size: 0.85em;
+					font-weight: bold;
+					margin-bottom: 10px;
+				}
+			</style>
+			<!--
+			<section class="page s-rules-federal-holidays">
+-->
+			<div class="container-top column1">
+				<div class="container">
+					<header class="section-header">
+						<h2 class="text-display-title with-line">施行と適用ルール</h2>
+					</header>
+				</div>
+				<div class="container row2">
+					<div class="card card-col3">
+						<span class="status-tag">1. 連邦政府レベル</span>
+						<h2>連邦職員への適用</h2>
+						<p>
+							<a href="https://www.law.cornell.edu/uscode/text/5/6103?utm_source=copilot.com" target="_blank" rel="noopener noreferrer" class="external-link-btn"> 連邦法（5 U.S.C. § 6103）<span class="fa-solid fa-arrow-up-right-from-square"></span></a>に基づき施行。 <strong>連邦政府機関、郵便局（USPS）、連邦裁判所、および国立銀行（FRB）</strong> は閉鎖が法的義務です。
+						</p>
+					</div>
+					<div class="card card-col3">
+						<span class="status-tag">2. 州政府レベル</span>
+						<h2>州職員への適用</h2>
+						<p> 州法に基づき、州職員に有給休暇が付与。 州議事堂、州立大学、DMV（免許センター）、州立公園は閉鎖 されます。 </p>
+					</div>
+					<div class="card card-col3">
+						<span class="status-tag">3. 民間レベル</span>
+						<h2>法的義務なし</h2>
+						<p> 休ませる義務はありません。就業規則や労働組合との契約(CBA)で決まります。 慣習として銀行休業に合わせる企業が多いです。 </p>
+						<p> ただし、銀行や市場が閉まるため、多くの大企業は連邦祝日に 合わせて休業するのが一般的です。 </p>
+						<p> 州憲法や歴史に関わる強い意味を持つ州祝日では、 地域の多くの民間企業が慣習的に休業する場合があります。</p>
+						</p>
+					</div>
+				</div>
+			</div>
+			<!-- /container-top -->
+		</section> <!-- end s-rules-federal-holidays -->
+		<style>
+			#.s-list-federal-holidays {
+			    padding-top: var(--vspace-1);
+			    padding-bottom: var(--vspace-1);
+			    padding-top: 0;
+			    padding-bottom: 0;
+			}
+			.category-label { font-size: 0.85em; font-weight: bold;/*color: #b22234;*/}
+			.rule-text { font-weight: bold; color: #b22234; }
+		</style>
+		<section class="page s-list-federal-holidays">
+			<div class="container-top column1">
+				<div class="container">
+					<header class="section-header">
+						<h2 class="text-display-title with-line">連邦祝日</h2>
+					</header>
+				</div>
+				<div class="container row1">
+					<div class="card card-col1">
+						<h2>アメリカ連邦祝日 (Federal Holidays) 一覧</h2>
+						<table>
+							<thead>
+								<tr>
+									<th style="width: 25%;">祝日名 (日/英)</th>
+									<th style="width: 25%;">一般的な日付・ルール</th>
+									<th style="width: 50%;">特記事項・区分</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>元日<br>(New Year's Day)</td>
+									<td><span class="rule-text">1月1日</span></td>
+									<td>新年を祝う休日。</td>
+								</tr>
+								<tr>
+									<td>マーティン・ルーサー・キング・ジュニア誕生日<br>(Birthday of Martin Luther King, Jr.)</td>
+									<td><span class="rule-text">1月の第3月曜日</span></td>
+									<td>公民権運動の指導者を記念。1983年に制定。</td>
+								</tr>
+								<tr>
+									<td>大統領の日 / ワシントン誕生日<br>(Washington's Birthday) </td>
+									<td>
+										<span class="rule-text">2月の第3月曜日</span>
+									</td>
+									<td> 初代大統領ワシントンを称える。多くの州で「Presidents' Day」と呼ばれる。 </td>
+								</tr>
+								<tr>
+									<td>戦没将兵追悼記念日<br>(Memorial Day) </td>
+									<td>
+										<span class="rule-text">5月の最終月曜日</span>
+									</td>
+									<td> 兵役中に亡くなった方々を追悼する日。 </td>
+								</tr>
+								<tr>
+									<td>ジューンティーンス<br>(Juneteenth National Independence Day) </td>
+									<td>
+										<span class="rule-text">6月19日</span>
+									</td>
+									<td> 奴隷解放を記念。2021年に連邦祝法として承認。 </td>
+								</tr>
+								<tr>
+									<td>独立記念日<br>(Independence Day) </td>
+									<td>
+										<span class="rule-text">7月4日</span>
+									</td>
+									<td> 1776年の独立宣言を記念。米国の最も重要なナショナル・デー。 </td>
+								</tr>
+								<tr>
+									<td>労働感謝の日<br>(Labor Day) </td>
+									<td>
+										<span class="rule-text">9月の第1月曜日</span>
+									</td>
+									<td> 労働者の社会的・経済的貢献を称える。 </td>
+								</tr>
+								<tr>
+									<td>コロンブス・デー<br>(Columbus Day) </td>
+									<td>
+										<span class="rule-text">10月の第2月曜日</span>
+									</td>
+									<td> 新大陸発見を記念。近年、一部の州では「先住民の日」に変更されている。 </td>
+								</tr>
+								<tr>
+									<td>退役軍人の日<br>(Veterans Day) </td>
+									<td>
+										<span class="rule-text">11月11日</span>
+									</td>
+									<td> 復員軍人を称える日。第1次世界大戦の休戦記念日に由来。 </td>
+								</tr>
+								<tr>
+									<td>感謝祭<br>(Thanksgiving Day) </td>
+									<td>
+										<span class="rule-text">11月の第4木曜日</span>
+									</td>
+									<td> 収穫を感謝する伝統行事。翌日の金曜を休みにする州も多い。 </td>
+								</tr>
+								<tr>
+									<td>クリスマス<br>(Christmas Day) </td>
+									<td>
+										<span class="rule-text">12月25日</span>
+									</td>
+									<td> キリストの降誕を祝う。 </td>
+								</tr>
+							</tbody>
+						</table>
+						<p style="font-size: 0.9em; color: #666; margin-top: 10px;">※祝日が土曜日に重なる場合は前日の金曜日、日曜日に重なる場合は翌月曜日が振替休日（Observed Day）となります。 </p>
+					</div>
+					<div class="card card-col1">
+						<h2>単発の休日 (Special Holiday) 一覧</h2>
+						<p> 連邦政府が法律で定めた祝日（Federal Holidays）の歴史は、1870年6月28日に始まりました。 連邦法ができる前、祝日は州知事や大統領がその年ごとに「今年は〇月〇日を感謝祭とする」といった宣言（Proclamation）を出すことで決まっていました。 </p>
+						<table border="1">
+							<thead>
+								<tr>
+									<th style="width: 20%;">祝日・記念日名</th>
+									<th style="width: 14%;">日付</th>
+									<th style="width: 20%;">制定主体（大統領・権威等）</th>
+									<th>備考・制定の背景</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><span class="category-label">ドイツ・プロテスタント勝利感謝祭</span><br>German Protestant Victory Thanksgiving</span></td>
+									<td><span class="rule-text">1632年6月13日</span></td>
+									<td>マサチューセッツ裁判所</td>
+									<td>欧州の戦争を反映した政治的祝祭</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">豊作および安全到着の感謝祭</span><br>Thanksgiving for a Bountiful Harvest and Safe Arrival</span></td>
+									<td><span class="rule-text">1633年10月16日</span></td>
+									<td>マサチューセッツ裁判所</td>
+									<td>収穫を祝う最初の公的な感謝祭の一つ</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">ペコート族制圧への感謝祭</span><br>Thanksgiving for the Defeat of the Pequot</span></td>
+									<td><span class="rule-text">1637年10月12日</span></td>
+									<td>マサチューセッツ裁判所</td>
+									<td>軍事的勝利を祝う「感謝の日」の典型</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">フィリップ王戦争勝利感謝祭</span><br>Thanksgiving for Victory in King Philip's War</span></td>
+									<td><span class="rule-text">1676年6月29日</span></td>
+									<td>マサチューセッツ会議</td>
+									<td>現存する最古の感謝祭布告印刷物の一つ</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">植民地連合の祈祷・断食の日</span><br>Day of Prayer and Fasting for the Colonial Union</span></td>
+									<td><span class="rule-text">1775年7月20日</span></td>
+									<td>大陸会議</td>
+									<td>独立戦争の端緒において、神の加護を求めるために全植民地へ勧告された最初の国民的な祈祷日。</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">最初の国民感謝祭</span><br>First National Thanksgiving</span></td>
+									<td><span class="rule-text">1777年12月18日</span></td>
+									<td>大陸会議</td>
+									<td>サラトガの戦いでの勝利を祝うために制定。全米で共通の日に祝われた最初の感謝祭とされる。</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">断食、謙損、祈祷の日</span><br>Day of Fasting, Humiliation, and Prayer</span></td>
+									<td><span class="rule-text">1779年5月6日</span></td>
+									<td>大陸会議</td>
+									<td>戦時下での自省と加護の祈願</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">断食、謙損、祈祷の日</span><br>Day of Fasting, Humiliation, and Prayer</span></td>
+									<td><span class="rule-text">1780年4月26日</span></td>
+									<td>大陸会議</td>
+									<td>ジョージ・ワシントン司令官も軍に休止を命じた</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">勝利感謝祭</span><br>Victory Thanksgiving</span></td>
+									<td><span class="rule-text">1781年12月13日</span></td>
+									<td>大陸会議</td>
+									<td>ヨークタウンでのコーンウォリス降伏への感謝</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">平和感謝祭</span><br>Thanksgiving for Peace</span></td>
+									<td><span class="rule-text">1784年8月12日</span></td>
+									<td>大陸会議 / ペンシルベニア会議</td>
+									<td>独立戦争の終結と平和の確立を祝賀</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">憲法制定感謝祭</span><br>Thanksgiving for the Adoption of the Constitution</span></td>
+									<td><span class="rule-text">1789年11月26日</span></td>
+									<td>ジョージ・ワシントン</td>
+									<td>連邦議会の要請に応じた初の大統領布告。憲法の制定と国家の独立を感謝する日とされた。</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">国民感謝祭（定例化）</span><br>National Thanksgiving (Regularized)</span></td>
+									<td><span class="rule-text">1863年11月26日</span></td>
+									<td>エイブラハム・リンカーン</td>
+									<td>南北戦争の最中、国家の統合を象徴するために「11月の最終木曜日」を感謝祭として定例化した。</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">ワシントン誕生日</span><br>Washington's Birthday</span></td>
+									<td><span class="rule-text">1879年2月22日</span></td>
+									<td>連邦議会 / R.B.ヘイズ</td>
+									<td>DC内の銀行業務などを対象とした「バンク・ホリデー」として、個人の顕彰を目的とした最初の連邦祝日となった。</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">コロンブス記念日</span><br>Columbus Day</span></td>
+									<td><span class="rule-text">1892年10月21日</span></td>
+									<td>ベンジャミン・ハリソン</td>
+									<td>アメリカ大陸発見400周年を記念し、この年限りの祝日を布告（後に恒久化）</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">労働の日 </span><br>Labor Day</span></td>
+									<td><span class="rule-text">1894年9月1日</span></td>
+									<td>連邦議会 / G.クリーブランド</td>
+									<td>プルマン・ストライキ直後の労働不安を背景に、労働者の貢献を称えるため9月第1月曜日と定められた。</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">コロンブス・デー（布告）</span><br>Columbus Day (Proclamation)</span></td>
+									<td><span class="rule-text">1937年10月12日</span></td>
+									<td>F.D.ルーズベルト</td>
+									<td>当初は大統領布告により制定。イタリア系移民の貢献や大陸到達を称える記念日となった。</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">V-J Day 対日戦勝記念日</span><br>Victory over Japan Day (V-J Day)</span></td>
+									<td><span class="rule-text">1945年8月15,16日</span></td>
+									<td>ハリー・S・トルーマン</td>
+									<td>日本の降伏を受けて1945年8月14日（米国時間）に発表したのが起点</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">国家祈祷日 </span><br>National Day of Prayer</span></td>
+									<td><span class="rule-text">1952年7月4日</span></td>
+									<td>連邦議会 / H.S.トルーマン</td>
+									<td>毎年大統領が祈祷の日を定めることを義務付ける法律が成立。1988年に5月第1木曜日に固定された。</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">退役軍人の日 </span><br>Veterans Day</span></td>
+									<td><span class="rule-text">1954年11月11日</span></td>
+									<td>連邦議会 / D.D.アイゼンハワー</td>
+									<td>すべての戦争に従軍した退役軍人を称えるため、休戦記念日を改称した。</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">国民服喪の日</span><br>National Day of Mourning</span></td>
+									<td><span class="rule-text">1963年11月25日</span></td>
+									<td>リンドン・B・ジョンソン</td>
+									<td>ケネディ大統領の国民服喪の日として布告</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">国民参加の日 </span><br>Day of Participation</span></td>
+									<td><span class="rule-text">1969年7月21日</span></td>
+									<td>リチャード・ニクソン</td>
+									<td>アポロ11号の月面着陸を記念し、大統領令によって単発的に指定された連邦職員の休日。</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">国民服喪の日</span><br>National Day of Mourning</span></td>
+									<td><span class="rule-text">1973年1月25日</span></td>
+									<td>リチャード・ニクソン</td>
+									<td>政府機関の閉鎖を命じる行政命令を出し、同日を追悼日として布告</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">2000年特別休日</span><br>2000 Special Holiday</span></td>
+									<td><span class="rule-text">1999年12月31日</span></td>
+									<td>ビル・クリントン</td>
+									<td>ワシントンでの「America’s Millennium」行事に出席し、国家的祝賀の主催・発言を行った</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">国民服喪の日</span><br>National Day of Mourning</span></td>
+									<td><span class="rule-text">2004年6月11日</span></td>
+									<td>ジョージ・W・ブッシュ</td>
+									<td>6月6日に布告（Executive Order 13343）し、6月11日をロナルド・レーガン元大統領の国民服喪日とした</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">国家哀悼の日</span><br>National Day of Mourning</span></td>
+									<td><span class="rule-text">2007年1月7日</span></td>
+									<td>ジョージ・W・ブッシュ</td>
+									<td>ジェラルド・フォード元大統領が逝去した日</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">国民服喪の日</span><br>National Day of Mourning</span></td>
+									<td><span class="rule-text">2018年12月5日</span></td>
+									<td>トランプ</td>
+									<td>ジョージ・H・W・ブッシュ元大統領の死去（11月30日）を受けた追悼措置として布告・命令が出された</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">国家哀悼の日</span><br>National Day of Mourning</span></td>
+									<td><span class="rule-text">2025年1月9日</span></td>
+									<td>J.バイデン / D.トランプ</td>
+									<td>ジミー・カーター元大統領の葬儀にあわせ、大統領令により連邦政府機関が閉鎖された。</td>
+								</tr>
+								<tr>
+									<td><span class="category-label">クリスマス特別休暇</span><br>Special Christmas Holiday</span></td>
+									<td><span class="rule-text">2025年12月24,26日</span></td>
+									<td>ドナルド・トランプ</td>
+									<td>行政命令（EO 14371）に基づき、クリスマスの前後に連邦職員へ追加の休暇が与えられた。</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- /container-top -->
+		</section>
+		<!-- end s-rules-federal-holidays -->
+		<section class="page s-list-federal-holidays">
+			<style>
+				#body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; padding: 20px; color: #333; }
+				#.container { max-width: 1100px; margin: auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+				#h1 { color: #003366; border-left: 5px solid #003366; padding-left: 15px; font-size: 24px; }
+				p.intro { color: #666; margin-bottom: 20px; }
+				#.state-section { margin-bottom: 30px; }
+				.state-title { background-color: #6b5e4a; color: white; padding: 10px 15px; border-radius: 6px 6px 0 0; font-size: 1.8rem; }
+				#table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+				#th, td { padding: 10px; border-bottom: 1px solid #ddd; text-align: left; font-size: 14px; }
+				#th { background-color: #003366; color: white; font-weight: normal; }
+				#tr:nth-child(even) { background-color: #f9f9f9; }
+				.diff { color: #d9534f; font-weight: bold; }
+				.note { font-style: italic; color: #555; }
+				caption {}
+			</style>
+			<div class="container-top column1">
+				<div class="container">
+					<header class="section-header">
+						<h2 class="text-display-title with-line">州祝日</h2>
+					</header>
+				</div>
+				<div class="container row1">
+					<div class="card card-col1">
+						<h2>連邦祝日との差分および独自祝日の一覧</h2>
+						<p class="intro"> 以下のリストは、連邦政府が定める11の祝日からの「差分」と「独自の追加祝日」を示します。<br> 記載されていない連邦祝日（元日、MLKデー、プレジデントデー、メモリアルデー、ジューンティーンス、独立記念日、レイバーデー、ベテランズデー、感謝祭、クリスマス）は、<strong>すべての地域で採用されています。</strong>
+						</p>
+						<!-- コロンビア特別区 (DC) -->
+						<table>
+							<caption class="state-title">コロンビア特別区 (District of Columbia)</caption>
+							<thead>
+								<tr>
+									<th style="width: 25%;">祝日名 (日/英)</th>
+									<th style="width: 25%;">一般的な日付・ルール</th>
+									<th style="width: 50%;">特記事項・区分</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- 独自 -->
+								<tr>
+									<td class="diff">奴隷解放記念日 / Emancipation Day</td>
+									<td class="diff"><span class="rule-text">4月16日</span></td>
+									<td>特別区独自の最重要祝日</td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- オハイオ州 (Ohio) -->
+						<table>
+							<caption class="state-title">オハイオ州 (State of Ohio)</caption>
+							<thead>
+								<tr>
+									<th style="width: 25%;">祝日名 (日/英)</th>
+									<th style="width: 25%;">一般的な日付・ルール</th>
+									<th style="width: 50%;">特記事項・区分</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- 独自祝日なし -->
+								<tr>
+									<td colspan="3" class="note">オハイオ州独自の主要な州祝日はありません。連邦祝日を採用。</td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- ワシントン州 (Washington) -->
+						<table>
+							<caption class="state-title">ワシントン州 (State of Washington)</caption>
+							<thead>
+								<tr>
+									<th style="width: 25%;">祝日名 (日/英)</th>
+									<th style="width: 25%;">一般的な日付・ルール</th>
+									<th style="width: 50%;">特記事項・区分</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- 差分 -->
+								<tr>
+									<td class="diff through">コロンブス・デー / Columbus Day</td>
+									<td><span class="rule-text">10月 第2月曜日</span></td>
+									<td><strong>連邦祝日を州の祝日として採用していません。</strong> 通常の平日です。</td>
+								</tr>
+								<!-- 独自 -->
+								<tr>
+									<td class="diff">ネイティブアメリカン継承の日 / Native American Heritage Day</td>
+									<td class="diff"><span class="rule-text">11月 第4金曜日</span></td>
+									<td>感謝祭翌日の独自の州祝日</td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- コロラド州 (Colorado) -->
+						<table>
+							<caption class="state-title">コロラド州 (State of Colorado)</caption>
+							<thead>
+								<tr>
+									<th style="width: 25%;">祝日名 (日/英)</th>
+									<th style="width: 25%;">一般的な日付・ルール</th>
+									<th style="width: 50%;">特記事項・区分</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- 独自 -->
+								<tr>
+									<td class="diff">シーザー・チャベス・デー / Cesar Chavez Day</td>
+									<td class="diff"><span class="rule-text">3月31日</span></td>
+									<td><strong>州職員の選択休日（Optional Holiday）</strong>州職員は、他の祝日の代わりにこの日を振替休日として選択できるオプションが与えられています。州全体が一斉に休みになるわけではありません。</td>
+								</tr>
+								<tr>
+									<td class="diff">カブリーニ・デー / Frances Xavier Cabrini Day</td>
+									<td class="diff"><span class="rule-text">10月の第1月曜日</span></td>
+									<td>【州祝日】2020年に制定されたコロラド州独自の祝日です。慈善活動家で聖人のカブリーニを称えます。全米で初めて女性の名前が付けられた州の有給祝日です。</td>
+								</tr>
+								<tr>
+									<td class="diff through">コロンブス・デー / Columbus Day</td>
+									<td><span class="rule-text">10月の第2月曜日</span></td>
+									<td>【連邦祝日だが州では非採用】コロラド州は2020年にこの祝日を公式に廃止し、上記の「カブリーニ・デー」に置き換えました。連邦政府や銀行は休みですが、州政府機関は通常通り営業します。</td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- アイダホ州 (Idaho) -->
+						<table>
+							<caption class="state-title">アイダホ州 (State of Idaho)</caption>
+							<thead>
+								<tr>
+									<th style="width: 25%;">祝日名 (日/英)</th>
+									<th style="width: 25%;">一般的な日付・ルール</th>
+									<th style="width: 50%;">特記事項・区分</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- 独自祝日なし -->
+								<tr>
+									<td class="diff">マーティン・ルーサー・キング・ジュニア / アイダホ人権の日 / Martin Luther King, Jr. / Idaho Human Rights Day</td>
+									<td class="diff"><span class="rule-text">1月の第3月曜日</span></td>
+									<td><strong>【名称が異なる祝日】</strong>連邦祝日のMLKデーと同じ日ですが、アイダホ州では公式に「アイダホ人権の日」を併記して祝います。多様性を尊重し人権を称える日とされています。</td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- ハワイ州 (Hawaii) -->
+						<table>
+							<caption class="state-title">ハワイ州 (State of Hawaii)</caption>
+							<thead>
+								<tr>
+									<th style="width: 25%;">祝日名 (日/英)</th>
+									<th style="width: 25%;">一般的な日付・ルール</th>
+									<th style="width: 50%;">特記事項・区分</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- 独自 -->
+								<tr>
+									<td class="diff">クヒオ王子の日<br>(Prince Jonah Kūhiō Kalanianaʻole Day)</td>
+									<td><span class="rule-text">3月26日 (木)</span></td>
+									<td><b>【州独自の祝日】</b><br>ハワイ王国の王位継承者であり、米国議会の代表も務めたクヒオ王子の功績を称える日です。州政府機関や公立学校、図書館などが休みになります。</td>
+								</tr>
+								<tr>
+									<td class="diff">グッド・フライデー / 聖金曜日<br>(Good Friday)</td>
+									<td><span class="rule-text">4月3日 (金)<br>（イースター前の金曜日）</span></td>
+									<td><b>【州独自の祝日】</b><br>連邦祝日ではありませんが、ハワイ州では公式な州祝日として採用されています。多くの州政府機関が閉鎖されます。</td>
+								</tr>
+								<tr>
+									<td class="diff">キング・カメハメハ・デー<br>(King Kamehameha I Day)</td>
+									<td><span class="rule-text">6月11日 (木)</span></td>
+									<td><b>【州独自の祝日】</b><br>ハワイ諸島を統一したカメハメハ大王を称える日です。ホノルルでのパレードや、像へのレイ献花セレモニーなど、盛大な文化的イベントが行われます。</td>
+								</tr>
+								<tr>
+									<td class="diff">州制度施行記念日（州記念日）<br>(Statehood Day / Admission Day)</td>
+									<td><span class="rule-text">8月21日 (金)<br>（8月の第3金曜日）</span></td>
+									<td><b>【州独自の祝日】</b><br>1959年にハワイが合衆国の50番目の州として認められたことを記念する日です。</td>
+								</tr>
+								<tr>
+									<td class="diff">総選挙の日<br>(General Election Day)</td>
+									<td><span class="rule-text">11月3日 (火)<br>（偶数年11月の第1月曜の翌日）</span></td>
+									<td><b>【州独自の祝日（偶数年）】</b><br>ハワイ州では、偶数年の総選挙の日を公休日としています。2026年は該当するため、州政府機関などは休みとなります。</td>
+								</tr>
+							</tbody>
+						</table>
+						<div style="margin-top: 20px; font-size: 12px; color: #666; border-top: 1px solid #ddd; padding-top: 10px;"> ※「連邦祝日」は、連邦政府機関や連邦銀行が休業する日です。多くの州がこれに準じますが、法的には州や民間企業が独自に定めることが可能です。 </div>
+					</div>
+				</div>
+			</div>
+			<!-- /container-top -->
+		</section>
+		<!-- end s-rules-federal-holidays -->
+		<!--
+
+<a href="https://us-postoffice.com/holidays" target="_blank" class="external-link-btn">アメリカ合衆国郵便公社（USPS: United States Postal Service）の公式ウェブサイト</a>
+<a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/#url=Historical-Data" target="_blank" class="external-link-btn">米国連邦政府の公式人事機関 OPM（Office of Personnel Management） が運営する、連邦職員向けの「祝日（Federal Holidays）」情報ページ</a>
+<a href="https://publicholidays.com/" target="_blank" class="external-link-btn">世界各国の祝日情報をまとめて提供する国際的な祝日データベースサイト</a>
+
+
+<ol>
+<li>コロンビア特別区</li>
+https://www.officeholidays.com/regions/usa/2024#google_vignette
+https://publicholidays.com/district-of-columbia/?utm_source=copilot.com
+<li>オハイオ州</li>
+https://publicholidays.com/ohio/
+<li>ワシントン州</li>
+<li>コロラド州</li>
+<li>アイダホ州</li>
+<li>ハワイ州</li>
+</ol>
+-->
+		<!--
+	*********************************************
+アメリカの連邦祝日と異なる州独自の祝日を全て表でまとめてください。
+【対象地域】
+コロンビア特別区、オハイオ州、ワシントン州、コロラド州、アイダホ州、ハワイ州
+
+アメリカのワシントン州の連邦祝日と異なる州の特徴ある祝日を教えてください。
+
+【対象地域】
+コロンビア特別区、オハイオ州、ワシントン州、コロラド州、アイダホ州、ハワイ州
+
+	-->
+		<!-- # gallery
+        ================================================== -->
+		<section id="gallery" class="s-gallery">
+			<style>
+				:root {
+					/* Timing & Transitions */
+					--US-easing							:	cubic-bezier(.2, 1, .2, 1);
+					--US-transition						:	.8s var(--US-easing);
+
+					/* Colors */
+					--US-color-gray						:	#ddd;
+					--US-color-theme					:	#f5695f;
+					--US-color-white					:	#fff;
+
+					/* Shadows (Neumorphic) */
+					--US-box-shadow						:	.8rem .8rem 1.2rem rgba(0, 0, 0, .05), -.8rem -.8rem 1.2rem var(--US-color-white);
+					--US-box-shadow-hover				:	1rem 1rem 1.5rem rgba(0, 0, 0, .08), -1rem -1rem 1.5rem var(--US-color-white);
+					--US-box-shadow-dark				:	.8rem .8rem 1.2rem rgba(0, 0, 0, .1), -.8rem -.8rem 1.2rem rgba(255, 255, 255, .2);
+
+					/* Specific variables forlogic */
+					--page_12-iframe-width-rate			:	0.0;
+				}
+
+
+				.l-section {
+					border-top							:	1px solid #eee;
+					overflow							:	hidden;
+				}
+
+					.l-section .l-inner {
+						margin							:	0 auto;
+						max-width						:	1200px;
+						padding							:	8rem 10rem;
+						/* 上下左右のpaddingを統合 */
+						position						:	relative;
+					}
+
+						.l-section .l-inner .swiper {
+							overflow					:	visible;
+						}
+
+						/* スライダー内の要素にフォーカスが当たった時のアウトライン除去 */
+						.l-section .l-inner .swiper:focus {
+							outline						:	none;
+						}
+
+							.l-section .l-inner .swiper .swiper-wrapper .swiper-slide .slide {
+								border-radius			:	4px;
+								box-shadow				:	var(--US-box-shadow);
+								overflow				:	hidden;
+								transition				:	var(--US-transition), opacity 1s;
+							}
+
+							/* 非表示スライドのスタイル */
+							.l-section .l-inner .swiper .swiper-wrapper .swiper-slide:not(.swiper-slide-visible) .slide {
+								opacity					:	0.3;
+								pointer-events			:	none;
+							}
+
+								/* --- Slide Media (Image/Video container) --- */
+								.l-section .l-inner .swiper .swiper-wrapper .swiper-slide .slide .slide-media {
+									overflow			:	hidden;
+									padding-top			:	62.5%;
+									position			:	relative;
+								}
+
+									.l-section .l-inner .swiper .swiper-wrapper .swiper-slide .slide .slide-media>div {
+										left			:	0;
+										position		:	absolute;
+										top				:	0;
+									}
+
+										.l-section .l-inner .swiper .swiper-wrapper .swiper-slide .slide .slide-media>div>iframe {
+											aspect-ratio			:	16 / 9;
+											border					:	0;
+											height					:	auto;
+											pointer-events			:	none;
+											transform				:	scale(calc((0.23 - 0.2) * var(--page_12-iframe-width-rate) + 0.2));
+											transform-origin		:	top left;
+											width					:	calc((1650px - 1115px) * var(--page_12-iframe-width-rate) + 1115px);
+										}
+
+								/* --- Slide Content & Text --- */
+								.l-section .l-inner .swiper .swiper-wrapper .swiper-slide .slide .slide-content {
+									padding							:	0rem 3rem;
+									line-height						:	1.6;
+								}
+
+									.l-section .l-inner .swiper .swiper-wrapper .swiper-slide .slide .slide-content .slide-date {
+										color						:	var(--US-color-theme);
+										display						:	block;
+										font-size					:	1.2rem;
+										line-height					:	1;
+									}
+									.l-section .l-inner .swiper .swiper-wrapper .swiper-slide .slide .slide-content .slide-content-small {
+										font-size					:	var(--text-sm);
+									}
+
+									.l-section .l-inner .swiper .swiper-wrapper .swiper-slide .slide .slide-content .slide-title {
+										display						:	-webkit-box;
+										-webkit-box-orient			:	vertical;
+										-webkit-line-clamp			:	2;
+										height						:	2em;
+										/* 2行分の高さ */
+										#line-height					:	1.6;
+										margin-top					:	1rem;
+										overflow					:	hidden;
+									}
+
+							/* 共通スタイルをまとめる */
+							.l-section .l-inner .swiper .swiper-button-next,
+							.l-section .l-inner .swiper .swiper-button-prev {
+								bottom								:	0;
+								cursor								:	pointer;
+								display								:	grid;
+								height								:	4rem;
+								margin								:	auto;
+								place-content						:	center;
+								position							:	absolute;
+								top									:	0;
+								transition							:	var(--US-transition);
+								width								:	4rem;
+								z-index								:	1;
+							}
+
+							/* ボタンの背景と影のスタイル（::before） */
+							.l-section .l-inner .swiper .swiper-button-next::before,
+							.l-section .l-inner .swiper .swiper-button-prev::before {
+								background-color					:	rgba(0, 0, 0, 0.3);
+								bottom								:	0;
+								box-shadow							:	var(--US-box-shadow-dark);
+								content								:	"";
+								left								:	0;
+								position							:	absolute;
+								right								:	0;
+								border-radius						:	50%;
+								top									:	0;
+							}
+
+							/* ボタンの矢印のスタイル（::after） */
+							.l-section .l-inner .swiper .swiper-button-next::after,
+							.l-section .l-inner .swiper .swiper-button-prev::after {
+								border								:	solid var(--US-color-gray);
+								border-color						:	#fff;
+								border-width						:	3px 3px 0 0;
+								content								:	"";
+								height								:	1.2rem;
+								width								:	1.2rem;
+							}
+
+							/* Prevボタン固有のスタイル */
+							.l-section .l-inner .swiper .swiper-button-prev {
+								right								:	calc(100% - 1.6rem);
+							}
+
+							.l-section .l-inner .swiper .swiper-button-prev::after {
+								margin-right						:	-0.4rem;
+								transform							:	rotate(-135deg);
+							}
+
+							/* Nextボタン固有のスタイル */
+							.l-section .l-inner .swiper .swiper-button-next {
+								left								:	calc(100% - 1.6rem);
+							}
+
+							.l-section .l-inner .swiper .swiper-button-next::after {
+								margin-left							:	-0.4rem;
+								transform							:	rotate(45deg);
+							}
+
+				@media(max-width: 1024px) {
+					.l-section .l-inner {
+						padding							:	0 4rem;
+					}
+
+					.l-section .l-inner .swiper {
+						padding							:	0 3.2rem;
+					}
+
+					/* Navigation buttons position adjustment */
+					.l-section .l-inner .swiper .swiper-button-prev {
+						right							:	calc(100% - 5.2rem);
+					}
+
+					.l-section .l-inner .swiper .swiper-button-next {
+						left							:	calc(100% - 5.2rem);
+					}
+				}
+
+				@media(min-width: 1025px) {
+
+					/* Slide hover transform and shadow */
+					.l-section .l-inner .swiper .swiper-wrapper .swiper-slide .slide:hover {
+						transform						:	translateY(-16px);
+						box-shadow						:	var(--US-box-shadow-hover);
+					}
+
+					.l-section .l-inner .swiper .swiper-button-prev::before,
+					.l-section .l-inner .swiper .swiper-button-next::before {
+						transition						:	var(--US-transition);
+					}
+
+					.l-section .l-inner .swiper .swiper-button-prev:hover::before,
+					.l-section .l-inner .swiper .swiper-button-next:hover::before {
+						transform						:	scale(1.2);
+					}
+				}
+
+
+			</style>
+			<div class="l-wrapper">
+				<main>
+					<div id="demo03" class="card03 l-section">
+						<div class="l-inner">
+							<div class="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-watch-progress">
+								<div class="swiper-wrapper">
+									<a href="assets/html/Country-America-gallery-US-DC.html?idbnoop=true" target="_blank" class="swiper-slide  swiper-slide-active">
+										<article class="slide">
+											<div class="slide-media img-cover">
+												<div>
+													<iframe src="assets/html/Country-America-gallery-US-DC.html?idbnoop=true" title="アメリカ ワシントンD.C.（コロンビア特別区）"></iframe>
+												</div>
+											</div>
+											<div class="slide-content">
+												<div>UTC-5</div>
+												<div>東部時間（EST）</div>
+												<h5 class="slide-title">ワシントンD.C.（コロンビア特別区）</h5>
+											</div>
+										</article>
+									</a>
+									<a href="assets/html/Country-America-gallery-US-OH.html?idbnoop=true" target="_blank" class="swiper-slide  swiper-slide-next">
+										<article class="slide">
+											<div class="slide-media img-cover">
+												<div>
+													<iframe src="assets/html/Country-America-gallery-US-OH.html?idbnoop=true" title="アメリカ オハイオ州"></iframe>
+												</div>
+											</div>
+											<div class="slide-content">
+												<div>UTC-5</div>
+												<div>東部時間（EST）</div>
+												<h5 class="slide-title">オハイオ州</h5>
+											</div>
+										</article>
+									</a>
+									<a href="assets/html/Country-America-gallery-US-CO.html?idbnoop=true" target="_blank" class="swiper-slide">
+										<article class="slide">
+											<div class="slide-media img-cover">
+												<div>
+													<iframe src="assets/html/Country-America-gallery-US-CO.html?idbnoop=true" title="アメリカ コロラド州"></iframe>
+												</div>
+											</div>
+											<div class="slide-content">
+												<div>UTC-7</div>
+												<div>山岳部時間（MST）</div>
+												<h5 class="slide-title">コロラド州</h5>
+											</div>
+										</article>
+									</a>
+									<a href="assets/html/Country-America-gallery-US-ID.html?idbnoop=true" target="_blank" class="swiper-slide">
+										<article class="slide">
+											<div class="slide-media img-cover">
+												<div>
+													<iframe src="assets/html/Country-America-gallery-US-ID.html?idbnoop=true" title="アメリカ アイダホ州"></iframe>
+												</div>
+											</div>
+											<div class="slide-content">
+												<div>UTC-7</div>
+												<div>山岳部時間（MST）</div>
+												<h5 class="slide-title">アイダホ州</h5>
+											</div>
+										</article>
+									</a>
+									<a href="assets/html/Country-America-gallery-US-WA.html?idbnoop=true" target="_blank" class="swiper-slide">
+										<article class="slide">
+											<div class="slide-media img-cover">
+												<div>
+													<iframe src="assets/html/Country-America-gallery-US-WA.html?idbnoop=true" title="アメリカ ワシントン州"></iframe>
+												</div>
+											</div>
+											<div class="slide-content">
+												<div>UTC-8</div>
+												<div>太平洋時間（PST）</div>
+												<h5 class="slide-title">ワシントン州</h5>
+											</div>
+										</article>
+									</a>
+									<a href="assets/html/Country-America-gallery-US-HI.html?idbnoop=true" target="_blank" class="swiper-slide">
+										<article class="slide">
+											<div class="slide-media img-cover">
+												<div>
+													<iframe src="assets/html/Country-America-gallery-US-HI.html?idbnoop=true" title="アメリカ ハワイ州"></iframe>
+												</div>
+											</div>
+											<div class="slide-content">
+												<div>UTC-10</div>
+												<div class="slide-content-small">ハワイ・アリューシャン標準時 (HAST)</div>
+												<h5 class="slide-title">ハワイ州</h5>
+											</div>
+										</article>
+									</a>
+								</div>
+								<!-- /swiper-wrapper -->
+								<div class="swiper-button-prev" tabindex="0" role="button" aria-controls="swiper-wrapper-59c281018abd106910a"></div>
+								<div class="swiper-button-next" tabindex="0" role="button" aria-controls="swiper-wrapper-59c281018abd106910a"></div>
+								<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+							</div>
+							<!-- /swiper -->
+						</div>
+						<!-- /l-inner -->
+					</div>
+					<!-- /l-section -->
+				</main>
+			</div>
+			<!-- /l-wrapper -->
+		</section> <!-- end s-gallery -->
+		<!-- # main content
+        ================================================== -->
+		<article class="s-content">
+			<!-- ## pagecontent -->
+			<section class="page s-pagecontent pagecontent">
+				<div class="row width-narrow content-block content-block--media-right">
+					<div class="column content-block__text">
+						<h3>アメリカのタイムゾーン</h3>
+						<p class="lead"> アメリカ合衆国には本土だけで4つ、全体では9つの法定タイムゾーンがあります。州や地域によって標準時とサマータイム（夏時間）の運用が異なり、特にアリゾナ州やハワイ州はサマータイムを採用していません。
+						<ul>
+							<li>東部時間（Eastern Time : EST）：米国人口の約半数がこのゾーンに属する</li>
+							<li>中部時間（Central Standard Time : CST）：農業・工業地帯が多く、ビジネス上重要</li>
+							<li>山岳部時間（Mountain Time : MST）：アリゾナ州はサマータイムを採用せず、年中MST</li>
+							<li>太平洋時間（Pacific Time : PST）：テック企業が集中する西海岸</li>
+							<li>アラスカ・ハワイ：本土から離れており、時差が大きい（日本との時差は最大19時間）</li>
+						</ul>
+						</p>
+						<p class="lead"> サマータイム（Daylight Saving Time）は、日照時間が長くなる春〜秋に時計を1時間進め、夕方の明るい時間を有効活用する制度です。 アメリカにおいて、サマータイム（夏時間）を「実施するかしないか」の決定は、原則として州ごとに委ねられています。 ハワイ州は1967年に公式に不実施を決定しました。
+						<ul>
+							<li>春：「3月第2日曜日 午前2時 → 午前3時」に進める（Spring Forward）</li>
+							<li>秋：「11月第1日曜日 午前2時 → 午前1時」に戻す（Fall Back）</li>
+						</ul>
+						</p>
+					</div>
+				</div> <!-- end content-block-->
+			</section> <!-- pagecontent -->
+			<!--
+	*********************************************
+コロンビア特別区,オハイオ州,ワシントン州,コロラド州,アイダホ州,ハワイ州を記載した地図のイメージを作成してください。
+州旗とタイムゾーンも記載してください。
+国旗は不要です。背景は白にしてください。
+下記の条件に基づき、米国各州の情報をまとめた地図の作成をお願いいたします。
+【対象地域】
+コロンビア特別区、オハイオ州、ワシントン州、コロラド州、アイダホ州、ハワイ州
+【記載事項】
+・各州の形状および位置関係
+・各州の州旗
+・各地域のタイムゾーン（標準時）
+【デザイン仕様】
+・背景：海は透明、陸は白
+・備考：国旗の記載は不要です
+【画像仕様】
+・SVG形式
+	-->
+			<!-- メディアコンテンツ（画像） -->
+			<!--
+						<div class="column content-block__media">
+							<figure>
+								<img src="assets/images/Flags_of_the_America.png" srcset="images/Flags_of_the_America.png 1x, images/Flags_of_the_America.png 2x" alt="アメリカ各州の旗のイメージ">
+							</figure>
+						</div>
+-->
+		</article> <!-- end main content -->
+		<!-- # footer
+        ================================================== -->
+		<footer id="footer" class="s-footer">
+			<div class="row">
+				<div class="column xl-6 md-12 s-footer__block s-footer__about">
+					<div class="s-footer__logo">
+						<a class="logo" href="index.html">
+							<img src="assets/images/logo-with-icon.svg" alt="Homepage">
+						</a>
+					</div>
+				</div> <!-- end s-footer__about -->
+			</div> <!-- end  row -->
+			<div class="row s-footer__bottom">
+				<div class="column xl-6 lg-12">
+					<ul class="s-footer__social social-list">
+						<li>
+							<a href="#0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+									<path d="M20,3H4C3.447,3,3,3.448,3,4v16c0,0.552,0.447,1,1,1h8.615v-6.96h-2.338v-2.725h2.338v-2c0-2.325,1.42-3.592,3.5-3.592 c0.699-0.002,1.399,0.034,2.095,0.107v2.42h-1.435c-1.128,0-1.348,0.538-1.348,1.325v1.735h2.697l-0.35,2.725h-2.348V21H20 c0.553,0,1-0.448,1-1V4C21,3.448,20.553,3,20,3z"></path>
+								</svg>
+								<span class="u-screen-reader-text">Facebook</span>
+							</a>
+						</li>
+						<li>
+							<a href="#0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+									<path d="M19.633,7.997c0.013,0.175,0.013,0.349,0.013,0.523c0,5.325-4.053,11.461-11.46,11.461c-2.282,0-4.402-0.661-6.186-1.809 c0.324,0.037,0.636,0.05,0.973,0.05c1.883,0,3.616-0.636,5.001-1.721c-1.771-0.037-3.255-1.197-3.767-2.793 c0.249,0.037,0.499,0.062,0.761,0.062c0.361,0,0.724-0.05,1.061-0.137c-1.847-0.374-3.23-1.995-3.23-3.953v-0.05 c0.537,0.299,1.16,0.486,1.82,0.511C3.534,9.419,2.823,8.184,2.823,6.787c0-0.748,0.199-1.434,0.548-2.032 c1.983,2.443,4.964,4.04,8.306,4.215c-0.062-0.3-0.1-0.611-0.1-0.923c0-2.22,1.796-4.028,4.028-4.028 c1.16,0,2.207,0.486,2.943,1.272c0.91-0.175,1.782-0.512,2.556-0.973c-0.299,0.935-0.936,1.721-1.771,2.22 c0.811-0.088,1.597-0.312,2.319-0.624C21.104,6.712,20.419,7.423,19.633,7.997z"></path>
+								</svg>
+								<span class="u-screen-reader-text">Twitter</span>
+							</a>
+						</li>
+						<li>
+							<a href="#0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+									<path d="M11.999,7.377c-2.554,0-4.623,2.07-4.623,4.623c0,2.554,2.069,4.624,4.623,4.624c2.552,0,4.623-2.07,4.623-4.624 C16.622,9.447,14.551,7.377,11.999,7.377L11.999,7.377z M11.999,15.004c-1.659,0-3.004-1.345-3.004-3.003 c0-1.659,1.345-3.003,3.004-3.003s3.002,1.344,3.002,3.003C15.001,13.659,13.658,15.004,11.999,15.004L11.999,15.004z"></path>
+									<circle cx="16.806" cy="7.207" r="1.078"></circle>
+									<path d="M20.533,6.111c-0.469-1.209-1.424-2.165-2.633-2.632c-0.699-0.263-1.438-0.404-2.186-0.42 c-0.963-0.042-1.268-0.054-3.71-0.054s-2.755,0-3.71,0.054C7.548,3.074,6.809,3.215,6.11,3.479C4.9,3.946,3.945,4.902,3.477,6.111 c-0.263,0.7-0.404,1.438-0.419,2.186c-0.043,0.962-0.056,1.267-0.056,3.71c0,2.442,0,2.753,0.056,3.71 c0.015,0.748,0.156,1.486,0.419,2.187c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45 c0.963,0.042,1.268,0.055,3.71,0.055s2.755,0,3.71-0.055c0.747-0.015,1.486-0.157,2.186-0.419c1.209-0.469,2.164-1.424,2.633-2.633 c0.263-0.7,0.404-1.438,0.419-2.186c0.043-0.962,0.056-1.267,0.056-3.71s0-2.753-0.056-3.71C20.941,7.57,20.801,6.819,20.533,6.111z M19.315,15.643c-0.007,0.576-0.111,1.147-0.311,1.688c-0.305,0.787-0.926,1.409-1.712,1.711c-0.535,0.199-1.099,0.303-1.67,0.311 c-0.95,0.044-1.218,0.055-3.654,0.055c-2.438,0-2.687,0-3.655-0.055c-0.569-0.007-1.135-0.112-1.669-0.311 c-0.789-0.301-1.414-0.923-1.719-1.711c-0.196-0.534-0.302-1.099-0.311-1.669c-0.043-0.95-0.053-1.218-0.053-3.654 c0-2.437,0-2.686,0.053-3.655c0.007-0.576,0.111-1.146,0.311-1.687c0.305-0.789,0.93-1.41,1.719-1.712 c0.534-0.198,1.1-0.303,1.669-0.311c0.951-0.043,1.218-0.055,3.655-0.055c2.437,0,2.687,0,3.654,0.055 c0.571,0.007,1.135,0.112,1.67,0.311c0.786,0.303,1.407,0.925,1.712,1.712c0.196,0.534,0.302,1.099,0.311,1.669 c0.043,0.951,0.054,1.218,0.054,3.655c0,2.436,0,2.698-0.043,3.654H19.315z"></path>
+								</svg>
+								<span class="u-screen-reader-text">Instagram</span>
+							</a>
+						</li>
+						<li>
+							<a href="#0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+									<path d="M8.31 10.28a2.5 2.5 0 1 0 2.5 2.49 2.5 2.5 0 0 0-2.5-2.49zm0 3.8a1.31 1.31 0 1 1 0-2.61 1.31 1.31 0 1 1 0 2.61zm7.38-3.8a2.5 2.5 0 1 0 2.5 2.49 2.5 2.5 0 0 0-2.5-2.49zM17 12.77a1.31 1.31 0 1 1-1.31-1.3 1.31 1.31 0 0 1 1.31 1.3z"></path>
+									<path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm7.38 10.77a3.69 3.69 0 0 1-6.2 2.71L12 16.77l-1.18-1.29a3.69 3.69 0 1 1-5-5.44l-1.2-1.3H7.3a8.33 8.33 0 0 1 9.41 0h2.67l-1.2 1.31a3.71 3.71 0 0 1 1.2 2.72z"></path>
+									<path d="M14.77 9.05a7.19 7.19 0 0 0-5.54 0A4.06 4.06 0 0 1 12 12.7a4.08 4.08 0 0 1 2.77-3.65z"></path>
+								</svg>
+								<span class="u-screen-reader-text">Tripadvisor</span>
+							</a>
+						</li>
+					</ul>
+				</div> <!-- end section-footer__social -->
+				<div class="column xl-6 lg-12">
+					<p class="ss-copyright">
+						<span>© Copyright 2026 Hosoya. All rights reserved.</span>
+					</p>
+				</div>
+			</div> <!-- end section-footer__bottom -->
+			<div class="ss-go-top">
+				<a class="smoothscroll" title="Back to Top" href="#top">
+					<svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+						<path d="m14.523 18.787s4.501-4.505 6.255-6.26c.146-.146.219-.338.219-.53s-.073-.383-.219-.53c-1.753-1.754-6.255-6.258-6.255-6.258-.144-.145-.334-.217-.524-.217-.193 0-.385.074-.532.221-.293.292-.295.766-.004 1.056l4.978 4.978h-14.692c-.414 0-.75.336-.75.75s.336.75.75.75h14.692l-4.979 4.979c-.289.289-.286.762.006 1.054.148.148.341.222.533.222.19 0 .378-.072.522-.215z" fill-rule="nonzero" />
+					</svg>
+				</a>
+				<span>Back To Top</span>
+			</div> <!-- end ss-go-top -->
+		</footer> <!-- end s-footer -->
+	</div> <!-- end page-wrap -->
+	<!-- Java Script
+    ================================================== -->
+	<script src="assets/js/plugins.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script>
+		/* ===================================================================
+		 * Calendar - Main JS
+		 *
+		 * ------------------------------------------------------------------- */
+
+		window.addEventListener("load", () => {
+
+			"use strict";
+
+		   /* [US]event driven frame sizing
+			* -------------------------------------------------- */
+			var clEventDrivenFrameSizing_us = function() {
+				function cssroot(name, value) {
+					if (value) document.documentElement.style.setProperty(name, value);
+					var result = getComputedStyle(document.documentElement).getPropertyValue(name);
+					try {
+						var exp = result.match("[\\d](px){0,1}[\\s]*[\\+\\-\\*/][\\s]*[\\d](px){0,1}");
+						var url = result.match("http");
+						if (exp && !url) {
+							// 演算が含まれる場合、evalで演算実行
+							result = eval(String(result).replace(/(calc|px)/g, ""));
+						}
+					} catch (e) {
+						console.error("CSSグローバルカスタムプロパティの取得・設定(cssroot) name=[" + (name) +
+							"] result=[" + result + "]\n" + e);
+					}
+					return result;
+				}
+
+					const slide_active_12 = document.querySelector('.swiper-slide-active');
+					var cellRect = slide_active_12.getBoundingClientRect();
+					var	rete = (378.7/*px*/ - cellRect.width) / (378.7/*px*/ - 221/*px*/);
+						rete = 1.0 - parseInt(rete * 1000) / 1000;
+					cssroot("--page_12-iframe-width-rate", rete ? rete : 0.0001);
+				window.addEventListener("resize", () => {
+					var cellRect = slide_active_12.getBoundingClientRect();
+					var	rete = (378.7/*px*/ - cellRect.width) / (378.7/*px*/ - 221/*px*/);
+						rete = 1.0 - parseInt(rete * 1000) / 1000;
+					cssroot("--page_12-iframe-width-rate", rete ? rete : 0.0001);
+				});
+
+			};
+
+		   /* [Swiper]init Swiper
+			* -------------------------------------------------- */
+			const initSwiperCard03 = () => {
+				const mySwiper = new Swiper('.card03 .swiper', {
+					slidesPerView: 1,
+					spaceBetween: 16,
+					loop: true,
+					loopAdditionalSlides: 1,
+					speed: 1000,
+					autoplay: {
+						delay: 4000,
+						disableOnInteraction: false,
+					},
+					grabCursor: true,
+					watchSlidesProgress: true,
+					navigation: {
+						nextEl: '.card03 .swiper-button-next',
+						prevEl: '.card03 .swiper-button-prev',
+					},
+					breakpoints: {
+						600: {
+							slidesPerView: 2,
+						},
+						1025: {
+							slidesPerView: 3,
+							spaceBetween: 32,
+						}
+					},
+				});
+			};
+
+		   /* Initialize
+			* ------------------------------------------------------ */
+			(function clInit() {
+
+				initSwiperCard03();
+				clEventDrivenFrameSizing_us();
+
+			})();
+
+		});
+
+	</script>
+</body>
+
+</html>

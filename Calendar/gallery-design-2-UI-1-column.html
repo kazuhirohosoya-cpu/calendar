@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Calendar</title>
+	<!-- favicons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+	<link rel="manifest" href="assets/manifest.json">
+
+	<!-- reset css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reseter.css/2.0.0/reseter.min.css" />
+
+	<!-- library -->
+	<script charset="utf-8" src="assets/js/promiseIndexedDB.js"></script>
+	<script>
+		let idbnoop = new URLSearchParams(window.location.search).get("idbnoop");
+		promiseIndexedDB_noop(idbnoop);
+	</script>
+
+	<!-- hq-calendar core -->
+	<script charset="utf-8" src="assets/js/hq-calendar-core.js"></script>
+
+	<!-- user setting parameter -->
+	<script charset="utf-8" src="assets/js/hq-calendar-slide-show.js"></script>
+	<script>
+		// デフォルトパラメータ設定
+		var	___PARAMETER___ = {};
+		if(idbnoop) {
+			___PARAMETER___ = { ...___PARAMETER___, ...{
+				background_opacity_range: 0.5,
+				background_select_slide: "-",
+				background_slide_show_interval: 30 * 1000,
+				country: "JP",
+				dark_mode: false,
+				latin_font: "Helvetica",
+				japanese_font: "Kosugi-Maru",
+				fest_name_hidden: true,
+				holiday_name_hidden: false,
+				large_time_format: "hh:mm:ss",
+				monday_start: false,
+				moon_hidden: true,
+				saturday_coloring: true,
+				schedule_name_hidden: true,
+				small_time_format: "hh:mm:ss",
+				tips_disp: false,
+				__big_time: false,
+				__calendar_column: 1,
+				__calendar_row: 1,
+			}};
+		}
+	</script>
+	<script charset="utf-8" src="assets/js/hq-calendar-user-parameter.js"></script>
+
+	<!-- hq-calendar menu -->
+	<link rel="stylesheet" href="assets/css/hq-calendar-menu.css" />
+	<script charset="utf-8" src="assets/js/hq-calendar-menu.js"></script>
+
+	<!-- hq-calendar clock -->
+	<link rel="stylesheet" href="assets/css/hq-calendar-clock.css" />
+	<script charset="utf-8" src="assets/js/hq-calendar-clock.js"></script>
+
+	<!-- hq-calendar design -->
+	<link rel="stylesheet" href="assets/css/hq-calendar-design-2-column.css" />
+	<script charset="utf-8" src="assets/js/hq-calendar-design-1.js"></script>
+
+<style>
+/* ===================================================================
+ * # CALENDAR
+ *
+ *
+ * ------------------------------------------------------------------- */
+article.hq-calendar-article {
+	position							:	absolute;
+	left								:	50%;
+	transform							:	translateX(-50%);
+	z-index								:	1;
+}
+
+/* --------------------------------------------------------------------
+ * ## year caption
+ *	カレンダーの年
+ * -------------------------------------------------------------------- */
+.year-title {
+	display								:	flex;
+	flex-direction						:	column;
+	align-items							:	center;
+
+	width								:	100%;
+	font-family							:	var(--hq-calendar-font);
+	font-size							:	var(--cell-font-size-year-title);
+	font-weight							:	700;
+	letter-spacing						:	5px;
+	color								:	var(--hq-calendar-color-general);
+	background-color					:	transparent;
+}
+
+
+</style>
+
+<script>
+
+var top_element = null;
+var year_element = null;
+var calendar_element_list = [];
+var __nowMonth = null;
+
+//=====================================================
+// 月カレンダー 作成
+//=====================================================
+function makeCalendar(e) {
+	const MONTH_NUM = 12;
+	if(! top_element) top_element = document.querySelector("article.hq-calendar-article .hq-calendar");
+	if(! year_element) year_element = document.querySelector(".year-title span");
+
+	if (calendar_element_list.length > MONTH_NUM) {
+		while (calendar_element_list.length > MONTH_NUM) {
+			var calendar_element = calendar_element_list.pop();
+			calendar_element.remove();
+		}
+	}
+	if(! top_element) {
+		top_element = document.querySelector("section.body-section .hq-calendar");
+	}
+	if(! year_element) {
+		year_element = document.querySelector(".year-title span");
+	}
+	if (!e) {
+		// 初回のカレンダー作成の場合
+		// 又は モーダルメニューで表示の切換えが行われた場合
+		// カレンダーがある場合、全て削除
+		calendar_element_list.forEach((e) => {
+			if (e) e.remove();
+		});
+		// カレンダーを全て作る
+		// 当日の日付で月を＋1すると、当日が31日の場合、翌月に31日が存在しないため、
+		// 日付が翌々月の1日となり、結果的に2か月先になってしまいます。
+		//  そのため、月を＋1する際は、当月の1日を基準にして処理を行うようにします。
+		var cw = new Calendar.Date(Parameter.calendar);
+		cw.day = 1;
+		for (let i = 0; i < MONTH_NUM; i++) {
+			calendar_element_list[i] = creatCalendar(cw, Parameter);
+			top_element.append(calendar_element_list[i]);
+			cw.month += 1;
+		}
+		year_element.innerText = Parameter.calendar.toString("YYYY") + (Parameter.calendar.local.constructor.name.includes("CalcJP") ? "年" : "");
+	} else {
+		// keydown,touchendでカレンダー月が変更された場合
+
+		if (Math.abs(__nowMonth.julian - Parameter.calendar.julian) > MONTH_NUM * 31) {
+			// 表示月数以上の差がある場合、全て削除して全て作る
+			makeCalendar();
+		} else {
+			while (__nowMonth.julian - Parameter.calendar.julian < 0) {
+				// 未来の場合
+				__nowMonth.month += 1;
+				var calendar_element = calendar_element_list.shift();
+				calendar_element.remove();
+				var cw = new Calendar.Date(__nowMonth);
+				cw.month += (MONTH_NUM - 1);
+				calendar_element = creatCalendar(cw, Parameter);
+				top_element.append(calendar_element);
+				calendar_element_list.push(calendar_element);
+			}
+			while (__nowMonth.julian - Parameter.calendar.julian > 0) {
+				// 過去の場合
+				__nowMonth.month -= 1;
+				var calendar_element = calendar_element_list.pop();
+				calendar_element.remove();
+				calendar_element = creatCalendar(__nowMonth, Parameter);
+				top_element.prepend(calendar_element);
+				calendar_element_list.unshift(calendar_element);
+			}
+		}
+		year_element.innerText = Parameter.calendar.toString("YYYY") + (Parameter.calendar.local.constructor.name.includes("CalcJP") ? "年" : "");
+	}
+	__nowMonth = new Calendar.Date(Parameter.calendar);
+
+	// 日付表示エリアの縮尺変更による変更
+	calendarMultiplierChangeForDisp();
+
+	// 強制的にカレンダーのサイズを調整する
+	Parameter.__calendar_column = 1;
+	Parameter.__calendar_row = 2;
+	setCssPropertyCalendarSettingsMultiplier();
+}
+
+//=====================================================
+// キーボード・ホイール・スワイプ イベントによるカレンダー切換え
+//=====================================================
+function loadEvent_01() {
+	window.addEventListener("keydown", makeCalendar);
+	window.addEventListener("wheel", makeCalendar);
+	window.addEventListener('touchend', makeCalendar);
+	makeCalendar();
+}
+GlovalParameterLoadPromise.then( () => {
+	window.addEventListener('load', loadEvent_01);
+	if (document.readyState == "complete") {
+		setTimeout(loadEvent_01, 0);
+	}
+});
+</script>
+
+</head>
+<body>
+
+<article class="hq-calendar-article">
+	<div class="year-title">
+		<span>2025（令和７）年</span>
+	</div>
+	<div class="hq-calendar">
+	</div>
+</article>
+
+</body></html>

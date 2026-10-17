@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="js" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>日本 - Calendar</title>
+	<!-- favicons
+    ================================================== -->
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+	<link rel="manifest" href="assets/manifest.json">
+
+	<!-- reset css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reseter.css/2.0.0/reseter.min.css" />
+
+	<!--- basic page needs
+    ================================================== -->
+	<script>
+		document.documentElement.classList.remove('no-js');
+		document.documentElement.classList.add('js');
+	</script>
+	<!-- CSS
+    ================================================== -->
+	<link rel="stylesheet" href="assets/css/vendor.css">
+	<link rel="stylesheet" href="assets/css/styles.css">
+	<style>
+	/* GB map */
+	.content-block__media {
+		max-width: 320px;
+	}
+	/* ===================================================================
+	 * # GALLERY
+	 * ------------------------------------------------------------------- */
+	.s-gallery {
+		margin-top: auto;
+		margin-bottom: 10vh;
+		margin-bottom: 0;
+		position: relative;
+	}
+	.s-gallery::before {
+		content: "";
+		display: block;
+		background-color: var(--color-body-bg);
+		width: 100%;
+		height: 50%;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	.s-gallery--column {
+		padding: 0;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		z-index: 2;
+	}
+	.s-gallery--wrap {
+		--l-calendar-width: 560px;
+		width: var(--l-calendar-width);
+		height: calc(var(--l-calendar-width) * 9 / 16);
+		box-shadow: 20px 20px 10px 0px rgba(0, 0, 0, 0.4);
+	}
+	.s-gallery--wrap iframe {
+		aspect-ratio: 16 / 9;
+		border: 0;
+		pointer-events: none;
+	}
+	#.s-pagecontent {
+		padding-top: 10vh;
+	}
+	.s-pagecontent table {
+		table-layout: fixed;
+		width: 100%;
+	}
+	.s-pagecontent table .c1 {
+		width: 30%;
+	}
+	.s-pagecontent table caption {
+		font-size: 1.6rem;
+		font-weight: 700;
+		text-align: justify;
+	}
+	.s-pagecontent table th,
+	.s-pagecontent table td {
+		padding: var(--vspace-0_25) 3.2rem calc(var(--vspace-0_25) - 1px);
+		font-size: 1.6rem;
+		line-height: 1;
+	}
+	.s-pagecontent table th {
+		font-weight: unset;
+		text-indent: 1em;
+	}
+	.date-info {
+		font-weight: bold;
+		color: #cf142b;
+	}
+	.row {
+		width: min(60%, var(--width-grid-max));
+	}
+	</style>
+</head>
+
+<body id="top">
+	<!-- プリローダー（preloader）
+    ================================================== -->
+	<div id="preloader">
+		<div id="loader" class="dots-fade">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<!-- page wrap
+    ================================================== -->
+	<div id="page" class="s-pagewrap">
+		<!-- メニューの下にある画面全体を覆う背景要素 -->
+		<div class="menu-underlay"></div>
+		<!-- # site header
+        ================================================== -->
+		<header class="s-header">
+			<!-- サイトヘッダー (Site Header)ページ最上部領域
+            ================================================== -->
+			<div class="s-header__block">
+				<!-- [ページ最上部ヘッダー]中央のロゴ -->
+				<div class="s-header__logo">
+					<a class="logo" href="index.html">
+						<img src="assets/images/logo.svg" alt="Homepage">
+					</a>
+				</div>
+				<!-- [ページ最上部ヘッダー]左のメニューの開閉アイコン -->
+				<a class="s-header__menu-toggle" href="#0"><span>Browse</span></a>
+				<!-- [ページ最上部ヘッダー]右のCTA (Call To Action) -->
+				<div class="s-header__cta">
+					<a href="#" __href="Calendar.zip" class="btn btn--primary s-header__cta-btn" id="downloadLink">Donwload</a>
+				</div>
+			</div> <!-- end s-header__block -->
+			<!-- ページ左アコーディオン ナビゲーションメニュー
+            ================================================== -->
+			<nav class="s-header__nav">
+				<!-- [ページ左アコーディオンメニュー]閉じる❌ボタン -->
+				<a href="#0" class="s-header__nav-close-btn" title="close"><span>Close</span></a>
+				<!-- [ページ左アコーディオンメニュー]上部のロゴ -->
+				<div class="s-header__nav-logo">
+					<a href="index.html">
+						<img src="assets/images/logo-with-icon.svg" alt="Homepage">
+					</a>
+				</div> <!-- s-header__nav-logo -->
+				<!-- [ページ左アコーディオンメニュー]リンク -->
+				<ul class="s-header__nav-links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="gallery.html">Gallery</a></li>
+					<li><a href="specification.html">Specification</a></li>
+					<li><a href="usage.html">Usage</a></li>
+					<li class="current"><a href="country-Japan.html">Japan</a></li>
+					<li><a href="country-GreatBritain.html">Great Britain</a></li>
+					<li><a href="country-America.html">America</a></li>
+				</ul> <!-- s-header__nav-links -->
+				<!-- [ページ左アコーディオンメニュー]リンク -->
+			</nav> <!-- end s-header__nav -->
+		</header> <!-- end s-header -->
+		<!-- # main content
+        ================================================== -->
+		<article class="s-content">
+			<!-- ## pageheader -->
+			<section class="s-pageheader pageheader" style="background-image:url(https://images.colorpea.com/a484b5654a6e4ba8b00ea20f8f1cca94.jpg)">
+				<div class="row">
+					<div class="column xl-12 s-pageheader__content">
+						<h1 class="country-title page-title jp">日本</h1>
+					</div>
+				</div>
+			</section>
+			<section class="s-pagecontent page pagecontent">
+				<div class="container-top column1">
+					<div class="container">
+						<header class="section-header">
+							<h2 class="text-display-title with-line">日本におけるグレゴリオ暦の採用</h2>
+							<p class="underline"> カレンダーアプリでは1582年10月15日を境として、それ以前をユリウス暦、それ以降をグレゴリオ暦で表示する仕様になっています。 </p>
+							<!--
+							<p class="underline">
+								日本のカレンダーですが、歴史上の正確な改暦（旧暦から新暦への変遷など）については考慮しておりません。次の「暦の使い分け」に従った暦になっています。
+							</p>
+							-->
+						</header>
+					</div><!-- class="container"-->
+					<div class="container row2">
+						<div class="card card-col2">
+							<h2>日本の改暦の歴史</h2>
+							<p class="lead"> 日本は1872年（明治5年）、太陰太陽暦から太陽暦（グレゴリオ暦）へと改暦しました。 それ以前にも幾度となく改暦は行われてきましたが、この時は<span class="date-info">明治政府によって、 旧暦の1872年12月3日を新暦の1873年1月1日</span>とするという、非常に急なスケジュールで実施されました。 グレゴリウス暦へ改暦 前も何度も改暦していました。 </p>
+							<p class="lead"> 太陰太陽暦の時代（～1872年） 日本は中国系の暦法を採用し続け、<a href="country-Japan日本独自の太陰太陽暦の変遷.html" title="Geminiで作成したページです">何度も改暦しています</a>。 </p>
+						</div>
+						<div class="card card-col2">
+							<h2>暦の使い分け</h2>
+							<p class="lead"> 日本史を西暦で表記する場合、<span class="date-info">1582年（天正10年）を境界として暦を使い分けるのが学術的な標準</span>となっています。 この年を境に、それ以前はユリウス暦、それ以降はグレゴリオ暦を用いるのが一般的な慣習です。 具体的には、以下の基準で換算されます。
+							<ul>
+								<li><strong>1582年10月4日（旧暦：天正10年9月18日）以前</strong><br /> 西洋でもグレゴリオ暦が存在しなかったため、ユリウス暦に換算して表記するのが通例です。</li>
+								<li><strong>1582年10月15日（旧暦：天正10年9月19日）以降</strong><br /> 西洋で改暦が始まったため、グレゴリオ暦に換算して表記します。</li>
+							</ul>
+							</p>
+							<p class="lead"> 1582年より前を無理にグレゴリオ暦（先取りグレゴリオ暦）で遡ると、当時の西洋の記録（ユリウス暦）と日付がズレてしまい、国際的な歴史比較が困難になるためです。 </p>
+						</div>
+					</div>
+					<!-- /container -->
+				</div>
+				<!-- /container-top -->
+			</section>
+			<section class="page s-national-holiday">
+				<div class="container-top row1">
+					<div id="calendar-history" class="container column2">
+						<header class="section-header">
+							<h2 class="text-display-title with-line">国民の祝日</h2>
+							<!--
+							<p>カレンダー（暦）は、天体観測に基づいて発展し、農耕や宗教、政治的要因によって進化してきました。 月の満ち欠けを基にした太陰暦から始まり、現在世界的に広く使用されているグレゴリオ暦のような太陽暦に至るまで、様々な種類の暦が存在します。</p>
+							-->
+						</header>
+						<div class="card card-col2">
+							<h2>定例の祝日一覧（年間16日）</h2>
+							<table>
+								<thead>
+									<tr>
+										<th>祝日の名称</th>
+										<th>日付・時期のルール</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>元日</td>
+										<td>1月1日</td>
+									</tr>
+									<tr>
+										<td>成人の日</td>
+										<td>1月 第2月曜日（ハッピーマンデー）</td>
+									</tr>
+									<tr>
+										<td>建国記念の日</td>
+										<td>2月11日（政令で定める日）</td>
+									</tr>
+									<tr>
+										<td>天皇誕生日</td>
+										<td>2月23日</td>
+									</tr>
+									<tr>
+										<td>春分の日</td>
+										<td>春分日（3月20日〜21日頃、前年に国立天文台が発表）</td>
+									</tr>
+									<tr>
+										<td>昭和の日</td>
+										<td>4月29日</td>
+									</tr>
+									<tr>
+										<td>憲法記念日</td>
+										<td>5月3日</td>
+									</tr>
+									<tr>
+										<td>みどりの日</td>
+										<td>5月4日</td>
+									</tr>
+									<tr>
+										<td>こどもの日</td>
+										<td>5月5日</td>
+									</tr>
+									<tr>
+										<td>海の日</td>
+										<td>7月 第3月曜日（ハッピーマンデー）</td>
+									</tr>
+									<tr>
+										<td>山の日</td>
+										<td>8月11日</td>
+									</tr>
+									<tr>
+										<td>敬老の日</td>
+										<td>9月 第3月曜日（ハッピーマンデー）</td>
+									</tr>
+									<tr>
+										<td>秋分の日</td>
+										<td>秋分日（9月22日〜24日頃、前年に国立天文台が発表）</td>
+									</tr>
+									<tr>
+										<td>スポーツの日</td>
+										<td>10月 第2月曜日（ハッピーマンデー）</td>
+									</tr>
+									<tr>
+										<td>文化の日</td>
+										<td>11月3日</td>
+									</tr>
+									<tr>
+										<td>勤労感謝の日</td>
+										<td>11月23日</td>
+									</tr>
+								</tbody>
+							</table>
+							<!--
+							<p style="font-size: 0.9em; color: #666; margin-top: 10px;">※日本の祝日は「国民の祝日に関する法律（祝日法）」によって定められています。現在は年間16日の祝日があり、日程の決まり方には3つのタイプがあります。</p>
+							-->
+						</div>
+					</div>
+					<!-- /container -->
+					<div class="container column2">
+						<header class="section-header">
+							<h5>休日を増やすための特別ルール</h5>
+							<p>
+								<span class="rule-title">振替休日（祝日法第3条第2項）</span> 「国民の祝日」が日曜日に当たるときは、その日後においてその日に最も近い「国民の祝日でない日」を休日とする制度です。 <br /> ※土曜日が祝日の場合は、現行法では振替休日は発生しません。
+							</p>
+						</header>
+						<div class="card card-col2">
+							<h2>振替休日（祝日法第3条第2項）</h2>
+							<p> 「国民の祝日」が日曜日に当たるときは、その日後においてその日に最も近い「国民の祝日でない日」を休日とする制度です。 ※土曜日が祝日の場合は、現行法では振替休日は発生しません。 </p>
+						</div>
+						<div class="card card-col2">
+							<h2>国民の休日（祝日法第3条第3項）</h2>
+							<p> その前日および翌日が「国民の祝日」である平日は、休日とする制度です。 例：敬老の日（月曜）と秋分の日（水曜）に挟まれた火曜日が休日になる現象（シルバーウィーク）など。 </p>
+						</div>
+						<div class="card card-col2">
+							<h2>補足事項</h2>
+							<p>
+							<ul>
+								<li><strong>ハッピーマンデー制度：</strong> 祝日を月曜日に移動させ、3連休を増やすための制度です（成人、海、敬老、スポーツの日が対象）。</li>
+								<li><strong>天文計算による祝日：</strong> 春分の日と秋分の日は、地球の運行状況に基づいて国立天文台が計算し、前年2月の官報で正式に決定されます。</li>
+							</ul>
+							</p>
+						</div>
+						<div class="card card-col2">
+							<h2>日本の年末年始における休業の理由</h2>
+							<p> 日本の年末年始において、祝日が「元日」のみであるにもかかわらず多くの企業が休業するのは、 主に <strong>法律による行政・金融機関の規定</strong>と <strong>伝統的な習慣</strong>の2つの理由があります。 </p>
+							<strong>法律による規定（官公庁と銀行）</strong>
+							<p>民間企業が休む大きな要因は、行政機関や金融機関が法律で休みを定められていることにあります。 </p>
+							<ul>
+								<li>
+									<strong>官公庁（行政機関）</strong>： <a href="https://elaws.e-gov.go.jp/document?lawid=363AC0000000091" target="_blank" rel="noopener noreferrer">行政機関の休日に関する法律<span class="external-link fa-solid fa-arrow-up-right-from-square"></span></a>により、 <time datetime="--12-29">12月29日</time>から <time datetime="--01-03">1月3日</time>までが休日と定められています。
+								</li>
+								<li>
+									<strong>銀行（金融機関）</strong>： <a href="https://elaws.e-gov.go.jp/document?lawid=351CO0000000028" target="_blank" rel="noopener noreferrer">銀行法施行令<span class="external-link fa-solid fa-arrow-up-right-from-square"></span></a>により、 <time datetime="--12-31">12月31日</time>から <time datetime="--01-03">1月3日</time>までが休業日と定められています。
+								</li>
+							</ul>
+							<p>行政手続きや銀行決済が止まるため、多くの民間企業もこれに合わせて 「仕事納め」と「仕事始め」を設定し、慣例的に同じ期間を休業としています。 </p>
+						</div>
+					</div>
+					<!-- /container -->
+				</div>
+				<!-- /container-top -->
+			</section>
+			<section class="page s-national-holiday">
+				<div class="container-top row1">
+					<div id="calendar-history" class="container column2">
+						<header class="section-header">
+							<h2 class="text-display-title with-line">JSTの導入</h2>
+						</header>
+						<div class="card card-col2">
+							<h2>18分59秒の「巻き戻し」</h2>
+							<p class="lead"> 
+								1887年（明治20年）12月31日まで、日本には全国統一の「標準時」が存在しませんでした。当時は各地域が太陽の南中高度に合わせて時刻を決める地方平均時（LMT: Local Mean Time）を使用していました。
+							</p>
+							<ul>
+								<li>当時の日本の基準は、東京の旧海軍省天文台（麻布飯倉山）の経度でした。</li>
+								<li>この場所の経度は 東経139度44分40.9秒（現在の定義とは微差があります）です。</li>
+								<li>これを時間差に換算すると UTC+9時間18分59秒 となります。</li>
+							</ul>
+							<p class="lead"> 
+								1888年1月1日に実施された日本標準時（JST）の導入
+							</p>
+							<ul>
+								<li>1887年12月31日 23:59:59 までは、東京の時刻（UTC+9:18:59）</li>
+								<li>1888年1月1日 00:00:00 から、日本標準時（UTC+9:00:00）</li>
+							</ul>
+							<p class="lead"> 
+								1887年12月31日から1888年1月1日になる瞬間、日本の時計は18分59秒戻されました。つまり、歴史上「1887年12月31日の午後11時41分〜11時59分」という時間は、日本では2回繰り返されたことになります。
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- /container-top -->
+			</section>
+		</article> <!-- end main content -->
+		<!-- # footer
+        ================================================== -->
+		<footer id="footer" class="s-footer">
+			<div class="row">
+				<div class="column xl-6 md-12 s-footer__block s-footer__about">
+					<div class="s-footer__logo">
+						<a class="logo" href="index.html">
+							<img src="assets/images/logo-with-icon.svg" alt="Homepage">
+						</a>
+					</div>
+				</div> <!-- end s-footer__about -->
+			</div> <!-- end  row -->
+			<div class="row s-footer__bottom">
+				<div class="column xl-6 lg-12">
+					<ul class="s-footer__social social-list">
+						<li>
+							<a href="#0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+									<path d="M20,3H4C3.447,3,3,3.448,3,4v16c0,0.552,0.447,1,1,1h8.615v-6.96h-2.338v-2.725h2.338v-2c0-2.325,1.42-3.592,3.5-3.592 c0.699-0.002,1.399,0.034,2.095,0.107v2.42h-1.435c-1.128,0-1.348,0.538-1.348,1.325v1.735h2.697l-0.35,2.725h-2.348V21H20 c0.553,0,1-0.448,1-1V4C21,3.448,20.553,3,20,3z"></path>
+								</svg>
+								<span class="u-screen-reader-text">Facebook</span>
+							</a>
+						</li>
+						<li>
+							<a href="#0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+									<path d="M19.633,7.997c0.013,0.175,0.013,0.349,0.013,0.523c0,5.325-4.053,11.461-11.46,11.461c-2.282,0-4.402-0.661-6.186-1.809 c0.324,0.037,0.636,0.05,0.973,0.05c1.883,0,3.616-0.636,5.001-1.721c-1.771-0.037-3.255-1.197-3.767-2.793 c0.249,0.037,0.499,0.062,0.761,0.062c0.361,0,0.724-0.05,1.061-0.137c-1.847-0.374-3.23-1.995-3.23-3.953v-0.05 c0.537,0.299,1.16,0.486,1.82,0.511C3.534,9.419,2.823,8.184,2.823,6.787c0-0.748,0.199-1.434,0.548-2.032 c1.983,2.443,4.964,4.04,8.306,4.215c-0.062-0.3-0.1-0.611-0.1-0.923c0-2.22,1.796-4.028,4.028-4.028 c1.16,0,2.207,0.486,2.943,1.272c0.91-0.175,1.782-0.512,2.556-0.973c-0.299,0.935-0.936,1.721-1.771,2.22 c0.811-0.088,1.597-0.312,2.319-0.624C21.104,6.712,20.419,7.423,19.633,7.997z"></path>
+								</svg>
+								<span class="u-screen-reader-text">Twitter</span>
+							</a>
+						</li>
+						<li>
+							<a href="#0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+									<path d="M11.999,7.377c-2.554,0-4.623,2.07-4.623,4.623c0,2.554,2.069,4.624,4.623,4.624c2.552,0,4.623-2.07,4.623-4.624 C16.622,9.447,14.551,7.377,11.999,7.377L11.999,7.377z M11.999,15.004c-1.659,0-3.004-1.345-3.004-3.003 c0-1.659,1.345-3.003,3.004-3.003s3.002,1.344,3.002,3.003C15.001,13.659,13.658,15.004,11.999,15.004L11.999,15.004z"></path>
+									<circle cx="16.806" cy="7.207" r="1.078"></circle>
+									<path d="M20.533,6.111c-0.469-1.209-1.424-2.165-2.633-2.632c-0.699-0.263-1.438-0.404-2.186-0.42 c-0.963-0.042-1.268-0.054-3.71-0.054s-2.755,0-3.71,0.054C7.548,3.074,6.809,3.215,6.11,3.479C4.9,3.946,3.945,4.902,3.477,6.111 c-0.263,0.7-0.404,1.438-0.419,2.186c-0.043,0.962-0.056,1.267-0.056,3.71c0,2.442,0,2.753,0.056,3.71 c0.015,0.748,0.156,1.486,0.419,2.187c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45 c0.963,0.042,1.268,0.055,3.71,0.055s2.755,0,3.71-0.055c0.747-0.015,1.486-0.157,2.186-0.419c1.209-0.469,2.164-1.424,2.633-2.633 c0.263-0.7,0.404-1.438,0.419-2.186c0.043-0.962,0.056-1.267,0.056-3.71s0-2.753-0.056-3.71C20.941,7.57,20.801,6.819,20.533,6.111z M19.315,15.643c-0.007,0.576-0.111,1.147-0.311,1.688c-0.305,0.787-0.926,1.409-1.712,1.711c-0.535,0.199-1.099,0.303-1.67,0.311 c-0.95,0.044-1.218,0.055-3.654,0.055c-2.438,0-2.687,0-3.655-0.055c-0.569-0.007-1.135-0.112-1.669-0.311 c-0.789-0.301-1.414-0.923-1.719-1.711c-0.196-0.534-0.302-1.099-0.311-1.669c-0.043-0.95-0.053-1.218-0.053-3.654 c0-2.437,0-2.686,0.053-3.655c0.007-0.576,0.111-1.146,0.311-1.687c0.305-0.789,0.93-1.41,1.719-1.712 c0.534-0.198,1.1-0.303,1.669-0.311c0.951-0.043,1.218-0.055,3.655-0.055c2.437,0,2.687,0,3.654,0.055 c0.571,0.007,1.135,0.112,1.67,0.311c0.786,0.303,1.407,0.925,1.712,1.712c0.196,0.534,0.302,1.099,0.311,1.669 c0.043,0.951,0.054,1.218,0.054,3.655c0,2.436,0,2.698-0.043,3.654H19.315z"></path>
+								</svg>
+								<span class="u-screen-reader-text">Instagram</span>
+							</a>
+						</li>
+						<li>
+							<a href="#0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+									<path d="M8.31 10.28a2.5 2.5 0 1 0 2.5 2.49 2.5 2.5 0 0 0-2.5-2.49zm0 3.8a1.31 1.31 0 1 1 0-2.61 1.31 1.31 0 1 1 0 2.61zm7.38-3.8a2.5 2.5 0 1 0 2.5 2.49 2.5 2.5 0 0 0-2.5-2.49zM17 12.77a1.31 1.31 0 1 1-1.31-1.3 1.31 1.31 0 0 1 1.31 1.3z"></path>
+									<path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm7.38 10.77a3.69 3.69 0 0 1-6.2 2.71L12 16.77l-1.18-1.29a3.69 3.69 0 1 1-5-5.44l-1.2-1.3H7.3a8.33 8.33 0 0 1 9.41 0h2.67l-1.2 1.31a3.71 3.71 0 0 1 1.2 2.72z"></path>
+									<path d="M14.77 9.05a7.19 7.19 0 0 0-5.54 0A4.06 4.06 0 0 1 12 12.7a4.08 4.08 0 0 1 2.77-3.65z"></path>
+								</svg>
+								<span class="u-screen-reader-text">Tripadvisor</span>
+							</a>
+						</li>
+					</ul>
+				</div> <!-- end section-footer__social -->
+				<div class="column xl-6 lg-12">
+					<p class="ss-copyright">
+						<span>© Copyright 2026 Hosoya. All rights reserved.</span>
+					</p>
+				</div>
+			</div> <!-- end section-footer__bottom -->
+			<div class="ss-go-top">
+				<a class="smoothscroll" title="Back to Top" href="#top">
+					<svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+						<path d="m14.523 18.787s4.501-4.505 6.255-6.26c.146-.146.219-.338.219-.53s-.073-.383-.219-.53c-1.753-1.754-6.255-6.258-6.255-6.258-.144-.145-.334-.217-.524-.217-.193 0-.385.074-.532.221-.293.292-.295.766-.004 1.056l4.978 4.978h-14.692c-.414 0-.75.336-.75.75s.336.75.75.75h14.692l-4.979 4.979c-.289.289-.286.762.006 1.054.148.148.341.222.533.222.19 0 .378-.072.522-.215z" fill-rule="nonzero" />
+					</svg>
+				</a>
+				<span>Back To Top</span>
+			</div> <!-- end ss-go-top -->
+		</footer> <!-- end s-footer -->
+	</div> <!-- end page-wrap -->
+	<!-- Java Script
+    ================================================== -->
+	<script src="assets/js/plugins.js"></script>
+	<script src="assets/js/main.js"></script>
+</body>
+
+</html>

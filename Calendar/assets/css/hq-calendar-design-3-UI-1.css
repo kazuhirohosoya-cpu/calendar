@@ -1,0 +1,276 @@
+@charset "utf-8";
+/* ===================================================================
+ *  High Quality Calendar Main Stylesheet
+ *  Ver. 1.0.0
+ *  2025-01-17
+ * ------------------------------------------------------------------ */
+
+/* ===================================================================
+ * # CLOCK & CALENDAR
+ *
+ *
+ * ------------------------------------------------------------------- */
+/*ヘッダ*/
+.hq-article .header-section {
+	display								:	flex;
+	flex-direction						:	column;
+	justify-content						:	center;
+	align-items							:	center;
+
+}
+
+	/*YYYY年*/
+	.hq-article .header-section .year-title {
+		font-size						:	var(--cell-font-size-year-title);
+		font-weight						:	700;
+		letter-spacing					:	2px;
+		color							:	var(--hq-calendar-color-sun);
+	}
+	/*時計*/
+	.hq-article.big-clock .header-section .clock-title {
+		width							:	100%;
+	}
+	.hq-article:not(.big-clock) .header-section .clock-title {
+		width							:	min(100% , var(--calender-width));
+	}
+	.hq-article .header-section .clock-title {
+		display							:	flex;
+		flex-direction					:	column;
+	}
+	.hq-article .header-section .clock-title .hq-clock {
+		font-size						:	unset;
+		color							:	var(--hq-calendar-color-sun);
+	}
+
+/*ボディ*/
+.hq-article .body-section  {
+	display								:	flex;
+	flex-direction						:	column;
+	align-items							:	center;
+}
+
+/* ===================================================================
+ *	■時計あり カレンダー１行
+ * ------------------------------------------------------------------- */
+/*YYYY年*/
+.hq-article.big-clock .header-section .year-title {
+	animation							:	big-clock-year_anime 1s ease 1;
+	height								:	0;
+}
+@keyframes big-clock-year_anime {
+	0% {
+		height							:	unset;
+	}
+	5% {
+		height							:	0;
+	}
+}
+
+.hq-article.big-clock .header-section .year-title span {
+	animation							:	big-clock-year-text_anime 1s ease 1;
+	opacity								:	0;
+}
+@keyframes big-clock-year-text_anime {
+	0% {
+		opacity							:	1;
+	}
+	5% {
+		opacity							:	0;
+	}
+}
+
+/*時計*/
+.hq-article.big-clock .header-section .hq-clock {
+	animation							:	big-hq-clock-anime 1s ease 1;
+	margin								:	var(--clock-margin-main-1) 0;
+	align-self							:	center;
+}
+@keyframes big-hq-clock-anime 1s ease {
+	0% {
+		margin							:	calc(-38px * var(--hq-calendar-multiplier)) 0;
+	}
+	100% {
+		margin							:	var(--clock-margin-main-1) 0;
+	}
+}
+	/*時計*/
+	.hq-article.big-clock .header-section .hq-clock .time {
+		animation						:	big-clock-time-anime 1s ease 1;
+		font-weight						:	700;
+		font-size						:	var(--clock-font-size-main-time);
+	}
+	@keyframes big-clock-time-anime {
+		0% {
+			font-weight					:	100;
+			font-size					:	var(--cell-font-size-year-title);
+		}
+		100% {
+			font-weight					:	700;
+			font-size					:	var(--clock-font-size-main-time);
+		}
+	}
+	.hq-article.big-clock .header-section .hq-clock .time-standard {
+		animation						:	big-clock-time-standard-anime 1s ease 1;
+		font-size						:	1vw;
+		margin-left						:	1.5vw;
+		opacity							:	1;
+	}
+	@keyframes big-clock-time-standard-anime {
+		0% {
+			font-size					:	0;
+			margin-left					:	0;
+			opacity						:	0;
+		}
+		100% {
+			font-size					:	1vw;
+			margin-left					:	1.5vw;
+			opacity						:	1;
+		}
+	}
+
+	/*月カレンダー 2×3*/
+	.hq-article.big-clock .body-section .hq-calendar  {
+		cursor							:	pointer;
+	}
+	.hq-article.big-clock .body-section .hq-calendar  {
+		animation						:	big-clock-calendar_anime 1s ease 1;
+		height							:	calc( 0.5 * var(--calender-height) );
+	}
+	@keyframes big-clock-calendar_anime {
+		0% {
+			height						:	var(--calender-height);
+		}
+		100% {
+			height						:	calc( 0.5 * var(--calender-height) );
+		}
+	}
+
+/* ===================================================================
+ *	■時計無し カレンダー２行
+ * ------------------------------------------------------------------- */
+/*YYYY年*/
+.hq-article:not(.big-clock) .header-section .year-title {
+	animation							:	not-big-clock-year_anime 1s ease 1;
+	height								:	unset;
+}
+@keyframes not-big-clock-year_anime {
+	0% {
+		height							:	0;
+	}
+	95% {
+		height							:	unset;
+	}
+}
+
+.hq-article:not(.big-clock) .header-section .year-title span {
+	animation							:	not-big-clock-year-text_anime 1s ease 1;
+	opacity								:	1;
+}
+@keyframes not-big-clock-year-text_anime {
+	0% {
+		opacity							:	0;
+	}
+	95% {
+		opacity							:	1;
+	}
+}
+
+/*時計*/
+.hq-article:not(.big-clock) .header-section .hq-clock {
+	animation							:	non-big-hq-clock-anime 1s ease 1;
+	margin								:	calc(-38px * var(--hq-calendar-multiplier)) 0;
+	display								:	flex;
+	flex-direction						:	row;
+	align-self							:	end;
+}
+@keyframes non-big-hq-clock-anime 1s ease {
+	0% {
+		margin							:	var(--clock-margin-main-1) 0;
+	}
+	100% {
+		margin							:	calc(-18px * var(--hq-calendar-multiplier)) 0;
+	}
+}
+	/*時計*/
+	.hq-article:not(.big-clock) .header-section .hq-clock .time {
+		cursor							:	pointer;
+	}
+	.hq-article:not(.big-clock) .header-section .hq-clock .time {
+		animation						:	not-big-clock-time-anime 1s ease 1;
+		font-weight						:	100;
+		font-size						:	var(--cell-font-size-year-title);
+	}
+	@keyframes not-big-clock-time-anime {
+		0% {
+			font-weight					:	700;
+			font-size					:	var(--clock-font-size-main-time);
+		}
+		100% {
+			font-weight					:	100;
+			font-size					:	var(--cell-font-size-year-title);
+		}
+	}
+	.hq-article:not(.big-clock) .header-section .hq-clock .time-standard {
+		animation						:	not-big-clock-time-standard-anime 1s ease 1;
+		font-size						:	0;
+		margin-left						:	0;
+		opacity							:	0;
+	}
+	@keyframes not-big-clock-time-standard-anime {
+		0% {
+			font-size					:	1vw;
+			margin-left					:	1.5vw;
+			opacity						:	1;
+		}
+		100% {
+			font-size					:	0;
+			margin-left					:	0;
+			opacity						:	0;
+		}
+	}
+
+/*YYYY年の編集*/
+.editable-label {
+	display: inline-block;
+	padding: 4px 8px;
+	border-radius: 4px;
+	cursor: pointer;
+	border: 1px solid transparent;
+}
+
+.editable-label:hover {
+	border-color: #ccc;
+}
+
+.edit-container {
+	display: inline-block;
+}
+
+.edit-input {
+	padding: 4px 8px;
+	width: calc(170px * var(--hq-calendar-multiplier));
+	border-radius: 4px;
+	border: 1px solid #999;
+	font-size: var(--cell-font-size-year-title);
+}
+
+.format-guide {
+	font-size: 12px;
+	color: #666;
+	margin-top: 4px;
+}
+
+
+/*月カレンダー 2×3*/
+.hq-article:not(.big-clock) .body-section .hq-calendar  {
+	animation							:	not-big-clock-calendar_anime 1s ease 1;
+	height								:	var(--calender-height);
+}
+@keyframes not-big-clock-calendar_anime {
+	0% {
+		height							:	calc( 0.5 * var(--calender-height) );
+	}
+	100% {
+		height							:	var(--calender-height);
+	}
+}

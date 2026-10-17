@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="js" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>日本独自の太陰太陽暦の変遷 - Calendar</title>
+	<!-- favicons
+    ================================================== -->
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+	<link rel="manifest" href="assets/manifest.json">
+
+	<style>
+	/* --- Base --- */
+	body {
+		font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS PMincho", serif;
+		line-height: 1.85;
+		color: #3b2f28;
+		max-width: 900px;
+		margin: 30px auto;
+		padding: 0 24px;
+		background: #f7f4ef;
+	}
+	h2 {
+		text-align: center;
+		color: #2f3e4e;
+		border-bottom: 2px solid #bfa980;
+		padding-bottom: 12px;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+	}
+	h3 {
+		margin-top: 60px;
+		color: #4a3c31;
+		font-size: 1.25em;
+		border-left: 5px solid #bfa980;
+		padding-left: 10px;
+		letter-spacing: 0.04em;
+	}
+	/* --- Timeline (Fishbone) --- */
+	.timeline {
+		position: relative;
+		margin: 50px 0;
+		padding: 0;
+		list-style: none;
+	}
+	.timeline::before {
+		content: '';
+		position: absolute;
+		left: 50%;
+		width: 2px;
+		height: 100%;
+		background: #d8c9a7;
+		transform: translateX(-50%);
+	}
+	.event {
+		position: relative;
+		margin-bottom: 60px;
+		width: 45%;
+	}
+	.event:nth-child(odd) {
+		float: left;
+		clear: right;
+		text-align: right;
+	}
+	.event:nth-child(even) {
+		float: right;
+		clear: left;
+		text-align: left;
+	}
+	.event-content {
+		padding: 20px 22px;
+		background: linear-gradient(180deg, #ffffff 0%, #faf7f2 100%);
+		border-radius: 8px;
+		box-shadow:
+			0 3px 10px rgba(0, 0, 0, 0.06),
+			0 0 0 1px rgba(200, 190, 170, 0.35);
+		border-top: 4px solid #7f96b8;
+	}
+	.event:nth-child(even) .event-content {
+		border-top-color: #c79a63;
+	}
+	.date {
+		font-weight: bold;
+		color: #2f3e4e;
+		display: block;
+		margin-bottom: 6px;
+		font-size: 0.95em;
+		letter-spacing: 0.03em;
+	}
+	.title {
+		font-size: 1.18em;
+		font-weight: 600;
+		margin-bottom: 10px;
+		display: block;
+		color: #4a3c31;
+		letter-spacing: 0.03em;
+	}
+	.description {
+		font-size: 0.93em;
+		color: #4a4038;
+	}
+	.clearfix::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+	/* --- SVG Graph Container --- */
+	.graph-container {
+		margin-top: 60px;
+		padding: 20px;
+		background: #ffffff;
+		border-radius: 10px;
+		box-shadow:
+			0 3px 10px rgba(0, 0, 0, 0.06),
+			0 0 0 1px rgba(200, 190, 170, 0.35);
+	}
+	.graph-caption {
+		font-size: 0.9em;
+		color: #5a4a40;
+		margin-top: 4px;
+	}
+	</style>
+</head>
+
+<body>
+	<h2>日本独自の太陰太陽暦の変遷</h2>
+	<div class="timeline clearfix">
+		<div class="event">
+			<div class="event-content">
+				<span class="date">445年 〜</span>
+				<span class="title">元嘉暦（げんかれき）</span>
+				<p class="description">南朝宋で作られた暦。日本に伝来した最初期の本格的な中国暦で、飛鳥時代の暦法の基礎となった。</p>
+			</div>
+		</div>
+		<div class="event">
+			<div class="event-content">
+				<span class="date">676年 〜</span>
+				<span class="title">儀鳳暦（ぎほうれき）</span>
+				<p class="description">唐の儀鳳暦を採用。元嘉暦より精度が高く、日本の暦法が中国の最新暦へ移行した重要な段階。</p>
+			</div>
+		</div>
+		<div class="event">
+			<div class="event-content">
+				<span class="date">862年 〜 1684年</span>
+				<span class="title">宣明暦 (せんめいれき)</span>
+				<p class="description">唐から伝来。800年以上使われたが、徐々に天体の動きとズレが生じ、江戸時代には2日ほどの誤差が出ていた。</p>
+			</div>
+		</div>
+		<div class="event">
+			<div class="event-content">
+				<span class="date">1685年 〜 1754年</span>
+				<span class="title">貞享暦 (じょうきょうれき)</span>
+				<p class="description"><b>【日本初の独自暦】</b> 渋川春海が作成。授時暦を日本の観測データに基づき修正した画期的な暦。</p>
+			</div>
+		</div>
+		<div class="event">
+			<div class="event-content">
+				<span class="date">1755年 〜 1797年</span>
+				<span class="title">宝暦暦 (ほうれきれき)</span>
+				<p class="description">西欧天文学を取り入れようとしたが、観測技術が追いつかず精度は貞享暦より悪化。</p>
+			</div>
+		</div>
+		<div class="event">
+			<div class="event-content">
+				<span class="date">1798年 〜 1843年</span>
+				<span class="title">寛政暦 (かんせいれき)</span>
+				<p class="description">高橋至時らが作成。西洋天文学を本格導入し、太陽・月の楕円運動を考慮して精度が向上。</p>
+			</div>
+		</div>
+		<div class="event">
+			<div class="event-content">
+				<span class="date">1844年 〜 1872年</span>
+				<span class="title">天保暦 (てんぽうれき)</span>
+				<p class="description"><b>【太陰太陽暦の完成形】</b> 渋川景佑らが作成。現在でも旧暦として参照されるほど高精度。</p>
+			</div>
+		</div>
+		<div class="event">
+			<div class="event-content">
+				<span class="date">1873年(明治6年) 〜</span>
+				<span class="title">太陽暦 (グレゴリオ暦)</span>
+				<p class="description">明治政府により採用。これをもって太陰太陽暦の公式運用は終了し、現在の暦へ。</p>
+			</div>
+		</div>
+	</div>
+	<!-- ▼▼▼ SVG 折れ線グラフ ▼▼▼ -->
+	<div class="graph-container">
+		<h3>暦の精度の推移（西暦 × ズレ日数）</h3>
+		<p class="graph-caption"> 縦軸：実際の天体現象とのズレ（日数）／横軸：代表的な西暦年と採用暦 宣明暦の長期使用でズレが蓄積し、貞享暦以降で大きく改善していく様子を示しています。 </p>
+		<!--
+        座標系（viewBox 0 0 600 260）
+        y=220 が 0日、y=20 が 2日程度のイメージ
+        x はおおよそ時間順に配置
+    -->
+		<svg viewBox="0 0 600 260" width="100%" height="260" aria-hidden="true">
+			<!-- 軸 -->
+			<line x1="60" y1="20" x2="60" y2="220" stroke="#4a3c31" stroke-width="2" />
+			<line x1="60" y1="220" x2="560" y2="220" stroke="#4a3c31" stroke-width="2" />
+			<!-- Y軸ラベル -->
+			<text x="40" y="30" font-size="11" fill="#4a3c31">2日</text>
+			<text x="40" y="120" font-size="11" fill="#4a3c31">1日</text>
+			<text x="40" y="220" font-size="11" fill="#4a3c31">0日</text>
+			<!-- 補助線 -->
+			<line x1="60" y1="120" x2="560" y2="120" stroke="#e0d6c5" stroke-width="1" stroke-dasharray="4 4" />
+			<line x1="60" y1="70" x2="560" y2="70" stroke="#f0e6d7" stroke-width="1" stroke-dasharray="4 4" />
+			<line x1="60" y1="170" x2="560" y2="170" stroke="#f0e6d7" stroke-width="1" stroke-dasharray="4 4" />
+			<!-- X軸ラベル（年＋暦） -->
+			<text x="120" y="240" font-size="11" fill="#4a3c31" text-anchor="middle"> 900年 <tspan x="120" dy="12">宣明暦</tspan>
+			</text>
+			<text x="220" y="240" font-size="11" fill="#4a3c31" text-anchor="middle"> 1200年 <tspan x="220" dy="12">宣明暦</tspan>
+			</text>
+			<text x="320" y="240" font-size="11" fill="#4a3c31" text-anchor="middle"> 1600年 <tspan x="320" dy="12">宣明暦</tspan>
+			</text>
+			<text x="400" y="240" font-size="11" fill="#4a3c31" text-anchor="middle"> 1700年 <tspan x="400" dy="12">貞享暦</tspan>
+			</text>
+			<text x="480" y="240" font-size="11" fill="#4a3c31" text-anchor="middle"> 1800年 <tspan x="480" dy="12">寛政暦</tspan>
+			</text>
+			<text x="540" y="240" font-size="11" fill="#4a3c31" text-anchor="middle"> 1850年 <tspan x="540" dy="12">天保暦</tspan>
+			</text>
+			<!-- データ点（宣明暦内でズレが蓄積 → 改暦でリセット → 改善） -->
+			<!-- y座標：2日=20, 0日=220 として線形に配置（例） -->
+			<!-- 900年頃：0.6日 → y ≒ 220 - (0.6/2)*200 = 160 -->
+			<!-- 1200年頃：1.1日 → y ≒ 220 - (1.1/2)*200 = 110 -->
+			<!-- 1600年頃：2.0日 → y = 20 -->
+			<!-- 1700年頃：0.8日 → y ≒ 220 - (0.8/2)*200 = 140 -->
+			<!-- 1800年頃：0.4日 → y ≒ 220 - (0.4/2)*200 = 180 -->
+			<!-- 1850年頃：0.2日 → y ≒ 220 - (0.2/2)*200 = 200 -->
+			<!-- 滑らかな折れ線（path） -->
+			<path d="
+                M 120 160
+                C 170 140, 170 120, 220 110
+                S 270 40, 320 20
+                S 360 150, 400 140
+                S 440 190, 480 180
+                S 520 205, 540 200
+            " fill="none" stroke="#8aa1c1" stroke-width="3" />
+			<!-- 各点（circle） -->
+			<circle cx="120" cy="160" r="4" fill="#8aa1c1" />
+			<circle cx="220" cy="110" r="4" fill="#8aa1c1" />
+			<circle cx="320" cy="20" r="4" fill="#8aa1c1" />
+			<circle cx="400" cy="140" r="4" fill="#8aa1c1" />
+			<circle cx="480" cy="180" r="4" fill="#8aa1c1" />
+			<circle cx="540" cy="200" r="4" fill="#8aa1c1" />
+		</svg>
+	</div>
+	<!-- ▼▼▼ 文章（下部） ▼▼▼ -->
+	<h3>精度の戦い：ズレとの闘争</h3>
+	<p> 800年以上使われた「宣明暦（せんめいれき）」は、当初から大きく誤っていたわけではなく、 長い年月のあいだに少しずつ誤差が蓄積し、江戸時代初期には実際の天体現象と比べて <strong>2日ものズレ</strong> に達しました。 </p>
+	<p> 日食や月食の予報が外れることは、天意を受けて政治を行う朝廷や幕府にとって、権威に関わる重大問題でした。 渋川春海による「貞享暦」への改暦は、単なる修正ではなく、 <strong>日本が自らの観測に基づいて暦を作るという、天文学的自立の第一歩</strong> でした。 </p>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Calendar</title>
+	<!-- favicons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="../../Calendar/assets/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../../Calendar/assets/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../../Calendar/assets/icons/favicon-16x16.png">
+	<link rel="manifest" href="../../Calendar/assets/manifest.json">
+
+	<!-- reset css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reseter.css/2.0.0/reseter.min.css" />
+
+	<!-- library -->
+	<script charset="utf-8" src="../../Calendar/assets/js/promiseIndexedDB.js"></script>
+	<script>
+		let idbnoop = new URLSearchParams(window.location.search).get("idbnoop");
+		promiseIndexedDB_noop(idbnoop);
+	</script>
+
+	<!-- hq-calendar core -->
+	<script charset="utf-8" src="../../Calendar/assets/js/hq-calendar-core.js"></script>
+
+	<!-- user setting parameter -->
+	<script charset="utf-8" src="../../Calendar/assets/js/hq-calendar-slide-show.js"></script>
+	<script>
+		__GlovalSlideShowArray = [
+			  {darkMode:true	,	opacity:0.3	,	color:"White"	,	category:["GB"]	,	effectiveMonth:[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]	,	url:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Flag_of_England.svg/1280px-Flag_of_England.svg.png"
+			}
+		];
+		// デフォルトパラメータ設定
+		var	___PARAMETER___ = {};
+		if(idbnoop) {
+			___PARAMETER___ = { ...___PARAMETER___, ...{
+				background_opacity_range: 0.3,
+				background_select_slide: "GB",
+				background_slide_show_interval: Math.floor((Math.pow(2, 31) - 1) / 1000),
+				country: "GB",
+				dark_mode: true,
+				latin_font: "Helvetica",
+				japanese_font: "Kosugi-Maru",
+				fest_name_hidden: false,
+				holiday_name_hidden: false,
+				large_time_format: "hh:mm:ss",
+				monday_start: true,
+				moon_hidden: true,
+				saturday_coloring: false,
+				schedule_name_hidden: false,
+				small_time_format: "hh:mm:ss",
+				tips_disp: false,
+				__big_time: false,
+				__calendar_column: 1,
+				__calendar_row: 1,
+			}};
+		}
+	</script>
+	<script charset="utf-8" src="../../Calendar/assets/js/hq-calendar-user-parameter.js"></script>
+
+	<!-- hq-calendar menu -->
+	<link rel="stylesheet" href="../../Calendar/assets/css/hq-calendar-menu.css" />
+	<script charset="utf-8" src="../../Calendar/assets/js/hq-calendar-menu.js"></script>
+
+	<!-- hq-calendar clock -->
+	<link rel="stylesheet" href="../../Calendar/assets/css/hq-calendar-clock.css" />
+	<script charset="utf-8" src="../../Calendar/assets/js/hq-calendar-clock.js"></script>
+
+	<!-- hq-calendar design -->
+	<link rel="stylesheet" href="../../Calendar/assets/css/hq-calendar-design-1.css" />
+	<script charset="utf-8" src="../../Calendar/assets/js/hq-calendar-design-1.js"></script>
+
+	<!-- hq-calendar UI -->
+	<link rel="stylesheet" href="../../Calendar/assets/css/hq-calendar-design-1-UI-1.css" />
+	<script charset="utf-8" src="../../Calendar/assets/js/hq-calendar-design-1-UI-1.js"></script>
+
+</head>
+<body>
+
+	<!-- プリローダー（preloader）
+    ================================================== -->
+	<div id="preloader">
+		<div id="loader" class="dots-fade">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+
+	<!-- カレンダー
+    ================================================== -->
+	<article class="hq-article">
+		<section class="header-section">
+			<div class="year-title">
+				<span class="editable-label" data-format="YYYY | YYYY-MM"></span>
+			</div>
+			<div class="clock-title">
+				<div class="hq-clock">
+					<time class="time"></time>
+					<span class="time-standard"></span>
+				</div>
+			</div>
+		</section>
+		<section class="body-section">
+			<div class="hq-calendar"></div>
+		</section>
+	</article>
+
+<script>
+function loadEvent_04() {
+	document.querySelector("#btn-GB_ENG").dispatchEvent(new PointerEvent('click'));
+}
+GlovalParameterLoadPromise.then( () => {
+	window.addEventListener('load', loadEvent_04);
+	if (document.readyState == "complete") {
+		setTimeout(loadEvent_04, 0);
+	}
+});
+</script>
+
+</body></html>

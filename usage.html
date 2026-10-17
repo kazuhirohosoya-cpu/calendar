@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="js" class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Usage - Calendar</title>
+
+	<!-- favicons
+    ================================================== -->
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+	<link rel="manifest" href="assets/manifest.json">
+
+	<!-- reset css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reseter.css/2.0.0/reseter.min.css" />
+
+	<!--- basic page needs
+    ================================================== -->
+	<script>
+		document.documentElement.classList.remove('no-js');
+		document.documentElement.classList.add('js');
+	</script>
+
+	<!-- CSS
+    ================================================== -->
+	<link rel="stylesheet" href="assets/css/vendor.css">
+	<link rel="stylesheet" href="assets/css/styles.css">
+	<style>
+		.row {
+			width: min(60%, var(--width-grid-max));
+		}
+	</style>
+</head>
+
+<body id="top">
+	<!-- プリローダー（preloader）
+    ================================================== -->
+	<div id="preloader">
+		<div id="loader" class="dots-fade">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<!-- page wrap
+    ================================================== -->
+	<div id="page" class="s-pagewrap">
+		<!-- メニューの下にある画面全体を覆う背景要素 -->
+		<div class="menu-underlay"></div>
+		<!-- # site header
+        ================================================== -->
+		<header class="s-header">
+			<!-- サイトヘッダー (Site Header)ページ最上部領域
+            ================================================== -->
+			<div class="s-header__block">
+				<!-- [ページ最上部ヘッダー]中央のロゴ -->
+				<div class="s-header__logo">
+					<a class="logo" href="index.html">
+						<img src="assets/images/logo.svg" alt="Homepage">
+					</a>
+				</div>
+				<!-- [ページ最上部ヘッダー]左のメニューの開閉アイコン -->
+				<a class="s-header__menu-toggle" href="#0"><span>Browse</span></a>
+				<!-- [ページ最上部ヘッダー]右のCTA (Call To Action) -->
+				<div class="s-header__cta">
+					<a href="#" __href="Calendar.zip" class="btn btn--primary s-header__cta-btn" id="downloadLink">Donwload</a>
+				</div>
+			</div> <!-- end s-header__block -->
+			<!-- ページ左アコーディオン ナビゲーションメニュー
+            ================================================== -->
+			<nav class="s-header__nav">
+				<!-- [ページ左アコーディオンメニュー]閉じる❌ボタン -->
+				<a href="#0" class="s-header__nav-close-btn" title="close"><span>Close</span></a>
+				<!-- [ページ左アコーディオンメニュー]上部のロゴ -->
+				<div class="s-header__nav-logo">
+					<a href="index.html">
+						<img src="assets/images/logo-with-icon.svg" alt="Homepage">
+					</a>
+				</div> <!-- s-header__nav-logo -->
+				<!-- [ページ左アコーディオンメニュー]リンク -->
+				<ul class="s-header__nav-links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="gallery.html">Gallery</a></li>
+					<li><a href="specification.html">Specification</a></li>
+					<li class="current"><a href="usage.html">Usage</a></li>
+					<li><a href="country-Japan.html">Japan</a></li>
+					<li><a href="country-GreatBritain.html">Great Britain</a></li>
+					<li><a href="country-America.html">America</a></li>
+				</ul> <!-- s-header__nav-links -->
+				<!-- [ページ左アコーディオンメニュー]リンク -->
+			</nav> <!-- end s-header__nav -->
+		</header> <!-- end s-header -->
+		<!-- # main content
+        ================================================== -->
+		<article class="s-content">
+			<!-- ## pageheader -->
+			<section class="s-pageheader pageheader" style="background-image:url(https://img.peapix.com/5ac2e562880c4a9e9cc7c2881ab293ba_1280.jpg)">
+				<div class="row">
+					<div class="column xl-12 s-pageheader__content">
+						<h1 class="country-title page-title specification">使い方</h1>
+					</div>
+				</div>
+			</section>
+
+			<!--------------------------------------------------------------------------
+			▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽
+			▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲
+			---------------------------------------------------------------------------->
+
+			<style>
+				:root {
+					--primary-color: #2c3e50;
+					--accent-color: #e67e22;
+					--bg-color: #f8f9fa;
+					--card-bg: #ffffff;
+					--text-color: #34495e;
+				}
+				.s-calendar-demo .url-display {
+					font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+					background: #f1f3f5;
+					padding: 0.5rem 0.8rem;
+					border-radius: 4px;
+					color: var(--primary-color);
+					word-break: break-all;
+					margin-bottom: 1.5rem;
+					display: block;
+				}
+				.s-calendar-demo .highlight {
+					color: var(--accent-color);
+					font-weight: bold;
+					text-decoration: underline;
+				}
+				.s-calendar-demo .title {
+					font-size: larger;
+					color: var(--primary-color);
+					margin: 0 0 1rem 0;
+					font-weight: 600;
+				}
+				.s-calendar-demo .description {
+					line-height: 1.8;
+					color: var(--text-color);
+					margin: 0;
+					font-size: unset;
+				}
+				.s-calendar-demo .tag {
+					display: inline-block;
+					background: var(--primary-color);
+					color: white;
+					font-size: smaller;
+					padding: 2px 8px;
+					border-radius: 20px;
+					vertical-align: middle;
+					margin-left: 8px;
+					letter-spacing: 0.05em;
+				}
+			</style>
+			<section class="s-calendar-demo page">
+				<div class="container-top row1">
+					<div class="container column2">
+						<header class="section-header">
+							<h2 class="text-display-title with-line">動かしてみよう</h2>
+						</header>
+						<div class="card">
+							<h2>Demoウィンドウを起動</h2>
+							<p class="description-text"> 直感的なインターフェースを体験できます。 </p>
+							<!-- 起動ボタン -->
+							<div class="s-cta" style="text-align: center;">
+								<button type="button" class="btn btn--primary s-header__cta-btn" onclick="openApp()" style="padding: 0 3.8rem;">Demo</button>
+							</div>
+							<script>
+								function openApp() {
+									// 起動するアプリケーションのURLを指定
+									const appUrl = "Calendar/Calenda-design-1-UI-1.html?idbnoop=true";
+									// 画面の利用可能な幅と高さを取得
+									const width = window.screen.availWidth;
+									const height = window.screen.availHeight;
+									// ウィンドウを開く
+									window.open(appUrl, 'WebAppWindow', `width=${width},height=${height},left=0,top=0,resizable=yes,scrollbars=yes`);
+								}
+							</script>
+						</div>
+						<div class="card">
+							<h2>URLの説明</h2>
+							<code class="url-display">file:///D:/Calendar/gallery-design-1-UI-1.html?<span class="highlight">idbnoop=true</span>
+							</code>
+							<h1 class="title"> No Operation モード <span class="tag">CONFIG</span></h1>
+							<p class="description"> パラメータ <code>idbnoop=true</code> が指定された場合、カレンダーアプリは <strong>No Operation</strong> として動作します。 この状態では<a href="#c-idb" class="smoothscroll"> IndexedDB </a>からの設定読み込み、および新規設定の保存は行われません。 </p>
+						</div>
+						<div class="card">
+							<!-- 全画面表示を象徴するアイコン -->
+							<div class="icon-fullscreen-expanded">
+								<div class="icon-corner-bl"></div>
+								<div class="icon-corner-br"></div>
+							</div>
+							<div class="instruction-body">
+								<p>
+									<span class="emphasis">全画面表示</span>にすると、<br> 画面がすっきりして、カレンダーを<br> より快適にお使いいただけます。
+								</p>
+								<p class="hint-shortcut">
+									<span>ショートカット：</span>
+									<span class="keycap">F11</span>
+									<span>で全画面のオン／オフを切り替えられます。</span>
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- /container -->
+				</div>
+				<!-- /container-top -->
+			</section>
+
+			<!--------------------------------------------------------------------------
+			▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽
+			▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲
+			---------------------------------------------------------------------------->
+
+			<style>
+				.container.row2 {
+					gap: 15rem;
+				}
+				/* ===================================================================
+				 * # [page 1] iPad スタイル定義
+				 *
+				 * ------------------------------------------------------------------- */
+				:root {
+					--ipad-frame-radius: 28px;
+					--ipad-bezel: 18px;
+					--ipad-edge-width: 6px;
+					/* iPad風カラー（コズミックオレンジ系） */
+					--cosmic-1: #FF6A00;
+					--cosmic-2: #FF9440;
+					--cosmic-3: #E04B00;
+					--edge-metal: #2A2A2A;
+					--ipad-screen-bg: #0A0A0A;
+				}
+				.device-iPad-style {
+					aspect-ratio: 4 / 3;
+					/* iPad横比率 */
+					filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.25));
+					/* 浮かせた感じの影 */
+					transition: transform 0.4s ease, filter 0.4s ease;
+					width: 33vw;
+				}
+				/*位置*/
+				.device-iPad-style {
+					margin: 10px auto;
+				}
+				.device-iPad-style .device__shell {
+					/* ベースカラー（オレンジ〜ゴールド系）と光沢のブレンド */
+					background:
+						/* 強いハイライトライン（反射光） */
+						linear-gradient(135deg,
+							rgba(255, 255, 255, 0.9) 0%,
+							rgba(255, 255, 255, 0.3) 8%,
+							transparent 12%,
+							transparent 88%,
+							rgba(255, 255, 255, 0.3) 92%,
+							rgba(255, 255, 255, 0.8) 100%),
+						/* 内側の陰影 */
+						linear-gradient(135deg,
+							rgba(0, 0, 0, 0.25) 30%,
+							rgba(0, 0, 0, 0.45) 80%),
+						/* ベースカラー */
+						linear-gradient(135deg, var(--cosmic-3), var(--cosmic-1) 45%, var(--cosmic-2) 92%);
+					background-blend-mode: overlay, multiply, normal;
+					border-radius: var(--ipad-frame-radius);
+					/* 内側の光沢と外側の落ち影 */
+					box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.4),
+						inset 0 -2px 10px rgba(0, 0, 0, 0.35),
+						0 4px 12px rgba(0, 0, 0, 0.25);
+					inset: 0;
+					position: absolute;
+				}
+				.device-iPad-style .device__edge {
+					/* エッジ部分の金属光沢表現 */
+					background: linear-gradient(180deg, rgba(255, 255, 255, 0.20), rgba(0, 0, 0, 0.35)),
+						linear-gradient(90deg, #1a1a1a, var(--edge-metal), #1a1a1a);
+					border-radius: calc(var(--ipad-frame-radius) - 2px);
+					inset: 0;
+					/* content-boxとmask-compositeで中抜きを実現 */
+					-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+					-webkit-mask-composite: xor;
+					mask-composite: exclude;
+					padding: var(--ipad-edge-width);
+					position: absolute;
+				}
+				.device-iPad-style .device__screen {
+					aspect-ratio: 4.05 / 3;
+					/* iPad横比率 */
+					background: var(--ipad-screen-bg);
+					border-radius: calc(var(--ipad-frame-radius) - var(--ipad-bezel));
+					inset: var(--ipad-bezel);
+					overflow: hidden;
+					position: absolute;
+				}
+				/* カメラ穴（横向き上部中央） */
+				.device-iPad-style .device__screen .device__camera {
+					background: #111;
+					border-radius: 50%;
+					box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2);
+					height: 12px;
+					left: 50%;
+					position: absolute;
+					top: calc(var(--ipad-bezel) + 6px);
+					transform: translateX(-50%);
+					width: 12px;
+				}
+				.device-iPad-style .device__screen .device__iframe {
+					aspect-ratio: 4.05 / 3;
+					/* iPad横比率 */
+					background: transparent;
+					border: none;
+					inset: 0;
+					position: absolute;
+					/* iframeを縮小して表示するための設定 */
+					transform: scale(0.34);
+					transform-origin: top left;
+					width: 92vw;
+				}
+				/* 説明リスト */
+				.feature-list {
+					display: grid;
+					grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+					gap: 20px;
+				}
+				.feature-item {
+					background: #fff;
+					padding: 20px;
+					border-left: 5px solid var(--color-1);
+					border-radius: 4px;
+					box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+				}
+				.feature-item h3 {
+					margin-top: 0;
+					font-size: 18px;
+					color: var(--color-1);
+				}
+				.feature-item p {
+					line-height: 1.5;
+				}
+				.number {
+					display: inline-block;
+					width: 24px;
+					height: 24px;
+					background: var(--color-1);
+					color: white;
+					border-radius: 50%;
+					text-align: center;
+					line-height: 24px;
+					margin-right: 8px;
+					font-size: 14px;
+				}
+				.container-top {
+					max-width: 1600px;
+					margin: 0 auto;
+					gap: 20px;
+				}
+				:root {
+					--bg-deep: #ffffff;
+					--main-gold: #b89c7d;
+					/* 落ち着いた真鍮色 */
+					--soft-gray: #f8f9fa;
+					--text-dark: #333333;
+					--line-color: #e0e0e0;
+				}
+				/* マニュアルのカード状コンテナ */
+				.manual-card {
+					max-width: 800px;
+					width: 90%;
+					padding: 4rem 3rem;
+					border: 1px solid #eaeaea;
+					background: #fff;
+					box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+					position: relative;
+				}
+				/* 本文エリア */
+				.instruction-body {
+					font-weight: 300;
+					line-height: 2;
+					text-align: center;
+					color: #666;
+					border-top: 1px solid var(--line-color);
+					padding-top: 2rem;
+				}
+				.emphasis {
+					color: var(--text-dark);
+					font-weight: 900;
+				}
+				/* わかりやすい全画面シンボル */
+				.icon-fullscreen-expanded {
+					width: 40px;
+					height: 40px;
+					margin: 0 auto 2.5rem;
+					position: relative;
+					opacity: 0.8;
+				}
+				/* 四隅のカギ括弧で「広がる」を表現 */
+				.icon-fullscreen-expanded::before,
+				.icon-fullscreen-expanded::after,
+				.icon-corner-bl,
+				.icon-corner-br {
+					content: '';
+					position: absolute;
+					width: 12px;
+					height: 12px;
+					border: 1.5px solid var(--main-gold);
+				}
+				/* 左上 */
+				.icon-fullscreen-expanded::before {
+					top: 0;
+					left: 0;
+					border-right: none;
+					border-bottom: none;
+				}
+				/* 右上 */
+				.icon-fullscreen-expanded::after {
+					top: 0;
+					right: 0;
+					border-left: none;
+					border-bottom: none;
+				}
+				/* 左下 */
+				.icon-corner-bl {
+					bottom: 0;
+					left: 0;
+					border-right: none;
+					border-top: none;
+				}
+				/* 右下 */
+				.icon-corner-br {
+					bottom: 0;
+					right: 0;
+					border-left: none;
+					border-top: none;
+				}
+				.hint-shortcut {
+					margin-top: 10px;
+					font-size: smaller;
+					align-items: center;
+					gap: 8px;
+				}
+				.keycap {
+					padding: 3px 7px;
+					border-radius: 6px;
+					border: 1px solid #d1d5db;
+					background: linear-gradient(#f9fafb, #e5e7eb);
+					box-shadow: 0 1px 0 #ffffff inset;
+					font-size: 11px;
+				}
+				.item-arrow-down {
+					position: relative;
+				}
+				/* ▼ 長い矢印（棒 + 三角） */
+				.item-arrow-down::after {
+					content: "";
+					position: absolute;
+					left: 50%;
+					transform: translateX(-50%);
+					bottom: -95px;
+					/* 全体の位置調整 */
+					/* 棒の部分 */
+					width: 3px;
+					height: 100px;
+					background: var(--color-1);
+					/* 色はお好みで */
+				}
+				/* 三角の矢印部分 */
+				.item-arrow-down::before {
+					content: "";
+					position: absolute;
+					left: 50%;
+					transform: translateX(-50%);
+					bottom: -105px;
+					/* 棒の下に配置 */
+					width: 0;
+					height: 0;
+					border-left: 10px solid transparent;
+					border-right: 10px solid transparent;
+					border-top: 14px solid var(--color-1);
+					/* ▼ の色 */
+				}
+				/* 共通の基本形 */
+				.item-arrow-left,
+				.item-arrow-right {
+					position: relative;
+					--arrow-width: calc(15rem * 0.8);
+				}
+				.item-arrow-right {
+					--arrow-y: 30%;
+				}
+				.item-arrow-left {
+					--arrow-y: 70%;
+				}
+				/* 左向き (left) */
+				.item-arrow-left::after {
+					content: "";
+					position: absolute;
+					top: var(--arrow-y);
+					left: calc(-1 * var(--arrow-width) + 5px);
+					transform: translateY(-50%);
+					width: var(--arrow-width);
+					height: 3px;
+					background: var(--color-1);
+				}
+				.item-arrow-left::before {
+					content: "";
+					position: absolute;
+					top: var(--arrow-y);
+					left: calc(-1 * var(--arrow-width) - 5px);
+					transform: translateY(-50%);
+					width: 0;
+					height: 0;
+					border-top: 10px solid transparent;
+					border-bottom: 10px solid transparent;
+					border-right: 14px solid var(--color-1);
+				}
+				/* 右向き (right) */
+				.item-arrow-right::after {
+					content: "";
+					position: absolute;
+					top: var(--arrow-y);
+					right: calc(-1 * var(--arrow-width) + 5px);
+					transform: translateY(-50%);
+					width: var(--arrow-width);
+					height: 3px;
+					background: var(--color-1);
+				}
+				.item-arrow-right::before {
+					content: "";
+					position: absolute;
+					top: var(--arrow-y);
+					right: calc(-1 * var(--arrow-width) - 5px);
+					transform: translateY(-50%);
+					width: 0;
+					height: 0;
+					border-top: 10px solid transparent;
+					border-bottom: 10px solid transparent;
+					border-left: 14px solid var(--color-1);
+				}
+				.keys-section {
+					display: flex;
+					justify-content: center;
+					gap: 2rem;
+					border-top: 1px double #d1d1d1;
+					border-bottom: 1px double #d1d1d1;
+					padding-top: 2rem;
+					padding-bottom: 2rem;
+				}
+				.key-item {
+					text-align: center;
+				}
+				.key-label {
+					font-size: smaller;
+					text-transform: uppercase;
+					letter-spacing: 0.2em;
+					display: block;
+					margin-bottom: 0.5rem;
+				}
+				.key-value {
+					font-weight: bold;
+					letter-spacing: 0.05em;
+				}
+				.key-item img {
+					display: block;
+					height: 28px;
+					max-width: 100%;
+					border: 1px solid #aaa;
+					border-radius: 5px;
+				}
+			</style>
+			<!--
+			*********************************************
+				[page 1] iPad
+			*********************************************
+			-->
+			<section class="s-pagecontent page pagecontent">
+				<div class="container-top">
+					<div class="container column1">
+						<header class="section-header">
+							<h2 class="text-display-title with-line">画面の説明と設定</h2>
+						</header>
+					</div><!-- class="container"-->
+				</div>
+				<div class="container-top">
+					<div class="container row2">
+						<figure class="device-iPad-style item-arrow-right">
+							<div class="device__shell"></div>
+							<div class="device__edge"></div>
+							<div class="device__screen">
+								<div class="device__camera"></div>
+								<img src="assets/images/CalendarManual-1.jpg" alt="Tablet Content">
+							</div>
+						</figure>
+						<figure class="device-iPad-style item-arrow-left">
+							<div class="device__shell"></div>
+							<div class="device__edge"></div>
+							<div class="device__screen">
+								<div class="device__camera"></div>
+								<img src="assets/images/CalendarManual-2.jpg" alt="Tablet Content">
+							</div>
+						</figure>
+					</div><!-- class="container"-->
+					<!-- 詳細説明セクション -->
+					<div class="feature-list container row2">
+						<div class="feature-item" style="width: 630px;">
+							<h3><span class="number">1</span>時刻クリック</h3>
+							<p>時刻が大きく表示されます。時刻は選んだ地域の現在時刻です。</p>
+						</div>
+						<div class="feature-item" style="width: 630px;">
+							<h3><span class="number">2</span>カレンダークリック</h3>
+							<p>カレンダーが大きく表示されます。</p>
+						</div>
+					</div>
+				</div>
+				<div class="container-top" style="margin-top: 15rem;">
+					<figure class="device-iPad-style">
+						<div class="device__shell"></div>
+						<div class="device__edge"></div>
+						<div class="device__screen">
+							<div class="device__camera"></div>
+							<img src="assets/images/CalendarManual-3.jpg" alt="Tablet Content">
+						</div>
+					</figure>
+					<!-- 詳細説明セクション -->
+					<div class="feature-list">
+						<div class="feature-item item-arrow-down">
+							<h3><span class="number">3</span>システムの設定メニュー</h3>
+							<p>画面左上の歯車アイコンは、一般的にアプリやシステムの設定メニューを開くボタンです。 画面の左上にマウスカーソルを近づけたときに表示されます。</p>
+						</div>
+						<div class="feature-item">
+							<h3><span class="number">4</span>年月の指定</h3>
+							<p>クリック・ツー・エディット (Click-to-Edit)で表示する年月を指定できます。年のラベルは通常時は入力欄を隠しておき、マウスクリックした時だけ編集モードに切り替ります。</p>
+							<p style="text-align: center;"><img src="assets/images/CalendarManual-4.jpg" alt="Tablet Content" style="width:20rem;"></p>
+						</div>
+						<div class="feature-item">
+							<h3><span class="number">5</span>今日のカレンダー表示ボタン</h3>
+							<p>クリックするとこで、今日のカレンダーを表示します。画面の左上にマウスカーソルを近づけたときに表示されます。</p>
+						</div>
+					</div>
+				</div>
+				<div class="container-top" style="margin-top: 100px;">
+					<figure class="device-iPad-style">
+						<div class="device__shell"></div>
+						<div class="device__edge"></div>
+						<div class="device__screen">
+							<div class="device__camera"></div>
+							<img src="assets/images/CalendarManual-5.jpg" alt="Tablet Content">
+						</div>
+					</figure>
+					<!-- 詳細説明セクション -->
+					<div class="feature-list">
+						<div class="feature-item">
+							<h3><span class="number">6</span>全体的な外観</h3>
+							<p>カレンダーの雰囲気を左右する基本設定を行えます。レイアウト、テーマカラー（ダークモード）、 背景スライドショー、フォントを自由に組み合わせて、好みのスタイルに整えられます。</p>
+						</div>
+						<div class="feature-item">
+							<h3><span class="number">7</span>表示要素の選択</h3>
+							<p>日付まわりの情報量や見え方を自由に調整できます。 月齢、祝日、予定の表示、週の開始曜日、 土曜の色付け、時刻形式など、 カレンダーの読みやすさに関わる要素を細かくカスタマイズできます。</p>
+						</div>
+						<div class="feature-item item-arrow-down">
+							<h3><span class="number">8</span>国セレクション</h3>
+							<p>カレンダーに反映する国・地域を指定できます。 日本に加え、イギリスの 4 地域、 アメリカの一部州（D.C.／オハイオ／コロラド／アイダホ／ワシントン／ハワイ） を選択できます。 選択した地域の祝日や文化的な日付に加え、 時刻表示もその地域のタイムゾーンに合わせて自動的に切り替わります。</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!--------------------------------------------------------------------------
+			▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽
+			▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲
+			---------------------------------------------------------------------------->
+
+			<section class="s-pagecontent page pagecontent">
+				<div class="container-top">
+					<div class="container column1">
+						<header class="section-header">
+							<h2 class="text-display-title with-line">設定の保存</h2>
+						</header>
+					</div><!-- class="container"-->
+					<div id="c-idb" class="container manual-card">
+						<h2>IndexedDB</h2>
+						<p class="tagline" style="line-height: normal;margin-bottom: 10px;">ユーザーのブラウザー内にデータを永続的に保存する手段です。 アプリケーションがオンラインとオフラインの両方で機能します。 </p>
+						<p class="tagline" style="line-height: normal;">国セレクションで地域を切り替えたタイミングで地域ごとの設定を読込み動作します。 本アプリケーションが利用しているIndexedDBの利用状況は、開発ツールの「Application」タブ内にある「IndexedDB」から確認できます。 </p>
+						<div class="keys-section">
+							<div class="key-item">
+								<span class="key-label">地域 Ⅰ</span>
+								<span class="key-value">JP</span>
+								<img alt="日本" title="日本" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/330px-Flag_of_Japan.svg.png">
+							</div>
+							<div class="key-item">
+								<span class="key-label">地域 Ⅱ</span>
+								<span class="key-value">GB</span>
+								<img alt="イギリス" title="イギリス" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/250px-Flag_of_the_United_Kingdom_%281-2%29.svg.png">
+							</div>
+							<div class="key-item">
+								<span class="key-label">地域 Ⅲ</span>
+								<span class="key-value">US</span>
+								<img alt="アメリカ" title="アメリカ" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Flag_of_the_United_States_%28DDD-F-416E_specifications%29.svg/330px-Flag_of_the_United_States_%28DDD-F-416E_specifications%29.svg.png">
+							</div>
+						</div>
+						<p class="tagline" style="line-height: normal;margin-top: var(--vspace-1);">IndexedDBの削除の実施や発生しているインシデントの確認は次のボタンからできます。 </p>
+						<!-- 起動ボタン -->
+						<div class="s-cta" style="text-align: center;">
+							<button type="button" class="btn btn--primary s-header__cta-btn" onclick="openIndexedDB()" style="padding: 0 3.8rem;">IndexedDB</button>
+						</div>
+						<script>
+							function openIndexedDB() {
+								// 起動するアプリケーションのURLを指定
+								const appUrl = "IndexedDB-Control.html";
+								// タブを開く
+								window.open(appUrl, '_blank' // 第2引数を '_blank' にするとより確実に新規タブで開きます
+								);
+							}
+						</script>
+					</div>
+				</div>
+			</section>
+
+			<!--------------------------------------------------------------------------
+			▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽
+			▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲
+			---------------------------------------------------------------------------->
+
+			<style>
+				:root {
+					--primary-color: #34495e;
+					--accent-color: #bdc3c7;
+					--bg-color: #fdfdfd;
+					--border-light: #eef0f2;
+				}
+				.s-calendarSettings .manual-card {
+					max-width: 1000px;
+				}
+				.s-calendarSettings .table-wrapper {
+					width: 100%;
+					max-width: 850px;
+					margin-bottom: 60px;
+					animation: fadeIn 1s ease-in-out;
+				}
+				@keyframes fadeIn {
+					from {
+						opacity: 0;
+						transform: translateY(10px);
+					}
+					to {
+						opacity: 1;
+						transform: translateY(0);
+					}
+				}
+				.s-calendarSettings .section-title {
+					font-weight: normal;
+					letter-spacing: 0.2em;
+					color: var(--primary-color);
+					margin-bottom: 15px;
+					padding-left: 5px;
+				}
+				.s-calendarSettings table {
+					width: 100%;
+					border-collapse: collapse;
+					background: white;
+					box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+					table-layout: fixed;
+					line-height: 1rem;
+				}
+				/* ヘッダー行のデザイン */
+				.s-calendarSettings thead tr {
+					border-top: 2px solid var(--accent-color);
+					border-bottom: 2px solid var(--accent-color);
+				}
+				.s-calendarSettings th {
+					padding: 15px;
+					font-weight: 600;
+					color: #2c3e50;
+					text-align: left;
+					letter-spacing: 0.1em;
+				}
+				.s-calendarSettings td {
+					padding: 14px 15px;
+					border-bottom: 1px solid var(--border-light);
+				}
+				/* コード列（2列目）のフォント変更 */
+				.s-calendarSettings .code-cell {
+					font-family: "Consolas", "Monaco", monospace;
+					font-weight: bold;
+					color: #2980b9;
+				}
+				/* ホバー時のさりげない演出 */
+				.s-calendarSettings tbody tr:hover {
+					background-color: #f9f9f9;
+					transition: background-color 0.3s;
+				}
+				:root {
+					--primary-color: #34495e;
+					--accent-color: #bdc3c7;
+					--bg-color: #fdfdfd;
+					--code-bg: #f8f9fa;
+					--code-text: #e74c3c;
+					/* 形式部分のアクセントカラー */
+				}
+				.s-calendarSettings .format-container {
+					width: 100%;
+					max-width: 850px;
+					background: white;
+					padding: 30px;
+					border-radius: 4px;
+					box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+					border: 1px solid #eee;
+				}
+				.s-calendarSettings .label {
+					color: var(--primary-color);
+					letter-spacing: 0.1em;
+					margin-bottom: 8px;
+					font-weight: 600;
+					display: block;
+					border-left: 3px solid var(--accent-color);
+					padding-left: 10px;
+				}
+				.s-calendarSettings .code-block {
+					font-family: "Consolas", "Monaco", monospace;
+					background-color: var(--code-bg);
+					padding: 15px 20px;
+					border-radius: 6px;
+					margin-bottom: 25px;
+					color: #2980b9;
+					line-height: 1.5;
+					overflow-x: auto;
+					border: 1px solid #f0f0f0;
+				}
+				/* プレースホルダー部分の強調 */
+				.s-calendarSettings .highlight {
+					color: var(--code-text);
+					font-style: italic;
+					font-weight: bold;
+				}
+				.s-calendarSettings .divider {
+					height: 1px;
+					background: linear-gradient(to right, transparent, #eee, transparent);
+					margin: 30px 0;
+				}
+				.s-calendarSettings pre>code {
+					line-height: normal;
+				}
+			</style>
+			<section class="s-pagecontent s-calendarSettings page pagecontent">
+				<div class="container-top">
+					<div class="container column1">
+						<header class="section-header">
+							<h2 class="text-display-title with-line">祝日・祭日・予定日の定義</h2>
+						</header>
+					</div><!-- class="container"-->
+					<div class="container manual-card"> カレンダーに表示する祝祭日は次のクラスのプロパティー（変数）に定義します。 <div class="format-container">
+							<span class="label">変数名の形式 / FORMAT</span>
+							<div class="code-block" style="color: #2c3e50;"> Calendar.Calc(<span class="highlight">地域識別</span>).(<span class="highlight">区別</span>)_(<span class="highlight">タイプ</span>) </div>
+							<div class="divider"></div>
+							<span class="label">例 / EXAMPLE</span>
+							<div class="code-block code-cell"> Calendar.CalcJP.schedule_fixed </div>
+						</div>
+					</div><!-- div class="container manual-card"-->
+					<div class="container manual-card">
+						<div class="table-wrapper">
+							<div class="section-title">(<span class="highlight">地域識別</span>)</div>
+							<table>
+								<thead>
+									<tr>
+										<th colspan="2">コード名</th>
+										<th>コード</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="2">日本</td>
+										<td class="code-cell">JP</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td rowspan="4">イギリス</td>
+										<td>イングランド</td>
+										<td class="code-cell">GB_ENG</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>スコットランド</td>
+										<td class="code-cell">GB_NIR</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>ウェールズ</td>
+										<td class="code-cell">GB_SCT</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>北アイルランド</td>
+										<td class="code-cell">GB_WLS</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td rowspan="6">アメリカ</td>
+										<td>ワシントン, D.C.</td>
+										<td class="code-cell">US_DC</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>オハイオ州</td>
+										<td class="code-cell">US_OH</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>コロラド州</td>
+										<td class="code-cell">US_CO</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>アイダホ州</td>
+										<td class="code-cell">US_ID</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>ワシントン州</td>
+										<td class="code-cell">US_WA</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>ハワイ州</td>
+										<td class="code-cell">US_HI</td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="table-wrapper">
+							<div class="section-title">(<span class="highlight">区別</span>)</div>
+							<table>
+								<thead>
+									<tr>
+										<th style="width: 170px;">コード名</th>
+										<th style="width: 140px;">コード</th>
+										<th>説明・例</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>祝日</td>
+										<td class="code-cell">holiday</td>
+										<td>元日,文化の日,成人の日,海の日,…など</td>
+									</tr>
+									<tr>
+										<td>祭日</td>
+										<td class="code-cell">seasonFest</td>
+										<td>小寒,大寒,立春,雨水,啓蟄,…など</td>
+									</tr>
+									<tr>
+										<td>予定日</td>
+										<td class="code-cell">schedule</td>
+										<td>独自のスケジュール設定</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="table-wrapper">
+							<div class="section-title">(<span class="highlight">タイプ</span>)</div>
+							<table>
+								<thead>
+									<tr>
+										<th style="width: 245px;">コード名</th>
+										<th style="width: 140px;">コード</th>
+										<th>説明・例</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>固定日の祝日</td>
+										<td class="code-cell">fixed</td>
+										<td>元日,文化の日,...</td>
+									</tr>
+									<tr style="line-height:2rem;">
+										<td>固定日の祝日<br />（振替休日の発生なし）</td>
+										<td class="code-cell">notfurikae</td>
+										<td>正月三が日...</td>
+									</tr>
+									<tr>
+										<td>ハッピーマンデー制度</td>
+										<td class="code-cell">movable</td>
+										<td>成人の日,海の日...</td>
+									</tr>
+									<tr>
+										<td>二十四節気</td>
+										<td class="code-cell">seasonanchor</td>
+										<td>小寒,大寒,立春,雨水,啓蟄,春分, ...</td>
+									</tr>
+									<tr>
+										<td>聖週間</td>
+										<td class="code-cell">holyweek</td>
+										<td>聖土曜日、復活祭、イースターマンデー, ...</td>
+									</tr>
+									<tr>
+										<td>cron</td>
+										<td class="code-cell">cron</td>
+										<td>（例：大統領選挙：4で割って1余る年の1月20日）</td>
+									</tr>
+									<tr style="line-height:2rem;">
+										<td>基準となる祝日のN日後</td>
+										<td class="code-cell">reference</td>
+										<td>fixed,movable,seasonanchor,holyweek,cronの祝日名を基準とした日（例：seasonanchorの"春分"の前日が"節分"）</td>
+									</tr>
+									<tr>
+										<td>振替休日(1)</td>
+										<td class="code-cell">furikae1</td>
+										<td>国民の祝日に関する法律（祝日法）(1948年7月20日～)</td>
+									</tr>
+									<tr>
+										<td>国民の休日</td>
+										<td class="code-cell">kokumin</td>
+										<td>前日及び翌日が「国民の祝日」である平日は、休日とする</td>
+									</tr>
+									<tr>
+										<td>振替休日(2)</td>
+										<td class="code-cell">furikae2</td>
+										<td>2007年（平成19年）の改正施行</td>
+									</tr>
+									<tr>
+										<td>欧州 振替休日</td>
+										<td class="code-cell">substitute</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>米 振替休日</td>
+										<td class="code-cell">observed</td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<style>
+							/* --- 1. 数字の丸い装飾を完全にリセット --- */
+							.token.number {
+								background: none !important;
+								border-radius: 0 !important;
+								padding: 0 !important;
+								box-shadow: none !important;
+							}
+							/* --- 2. カード全体のエレガントなデザイン --- */
+							.code-card {
+								margin: 2rem 0;
+								border-radius: 12px;
+								overflow: hidden;
+								box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+								border: 1px solid #e0e0e0;
+							}
+							/* ヘッダー部分 */
+							.code-header {
+								background-color: #f8f9fa;
+								padding: 10px 20px;
+								border-bottom: 1px solid #eee;
+								display: flex;
+								align-items: center;
+							}
+							.file-name {
+								color: #666;
+								font-weight: 600;
+							}
+							/* コード表示エリア */
+							pre[class*="language-"] {
+								margin: 0 !important;
+								/* カードに密着させる */
+							}
+						</style>
+						<div class="code-card">
+							<div class="code-header">
+								<span class="file-name">assets/js/hq-calendar-core.js</span>
+							</div>
+							<pre class="language-javascript"><code class="language-javascript">
+    Calendar.CalcJP.holiday_fixed = [
+        //      施行開始年月日           ,施行終了年月日        ,月,日,"祝日名"
+          [new Date(1948, 7-1,20),new Date(9999,12-1,31), 1, 1,"元日"           ]
+        , [new Date(1948, 7-1,20),new Date(9999,12-1,31), 5, 3,"憲法記念日"     ]
+        , [new Date(1948, 7-1,20),new Date(9999,12-1,31), 5, 5,"こどもの日"     ]
+        , [new Date(1948, 7-1,20),new Date(9999,12-1,31),11, 3,"文化の日"       ]
+        , [new Date(1948, 7-1,20),new Date(9999,12-1,31),11,23,"勤労感謝の日"   ]
+        , [new Date(1966,12-1, 9),new Date(9999,12-1,31), 2,11,"建国記念の日"   ]
+        , [new Date(2007, 1-1, 1),new Date(9999,12-1,31), 4,29,"昭和の日"       ]
+        , [new Date(2007, 1-1, 1),new Date(9999,12-1,31), 5, 4,"みどりの日"     ]
+        , [new Date(2019, 5-1, 1),new Date(9999,12-1,31), 2,23,"天皇誕生日"     ]
+        , [new Date(2022, 1-1, 1),new Date(9999,12-1,31), 8,11,"山の日"         ]
+    ];
+    Calendar.CalcJP.holiday_movable = [ //Happy Monday System
+        //  施行開始年月日       ,施行終了年月日        ,月,週,曜日,"祝日名"
+          [new Date(2000, 1-1, 1),new Date(9999,12-1,31), 1,2,1,"成人の日"      ]
+        , [new Date(2003, 1-1, 1),new Date(9999,12-1,31), 9,3,1,"敬老の日"      ]
+        , [new Date(2022, 1-1, 1),new Date(9999,12-1,31),10,2,1,"スポーツの日"  ]
+        , [new Date(2022, 1-1, 1),new Date(9999,12-1,31), 7,3,1,"海の日"        ]
+    ];
+    Calendar.CalcJP.holiday_seasonanchor = [
+        //  施行開始年月日       ,  施行終了年月日      ,   "祝日判断名"(固定)  ,   "祝日名"
+          [new Date(1948, 7-1,21),new Date(9999,12-1,31),   "春分"              ,   "春分の日"      ]
+        , [new Date(1948, 7-1,21),new Date(9999,12-1,31),   "秋分"              ,   "秋分の日"      ]
+    ];
+    Calendar.CalcJP.holiday_furikae1 = [
+            //  施行開始年月日   ,  施行終了年月日
+          [new Date(1973, 4-1,12),new Date(2006,12-1,31),"振替休日"     ]
+    ];
+    Calendar.CalcJP.holiday_kokumin = [
+            //  施行開始年月日   ,  施行終了年月日
+          [new Date(1985,12-1,27),new Date(9999,12-1,31),"国民の休日"   ]
+    ];
+    Calendar.CalcJP.holiday_furikae2 = [
+            //  施行開始年月日   ,  施行終了年月日
+          [new Date(2007, 1-1, 1),new Date(9999,12-1,31),"振替休日"     ]
+    ];
+								</code></pre>
+						</div>
+						<style>
+							:root {
+								--primary-color: #2c3e50;
+								--accent-color: #b8926a;
+								--bg-color: #f9f9f7;
+								--text-color: #333;
+								--border-color: #e0e0e0;
+							}
+							h1 {
+								text-align: center;
+								font-weight: 300;
+								letter-spacing: 0.1em;
+								color: var(--primary-color);
+								margin-bottom: 40px;
+								border-bottom: 1px solid var(--accent-color);
+								padding-bottom: 20px;
+							}
+							table {
+								width: 100%;
+								border-collapse: collapse;
+								margin-bottom: 30px;
+							}
+							th, td {
+								padding: 16px 20px;
+								text-align: left;
+								border-bottom: 1px solid var(--border-color);
+							}
+							thead th {
+								background-color: transparent;
+								color: var(--accent-color);
+								font-weight: 600;
+								text-transform: uppercase;
+								letter-spacing: 0.05em;
+							}
+							.category-row {
+								background-color: #fcfcfc;
+							}
+							.category-name {
+								width: 120px;
+								vertical-align: top;
+							}
+							.item-name {
+								width: 250px;
+								font-weight: 500;
+							}
+							tr:hover {
+								background-color: #fafafa;
+							}
+							/* セクションの区切りを強調 */
+							tr[style*="border-top"] td {
+								padding-top: 30px;
+							}
+						</style>
+						<div class="container">
+							<h4>定義項目のリファレンス</h4>
+							<table>
+								<thead>
+									<tr>
+										<th style="width: 160px;">コード</th>
+										<th style="width: 240px;">定義項目</th>
+										<th>説明・例</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!-- 固定日 -->
+									<tr>
+										<td class="category-name code-cell" rowspan="5">fixed<br />notfurikae</td>
+										<td class="item-name">施行開始日</td>
+										<td class="description">法律が適用される開始日</td>
+									</tr>
+									<tr>
+										<td class="item-name">施行終了日</td>
+										<td class="description">法律が適用される終了日</td>
+									</tr>
+									<tr>
+										<td class="item-name">月</td>
+										<td class="description">祝日の月</td>
+									</tr>
+									<tr>
+										<td class="item-name">日</td>
+										<td class="description">祝日の日</td>
+									</tr>
+									<tr>
+										<td class="item-name">祝日名／祭日名／予定名</td>
+										<td class="description"></td>
+									</tr>
+									<!-- ハッピーマンデー -->
+									<tr style="border-top: 2px solid var(--accent-color);">
+										<td class="category-name code-cell" rowspan="6">movable</td>
+										<td class="item-name">施行開始日</td>
+										<td class="description">法律が適用開始される日</td>
+									</tr>
+									<tr>
+										<td class="item-name">施行終了日</td>
+										<td class="description">法律が適用終了される日</td>
+									</tr>
+									<tr>
+										<td class="item-name">月</td>
+										<td class="description">「〇月の第〇月曜日」の月</td>
+									</tr>
+									<tr>
+										<td class="item-name">週</td>
+										<td class="description">「〇月の第〇月曜日」の週</td>
+									</tr>
+									<tr>
+										<td class="item-name">曜日</td>
+										<td class="description">「〇月の第〇月曜日」の曜日</td>
+									</tr>
+									<tr>
+										<td class="item-name">祝日名／祭日名／予定名</td>
+										<td class="description"></td>
+									</tr>
+									<!-- 二十四節気 -->
+									<tr style="border-top: 2px solid var(--accent-color);">
+										<td class="category-name code-cell" rowspan="4">season</td>
+										<td class="item-name">施行開始日</td>
+										<td class="description">法律が適用される開始日</td>
+									</tr>
+									<tr>
+										<td class="item-name">施行終了日</td>
+										<td class="description">法律が適用される終了日</td>
+									</tr>
+									<tr>
+										<td class="item-name">二十四節気名</td>
+										<td class="description">小寒,大寒,立春,雨水,啓蟄,春分, …など固定文字</td>
+									</tr>
+									<tr>
+										<td class="item-name">祝日名／祭日名／予定名</td>
+										<td class="description">”春分”の場合”春分の日"など</td>
+									</tr>
+									<!-- 聖週間 -->
+									<tr style="border-top: 2px solid var(--accent-color);">
+										<td class="category-name code-cell" rowspan="4">holyweek</td>
+										<td class="item-name">施行開始日</td>
+										<td class="description">法律が適用される開始日</td>
+									</tr>
+									<tr>
+										<td class="item-name">施行終了日</td>
+										<td class="description">法律が適用される終了日</td>
+									</tr>
+									<tr>
+										<td class="item-name">聖週間名</td>
+										<td class="description">キャメルスネークケース固定文字（例："Holy_Saturday"など）</td>
+									</tr>
+									<tr>
+										<td class="item-name">祝日名／祭日名／予定名</td>
+										<td class="description">"Holy_Saturday"の場合"Holy Saturday"など</td>
+									</tr>
+									<!-- cron -->
+									<tr style="border-top: 2px solid var(--accent-color);">
+										<td class="category-name code-cell" rowspan="10">cron</td>
+										<td class="item-name">施行開始日</td>
+										<td class="description">法律が適用される開始日</td>
+									</tr>
+									<tr>
+										<td class="item-name">施行終了日</td>
+										<td class="description">法律が適用される終了日</td>
+									</tr>
+									<tr>
+										<td class="item-name">cron定義</td>
+										<td class="description">cronの設定形式(例："* * 20 1 1937-9999/4 *"）</td>
+									</tr>
+									<tr>
+										<td class="item-name">　　分</td>
+										<td class="description">0-59</td>
+									</tr>
+									<tr>
+										<td class="item-name">　　時</td>
+										<td class="description">0-23</td>
+									</tr>
+									<tr>
+										<td class="item-name">　　日</td>
+										<td class="description">1-31</td>
+									</tr>
+									<tr>
+										<td class="item-name">　　月</td>
+										<td class="description">1-12</td>
+									</tr>
+									<tr>
+										<td class="item-name">　　年</td>
+										<td class="description">1-9999</td>
+									</tr>
+									<tr>
+										<td class="item-name">　　曜日</td>
+										<td class="description">0-6: 日-土</td>
+									</tr>
+									<tr>
+										<td class="item-name">祝日名／祭日名／予定名</td>
+										<td class="description">例えば”大統領選挙" 4で割って1余る年の1月20日</td>
+									</tr>
+									<!-- 基準日後 -->
+									<tr style="border-top: 2px solid var(--accent-color);">
+										<td class="category-name code-cell" rowspan="6">reference</td>
+										<td class="item-name">施行開始日</td>
+										<td class="description">法律が適用される開始日</td>
+									</tr>
+									<tr>
+										<td class="item-name">施行終了日</td>
+										<td class="description">法律が適用される終了日</td>
+									</tr>
+									<tr>
+										<td class="item-name">任意の祝日名</td>
+										<td class="description">(例："立春")</td>
+									</tr>
+									<tr>
+										<td class="item-name">加算日</td>
+										<td class="description">-1日など</td>
+									</tr>
+									<tr>
+										<td class="item-name">対象年の祝日</td>
+										<td class="description">システム使用領域</td>
+									</tr>
+									<tr>
+										<td class="item-name">祝日名／祭日名／予定名</td>
+										<td class="description">"節分"</td>
+									</tr>
+									<!-- 振替休日 -->
+									<tr style="border-top: 2px solid var(--accent-color);line-height: 2.3rem;">
+										<td class="category-name code-cell" rowspan="3">furikae1<br />kokumin<br />furikae2<br />substitute<br />observed</td>
+										<td class="item-name">施行開始日</td>
+										<td class="description">法律が適用される開始日</td>
+									</tr>
+									<tr>
+										<td class="item-name">施行終了日</td>
+										<td class="description">法律が適用される終了日</td>
+									</tr>
+									<tr>
+										<td class="item-name">祝日名／祭日名／予定名</td>
+										<td class="description">例えば"振替休日"など</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div><!-- div class="container manual-card"-->
+				</div>
+			</section>
+		</article> <!-- end main content -->
+
+		<!--------------------------------------------------------------------------
+		▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽
+		▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲▽▲
+		---------------------------------------------------------------------------->
+
+		<!-- # footer
+		================================================== -->
+		<footer id="footer" class="s-footer">
+			<div class="row">
+				<div class="column xl-6 md-12 s-footer__block s-footer__about">
+					<div class="s-footer__logo">
+						<a class="logo" href="index.html">
+							<img src="assets/images/logo-with-icon.svg" alt="Homepage">
+						</a>
+					</div>
+				</div> <!-- end s-footer__about -->
+			</div> <!-- end  row -->
+			<div class="row s-footer__bottom">
+				<div class="column xl-6 lg-12">
+					<ul class="s-footer__social social-list">
+						<li>
+							<a href="#0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+									<path d="M20,3H4C3.447,3,3,3.448,3,4v16c0,0.552,0.447,1,1,1h8.615v-6.96h-2.338v-2.725h2.338v-2c0-2.325,1.42-3.592,3.5-3.592 c0.699-0.002,1.399,0.034,2.095,0.107v2.42h-1.435c-1.128,0-1.348,0.538-1.348,1.325v1.735h2.697l-0.35,2.725h-2.348V21H20 c0.553,0,1-0.448,1-1V4C21,3.448,20.553,3,20,3z"></path>
+								</svg>
+								<span class="u-screen-reader-text">Facebook</span>
+							</a>
+						</li>
+						<li>
+							<a href="#0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+									<path d="M19.633,7.997c0.013,0.175,0.013,0.349,0.013,0.523c0,5.325-4.053,11.461-11.46,11.461c-2.282,0-4.402-0.661-6.186-1.809 c0.324,0.037,0.636,0.05,0.973,0.05c1.883,0,3.616-0.636,5.001-1.721c-1.771-0.037-3.255-1.197-3.767-2.793 c0.249,0.037,0.499,0.062,0.761,0.062c0.361,0,0.724-0.05,1.061-0.137c-1.847-0.374-3.23-1.995-3.23-3.953v-0.05 c0.537,0.299,1.16,0.486,1.82,0.511C3.534,9.419,2.823,8.184,2.823,6.787c0-0.748,0.199-1.434,0.548-2.032 c1.983,2.443,4.964,4.04,8.306,4.215c-0.062-0.3-0.1-0.611-0.1-0.923c0-2.22,1.796-4.028,4.028-4.028 c1.16,0,2.207,0.486,2.943,1.272c0.91-0.175,1.782-0.512,2.556-0.973c-0.299,0.935-0.936,1.721-1.771,2.22 c0.811-0.088,1.597-0.312,2.319-0.624C21.104,6.712,20.419,7.423,19.633,7.997z"></path>
+								</svg>
+								<span class="u-screen-reader-text">Twitter</span>
+							</a>
+						</li>
+						<li>
+							<a href="#0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+									<path d="M11.999,7.377c-2.554,0-4.623,2.07-4.623,4.623c0,2.554,2.069,4.624,4.623,4.624c2.552,0,4.623-2.07,4.623-4.624 C16.622,9.447,14.551,7.377,11.999,7.377L11.999,7.377z M11.999,15.004c-1.659,0-3.004-1.345-3.004-3.003 c0-1.659,1.345-3.003,3.004-3.003s3.002,1.344,3.002,3.003C15.001,13.659,13.658,15.004,11.999,15.004L11.999,15.004z"></path>
+									<circle cx="16.806" cy="7.207" r="1.078"></circle>
+									<path d="M20.533,6.111c-0.469-1.209-1.424-2.165-2.633-2.632c-0.699-0.263-1.438-0.404-2.186-0.42 c-0.963-0.042-1.268-0.054-3.71-0.054s-2.755,0-3.71,0.054C7.548,3.074,6.809,3.215,6.11,3.479C4.9,3.946,3.945,4.902,3.477,6.111 c-0.263,0.7-0.404,1.438-0.419,2.186c-0.043,0.962-0.056,1.267-0.056,3.71c0,2.442,0,2.753,0.056,3.71 c0.015,0.748,0.156,1.486,0.419,2.187c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45 c0.963,0.042,1.268,0.055,3.71,0.055s2.755,0,3.71-0.055c0.747-0.015,1.486-0.157,2.186-0.419c1.209-0.469,2.164-1.424,2.633-2.633 c0.263-0.7,0.404-1.438,0.419-2.186c0.043-0.962,0.056-1.267,0.056-3.71s0-2.753-0.056-3.71C20.941,7.57,20.801,6.819,20.533,6.111z M19.315,15.643c-0.007,0.576-0.111,1.147-0.311,1.688c-0.305,0.787-0.926,1.409-1.712,1.711c-0.535,0.199-1.099,0.303-1.67,0.311 c-0.95,0.044-1.218,0.055-3.654,0.055c-2.438,0-2.687,0-3.655-0.055c-0.569-0.007-1.135-0.112-1.669-0.311 c-0.789-0.301-1.414-0.923-1.719-1.711c-0.196-0.534-0.302-1.099-0.311-1.669c-0.043-0.95-0.053-1.218-0.053-3.654 c0-2.437,0-2.686,0.053-3.655c0.007-0.576,0.111-1.146,0.311-1.687c0.305-0.789,0.93-1.41,1.719-1.712 c0.534-0.198,1.1-0.303,1.669-0.311c0.951-0.043,1.218-0.055,3.655-0.055c2.437,0,2.687,0,3.654,0.055 c0.571,0.007,1.135,0.112,1.67,0.311c0.786,0.303,1.407,0.925,1.712,1.712c0.196,0.534,0.302,1.099,0.311,1.669 c0.043,0.951,0.054,1.218,0.054,3.655c0,2.436,0,2.698-0.043,3.654H19.315z"></path>
+								</svg>
+								<span class="u-screen-reader-text">Instagram</span>
+							</a>
+						</li>
+						<li>
+							<a href="#0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+									<path d="M8.31 10.28a2.5 2.5 0 1 0 2.5 2.49 2.5 2.5 0 0 0-2.5-2.49zm0 3.8a1.31 1.31 0 1 1 0-2.61 1.31 1.31 0 1 1 0 2.61zm7.38-3.8a2.5 2.5 0 1 0 2.5 2.49 2.5 2.5 0 0 0-2.5-2.49zM17 12.77a1.31 1.31 0 1 1-1.31-1.3 1.31 1.31 0 0 1 1.31 1.3z"></path>
+									<path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm7.38 10.77a3.69 3.69 0 0 1-6.2 2.71L12 16.77l-1.18-1.29a3.69 3.69 0 1 1-5-5.44l-1.2-1.3H7.3a8.33 8.33 0 0 1 9.41 0h2.67l-1.2 1.31a3.71 3.71 0 0 1 1.2 2.72z"></path>
+									<path d="M14.77 9.05a7.19 7.19 0 0 0-5.54 0A4.06 4.06 0 0 1 12 12.7a4.08 4.08 0 0 1 2.77-3.65z"></path>
+								</svg>
+								<span class="u-screen-reader-text">Tripadvisor</span>
+							</a>
+						</li>
+					</ul>
+				</div> <!-- end section-footer__social -->
+				<div class="column xl-6 lg-12">
+					<p class="ss-copyright">
+						<span>© Copyright 2026 Hosoya. All rights reserved.</span>
+					</p>
+				</div>
+			</div> <!-- end section-footer__bottom -->
+			<div class="ss-go-top">
+				<a class="smoothscroll" title="Back to Top" href="#top">
+					<svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+						<path d="m14.523 18.787s4.501-4.505 6.255-6.26c.146-.146.219-.338.219-.53s-.073-.383-.219-.53c-1.753-1.754-6.255-6.258-6.255-6.258-.144-.145-.334-.217-.524-.217-.193 0-.385.074-.532.221-.293.292-.295.766-.004 1.056l4.978 4.978h-14.692c-.414 0-.75.336-.75.75s.336.75.75.75h14.692l-4.979 4.979c-.289.289-.286.762.006 1.054.148.148.341.222.533.222.19 0 .378-.072.522-.215z" fill-rule="nonzero" />
+					</svg>
+				</a>
+				<span>Back To Top</span>
+			</div> <!-- end ss-go-top -->
+		</footer> <!-- end s-footer -->
+	</div> <!-- end page-wrap -->
+	<!-- Java Script
+    ================================================== -->
+	<script src="assets/js/plugins.js"></script>
+	<script src="assets/js/main.js"></script>
+</body>
+
+</html>

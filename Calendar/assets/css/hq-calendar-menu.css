@@ -1,0 +1,946 @@
+@charset "UTF-8";
+/**
+ * Calendar Modal Dialog Stylesheet 2.1.0
+ * Copyright 2022-2026 Kazuhiro Hosoya
+ * Released under the MIT License
+ * Released on: 2026-01-01
+ */
+/* ======================================================================
+	Calendar/menu-00_Style.css
+   ====================================================================== */
+/* ===================================================================
+ * # ユーザ・カスタマイズ スタイル設定
+ *
+ * ------------------------------------------------------------------- */
+ /* -------------------------------------------------------------------
+  * ## font
+  * ------------------------------------------------------------------- */
+/*□欧文フォント*/
+/*標準(Helvetica 代用Arimo)*/
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
+/*等幅（モノスペース）フォント*/
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+/*選択肢*/
+@import url('https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gravitas+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Miss+Fajardose&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap');
+
+/*□和文フォント*/
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Klee+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@100..700&display=swap');
+
+
+ /* -------------------------------------------------------------------
+  * ## font
+  * ------------------------------------------------------------------- */
+:root {
+
+	/* font pattern 1,2
+		□ 欧文フォント
+			Helvetica Neue				:	Mac OS 標準		sans-serif
+			Helvetica					:	Windows OS 標準	sans-serif
+			Arimo						:	Google Fonts	sans-serif
+			Jost						:	Google Fonts	sans-serif
+			Impact, 'Segoe UI', Arial, Verdana, Calibri, Corbel, Consolas, 'Lucida Sans Unicode', Candara,'BIZ UDPGothic', 'MS Gothic',Gabriola;
+	*/
+	--hq-latin-font						:	'Helvetica Neue',Helvetica, Arimo;
+	--hq-latin-font-tips				:	"Anton";
+	--hq-latin-font-local				:	'Josefin Slab';
+
+	/*
+		□ 和文フォント
+			Kosugi Maru					:	Google Fonts	Gothic
+			BIZ UDPGothic				:	Windows OS 標準	Gothic
+	 */
+	 --hq-japanese-font					:	'Kosugi Maru','BIZ UDPGothic';
+	 --hq-japanese-font-local			:	'Klee One','BIZ UDPGothic';
+
+
+	/* font
+	 */
+	--hq-calendar-font					:	var(--hq-latin-font), var(--hq-japanese-font), sans-serif;
+	--hq-tips-font						:	var(--hq-latin-font-tips), var(--hq-japanese-font), serif;
+	--hq-tips-local-font				:	var(--hq-latin-font-local), var(--hq-japanese-font-local), serif;
+
+	/* font毎の縮尺
+	 */
+	--font-specific-size-multiplie		:	1;
+}
+
+/* ===================================================================
+ * # GENERAL SETTINGS
+ *
+ * ------------------------------------------------------------------- */
+* {
+	font-family							:	var(--hq-calendar-font);
+}
+
+ /* -------------------------------------------------------------------
+  * ## light-mode color
+  * ------------------------------------------------------------------- */
+:root {
+	--hq-calendar-color-hue-now			:	50.59;
+
+	/* color
+	 */
+	--hq-calendar-color-general					:	#000;
+	--hq-calendar-color-sun						:	#f00;
+	--hq-calendar-color-sat						:	#09f;
+	--hq-calendar-color-holiday					:	rgba(255,   0,   0, 1.0);
+	--hq-calendar-color-background-holiday		:	rgba(255,   0,   0, 0.3);
+	--hq-calendar-color-fest					:	rgba(  0,   0,   0, 1.0);
+	--hq-calendar-color-background-fest			:	rgba(  0,   0,   0, 0.1);
+	--hq-calendar-color-schedule				:	rgba( 34, 139,  34, 1.0);
+	--hq-calendar-color-background-schedule		:	rgba( 34, 139,  34, 0.3);
+	--hq-calendar-color-background-now			:	hsla(var(--hq-calendar-color-hue-now), 100%, 50%, 0.3);
+	--hq-calendar-color-moon					:	Gold;
+	--hq-calendar-background-color				:	rgb(247,247,247);	/*F7F7F7:背景*/
+
+	--dark-mode--hq-calendar-color-holiday		:	rgba(255,  69,   0, 1.0);
+	--dark-mode--hq-calendar-color-fest			:	rgba(255, 255, 255, 1.0);
+	--dark-mode--hq-calendar-color-schedule		:	rgba(  0, 255,   0, 1.0);
+	--dark-mode--hq-calendar-background-color	:	rgb( 51, 51, 51);	/*#333333:背景*/
+}
+
+ /* -------------------------------------------------------------------
+  * ## dark-mode color
+  * ------------------------------------------------------------------- */
+.dark-mode {
+
+	/* color
+	 */
+	--hq-calendar-color-general					:	#FFF;
+	--hq-calendar-color-sun						:	orangered;
+	--hq-calendar-color-sat						:	#09f;
+	--hq-calendar-color-holiday					:	rgba(255,  69,   0, 1.0);
+	--hq-calendar-color-background-holiday		:	rgba(255,  69,   0, 0.3);
+	--hq-calendar-color-fest					:	rgba(255, 255, 255, 1.0);
+	--hq-calendar-color-background-fest			:	rgba(255, 255, 255, 0.1);
+	--hq-calendar-color-schedule				:	rgba(  0, 255,   0, 1.0);
+	--hq-calendar-color-background-schedule		:	rgba(  0, 255,   0, 0.3);
+	--hq-calendar-color-background-now 			:	hsla(var(--hq-calendar-color-hue-now), 100%, 50%, 0.3);
+	--hq-calendar-color-moon					:	White;
+	--hq-calendar-background-color				:	rgb( 51, 51, 51);	/*#333333:背景*/
+}
+ /* -------------------------------------------------------------------
+  * ## size
+  * ------------------------------------------------------------------- */
+:root {
+
+	/*モニターの解像度により縮尺率を変更するための変数*/
+	--hq-calendar-screen-multiplier		:	1;
+}
+body {
+	background-color					:	var(--hq-calendar-background-color);
+}
+/* ======================================================================
+	Calendar/menu-01-backgroundImage.css
+   ====================================================================== */
+/* -------------------------------------------------------------------
+ * # プリローダー（PRELOADER）
+ * プリローダーの「ローダー（読み込みインジケーター）」のデザインやアニメーション要素
+ *
+ * -------------------------------------------------------------------
+ * - markup:
+ *
+ * <div id="preloader">
+ *     <div id="loader" class="dots-fade">
+ *         <div></div>
+ *         <div></div>
+ *         <div></div>
+ *     </div>
+ * </div>
+ *
+ * - loader class:
+ * <dots-fade | dots-pulse>
+ *
+ * ------------------------------------------------------------------- */
+:root {
+	/* プリローダー（preloader）
+   */
+	--color-preloader-bg: var(--hq-calendar-background-color);
+	--color-loader: #b0a397
+}
+#preloader {
+	position: fixed;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	background: var(--color-preloader-bg);
+	z-index: 500;
+	height: 100vh;
+	width: 100%;
+	opacity: 1;
+	overflow: hidden;
+}
+/* no-js はScriptで動的に付与する */
+.no-js #preloader {
+	display: none;
+}
+#loader {
+	position: relative;
+	width: 4px;
+	height: 4px;
+	padding: 0;
+	display: inline-block;
+}
+#loader>div {
+	content: "";
+	background: var(--color-loader);
+	width: 4px;
+	height: 4px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 50%;
+}
+#loader>div:nth-of-type(1) {
+	left: 15px;
+}
+#loader>div:nth-of-type(3) {
+	left: -15px;
+}
+/* dots fade */
+.dots-fade>div {
+	animation: dots-fade 1.6s infinite ease;
+	animation-delay: 0.4s;
+}
+.dots-fade>div:nth-of-type(1) {
+	animation-delay: 0.8s;
+}
+.dots-fade>div:nth-of-type(3) {
+	animation-delay: 0s;
+}
+@keyframes dots-fade {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 0.2;
+	}
+	80% {
+		opacity: 1;
+	}
+}
+/* dots pulse */
+.dots-pulse>div {
+	animation: dots-pulse 1.2s infinite ease;
+	animation-delay: 0.2s;
+}
+.dots-pulse>div:nth-of-type(1) {
+	animation-delay: 0.4s;
+}
+.dots-pulse>div:nth-of-type(3) {
+	animation-delay: 0s;
+}
+@keyframes dots-pulse {
+	0% {
+		transform: scale(1);
+	}
+	40% {
+		transform: scale(1.3);
+	}
+	80% {
+		transform: scale(1);
+	}
+}
+/* ss-loadedはScriptで動的に付与する */
+.ss-loaded #preloader {
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s 0.6s ease-in-out;
+}
+.ss-loaded #preloader #loader {
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+
+/* -------------------------------------------------------------------
+ * Background Image
+ *  背景作成
+ *	┌─────────┐
+ *	│					│
+ *	│	   イメージ		│
+ *	│					│
+ *	└─────────┘
+ * ------------------------------------------------------------------- */
+:root {
+	/* Background Settings */
+	--hq-calendar-background-image: url(https://images.contentstack.io/v3/assets/bltcf02af6f9602d54f/blt234aafab3b93337d/60f7f9e91929bc58854d0b67/Japan_Tokyo_Sakura.jpeg);
+	--hq-calendar-background-opacity: 0.6;
+}
+:root {
+	--hq-calendar-background-before: white;
+	--hq-calendar-background-after: linear-gradient(90deg, white 10%, rgba(255, 255, 255, 0) 100%);
+}
+/* Dark Mode Overrides */
+.dark-mode {
+	--hq-calendar-background-before: black;
+	--hq-calendar-background-after: linear-gradient(90deg, black 10%, rgba(0, 0, 0, 0) 100%);
+}
+/* --------------------------------------------------------------------
+ * Background Layout
+ * -------------------------------------------------------------------- */
+/* 全体の背面固定設定 */
+.l-body-background-img,
+.l-body-background-img::before,
+.l-body-background-img::after {
+	display: block;
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+/* 背景画像の設定 */
+.back-img .m-bkimg {
+	background-image: var(--hq-calendar-background-image);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+/* 背景上のオーバーレイ（単色シート） */
+.back-img .m-bkimg::before {
+	content: "";
+	opacity: var(--hq-calendar-background-opacity);
+	background: var(--hq-calendar-background-before);
+}
+/* 背景上のオーバーレイ（グラデーションシート） */
+.back-img .m-bkimg::after {
+	content: "";
+	opacity: calc(var(--hq-calendar-background-opacity) * 0.6);
+	background: var(--hq-calendar-background-after);
+}
+
+
+/* ======================================================================
+	Calendar/menu-02-SettingsTrigger_Overlay.css
+   ====================================================================== */
+/* -------------------------------------------------------------------
+ * Settings Trigger & Overlay
+ *  オーバーレイ背景作成
+ *	┌─────────────────────┐
+ *	│ _,-._	←設定トリガー					│
+ *	│/  _  \									│
+ *	│> (_) <	┌───────────┐		│
+ *	│\_   _/	│						│		│
+ *	│  `-'		│						│		│
+ *	│			│		モーダル		│		│
+ *	│			│		コンテンツ		│		│
+ *	│			│						│		│
+ *	│			│						│		│
+ *	│			└───────────┘		│
+ *	│											│
+ *	└─────────────────────┘
+ * ------------------------------------------------------------------- */
+:root {
+	--settings-icon-color: #4a4a4a;
+	/* ライトモード：落ち着いたグレー */
+	--modal-overlay-bg: rgba(0, 0, 0, 0.5);
+	--glass-bg: rgba(255, 255, 255, 0.1);
+	--glass-border: rgba(255, 255, 255, 0.2);
+}
+.dark-mode {
+	--settings-icon-color: #e6e6e6;
+	/* ダークモード：柔らかい白 */
+}
+/* --------------------------------------------------------------------
+ * Settings Trigger (Floating Button)
+ * -------------------------------------------------------------------- */
+.settings-trigger {
+	/* Layout & Position */
+	position: fixed;
+	top: 20px;
+	left: 20px;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	padding: 6px;
+	/* Style & Glassmorphism */
+	color: var(--settings-icon-color);
+	cursor: pointer;
+	background: var(--glass-bg);
+	backdrop-filter: blur(10px);
+	border: 1px solid var(--glass-border);
+	border-radius: 12px;
+	/* State (Default: Hidden) */
+	opacity: 0;
+	#pointer-events: none;
+	transition:
+		opacity 1s,
+		background 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+		transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+		color 0.25s ease;
+}
+/* 表示状態 */
+.settings-trigger.active {
+	opacity: 1;
+	#pointer-events: auto;
+}
+/* ホバー演出 */
+.settings-trigger:hover {
+	background: rgba(255, 255, 255, 0.2);
+	transform: scale(1.05);
+}
+/* 内部アイコン(SVG) */
+.settings-trigger svg {
+	width: 24px;
+	height: 24px;
+	fill: currentColor;
+	transition: transform 0.25s ease;
+}
+.settings-trigger:hover svg {
+	transform: rotate(20deg);
+}
+/* --------------------------------------------------------------------
+ * Modal Overlay
+ * -------------------------------------------------------------------- */
+.modal-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--modal-overlay-bg);
+	backdrop-filter: blur(5px);
+	/* Animation State */
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.modal-overlay.open {
+	opacity: 1;
+	visibility: visible;
+}
+/* モーダル内の基本テキスト設定 */
+.modal-overlay * {
+	font-family: 'Helvetica Neue', Helvetica, Arimo, 'Kosugi Maru', 'BIZ UDPGothic', sans-serif;
+	color: #000;
+}
+
+/* ======================================================================
+	Calendar/menu-03-modalDialog.css
+   ====================================================================== */
+:root {
+	--container-bg: rgba(255, 255, 255, 0.98);
+	--text-main: #1a1a1a;
+	--glass-border: rgba(255, 255, 255, 0.15);
+	--input-bg: rgba(255, 255, 255, 0.05);
+	--input-bg: rgba(0, 0, 0, 0.04);
+	--input-border: rgba(0, 0, 0, 0.15);
+	--accent: #000000;
+	--accent-text: #ffffff;
+	--date-box-text: #000;
+}
+:root {
+	--mode-text-main: var(--text-main);
+	--mode-glass-border: var(--glass-border);
+	--mode-input-bg: rgba(200, 200, 200, 0.25);
+	--mode-input-border: var(--input-border);
+	--mode-accent: #ffffff;
+	--mode-moon: #ffcc00;
+	--mode-monitor-bg: #fff;
+	--mode-monitor-cell: rgba(0, 0, 0, 0.3);
+	--mode-date-box-bg: #fff;
+	--mode-date-box-border: #ccc;
+}
+.dark-mode {
+	--mode-text-main: #e5e5e5;
+	--mode-glass-border: rgba(0, 0, 0, 0.15);
+	--mode-input-bg: rgba(255, 255, 255, 0.25);
+	--mode-input-border: rgba(200, 200, 200, 0.2);
+	--mode-accent: var(--accent);
+	--mode-moon: #fff;
+	--mode-monitor-bg: #000;
+	--mode-monitor-cell: rgba(255, 255, 255, 0.5);
+	--mode-date-box-bg: #0a0a0a;
+	--mode-date-box-border: #333;
+}
+
+/* ===================================================================
+ * Modal Content Styles (Settings Screen)
+ * =================================================================== */
+/* --- 1. Main Container --- */
+.container {
+	/* Layout: Box Model */
+	position: relative;
+	width: 90vw;
+	max-width: 1200px;
+	max-height: 96vh;
+	padding: 45px;
+	overflow-y: auto;
+	/* Layout: Grid */
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: 32px;
+	/* Style: Appearance */
+	background: var(--container-bg, rgba(20, 20, 20, 0.98));
+	border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.15));
+	border-radius: 12px;
+	box-shadow: 0 50px 100px rgba(0, 0, 0, 0.6);
+	/* Style: Glass Effect */
+	backdrop-filter: blur(40px);
+	-webkit-backdrop-filter: blur(40px);
+	/* Animation Initial State */
+	transform: scale(0.95) translateY(20px);
+	transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+/* Dark Mode Overrides for Container */
+.dark-mode .container {
+	background: rgba(255, 255, 255, 0.98);
+	border: 1px solid rgba(0, 0, 0, 0.15);
+}
+@media (max-width: 1250px) {
+	.container {
+		grid-template-columns: 1fr;
+	}
+}
+/* --- 2. Sections & Labels --- */
+.container section {
+	margin-bottom: 20px;
+}
+.container section.country-selection,
+.container section:last-of-type {
+	margin-bottom: 0;
+}
+@media (max-width: 1250px) {
+	.container section.country-selection {
+		margin-bottom: 20px;
+	}
+}
+.container .section-label {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 0.5rem;
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 2rem;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	opacity: 1;
+}
+.container .section-label::after {
+	content: '';
+	flex-grow: 1;
+	height: 1px;
+	background: currentColor;
+	opacity: 0.2;
+}
+/* --- 3. Grid Systems --- */
+.container .grid-1, .container .grid-2, .container .grid-3, .container .grid-4 {
+	display: grid;
+	gap: 30px;
+}
+.container .grid-1 {
+	grid-template-columns: 4fr 5fr;
+}
+.container .grid-2 {
+	grid-template-columns: 1fr 1fr;
+}
+.container .grid-3 {
+	grid-template-columns: 5fr 2fr;
+}
+.container .grid-4 {
+	grid-template-columns: 1fr 2fr 2fr;
+	gap: 20px;
+}
+@media (max-width: 850px) {
+	.container .grid-1, .container .grid-2, .container .grid-3, .container .grid-4 {
+		grid-template-columns: 1fr;
+	}
+}
+/* --- 4. Form Elements & Buttons --- */
+.container label {
+	display: block;
+	font-size: 11px;
+	font-weight: 700;
+	margin-bottom: 8px;
+	opacity: 0.8;
+}
+.container select,
+.container input[type="text"],
+.container input[type="number"],
+.container .btn {
+	width: 100%;
+	padding: 12px;
+	border-radius: 8px;
+	background: var(--input-bg);
+	border: 1px solid var(--input-border);
+	color: var(--text-main);
+	font-weight: 700;
+	font-size: 14px;
+	outline: none;
+	transition: 0.2s ease;
+}
+/* Button specific adjustments */
+.container .btn {
+	font-size: 12px;
+	font-weight: 800;
+	text-transform: uppercase;
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.container .btn:hover {
+	border-color: var(--accent);
+	background: rgba(128, 128, 128, 0.1);
+}
+.container .btn.active {
+	background: var(--accent);
+	border-color: var(--accent);
+}
+.container .btn.active span {
+	color: var(--accent-text);
+}
+.container .btn:disabled {
+	background-color: #ccc;
+	color: #888;
+	border-color: #bbb;
+	cursor: not-allowed;
+}
+
+/* State: Disabled */
+.container select:disabled,
+.container input:disabled {
+	color: rgba(75, 75, 75, 0.82);
+	background: var(--mode-input-bg);
+	cursor: not-allowed;
+}
+/* --- 5. Monitor Preview (16:9 Sync) --- */
+.container .monitor {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	background: var(--mode-monitor-bg);
+	border: 6px solid #1a1a1a;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color 0.4s ease;
+}
+.container .monitor:hover {
+	filter: brightness(1.15);
+}
+.container .monitor-content {
+	position: absolute;
+	inset: 0;
+	background: url('https://images.unsplash.com/photo-1449156001935-d2863fb72610?q=80&w=1200&auto=format&fit=crop') center/cover;
+	filter: grayscale(1) brightness(0.3);
+}
+.container .mini-grid {
+	position: absolute;
+	inset: 12%;
+	display: grid;
+	gap: 4px;
+	padding: 6px;
+	backdrop-filter: blur(3px);
+	border: 1px solid var(--mode-glass-border);
+	border-radius: 4px;
+}
+.container .mini-cell {
+	background: var(--mode-monitor-cell);
+	border-radius: 1px;
+}
+/* --- 6. Date Cell Preview --- */
+.container .date-box {
+	display: flex;
+	flex-direction: column;
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+	background: var(--mode-date-box-bg);
+	border: 1px solid var(--mode-date-box-border);
+	border-radius: 8px;
+	transition: all 0.4s ease;
+}
+.container .date-box * {
+	font-family: var(--hq-calendar-font);
+}
+.container .date-top {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	height: 50%;
+	border-bottom: 1px solid var(--mode-date-box-border);
+}
+.container .date-num {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 32px;
+	font-weight: 900;
+	color: var(--hq-calendar-color-general);
+}
+/* Moon Icon System */
+.container .date-moon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.container .moon-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 80%;
+	padding: 0;
+	cursor: pointer;
+	background: transparent;
+	border: 0;
+	border-radius: 8px;
+	transition: 0.2s;
+}
+.container .moon-icon {
+	position: relative;
+	width: 50%;
+	aspect-ratio: 1;
+	background: #666;
+	border-radius: 50%;
+	transition: 0.3s;
+}
+.container .moon-icon::after {
+	content: '';
+	position: absolute;
+	top: -3px;
+	left: -11px;
+	width: 80%;
+	aspect-ratio: 1;
+	background: var(--mode-date-box-bg);
+	border-radius: 50%;
+	transition: 0.3s;
+}
+.container .moon-btn.active .moon-icon {
+	background: var(--mode-moon);
+	box-shadow: 0 0 15px var(--mode-moon);
+}
+.container .date-bottom {
+	display: grid;
+	flex: 1;
+	gap: 3px;
+	padding: 2px;
+}
+/* --- 7. UI Buttons & Controls --- */
+.container .tag-btn {
+	width: 100%;
+	padding: 0 4px;
+	font-size: 11px;
+	font-weight: 800;
+	text-align: center;
+	color: var(--mode-text-main);
+	cursor: pointer;
+	background: var(--mode-input-bg);
+	border: 1px solid var(--mode-input-border);
+	border-radius: 4px;
+	transition: 0.2s;
+}
+.container .tag-btn.active {
+	background: var(--mode-accent);
+	border-color: var(--mode-accent);
+}
+.container .preset-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 10px 0;
+}
+.container .preset-btn {
+	padding: 6px 12px;
+	font-family: 'JetBrains Mono';
+	font-size: 11px;
+	color: var(--text-main);
+	cursor: pointer;
+	background: var(--input-bg);
+	border: 1px solid var(--input-border);
+	border-radius: 4px;
+	transition: 0.2s;
+}
+.container .preset-btn:hover {
+	border-color: var(--accent);
+}
+/* --- 8. Theme Toggle Switch --- */
+.container .toggle-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+	color: var(--date-box-text);
+	cursor: pointer;
+	background: var(--input-bg);
+	border: 1px solid var(--mode-input-border);
+	border-radius: 8px;
+	transition: 0.2s;
+}
+.container .toggle-row.active {
+	background: var(--accent);
+	color: var(--accent-text);
+}
+/* スイッチのノブ部分 */
+.container .switch {
+	position: relative;
+	width: 34px;
+	height: 18px;
+	background: #444;
+	border-radius: 20px;
+	transition: 0.3s;
+}
+.container .switch::after {
+	content: '';
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 12px;
+	height: 12px;
+	background: #fff;
+	border-radius: 50%;
+	transition: 0.3s;
+}
+.container .toggle-row.active span {
+	/*表示要素の選択*/
+	color: var(--accent-text);
+}
+.container .toggle-row.active .switch {
+	background: var(--accent);
+}
+.container .toggle-row.active .switch::after {
+	left: 19px;
+	background: var(--accent-text);
+}
+/* 無効化状態のスタイル */
+.container .toggle-row.disabled {
+	opacity: 0.5;
+	filter: grayscale(1);
+	cursor: not-allowed;
+	#pointer-events: none;
+	opacity: 0.6;
+}
+/* --- 9. Lists & Shortcuts --- */
+.container .sc-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 20px;
+}
+.container .sc-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 6px 15px;
+	margin-bottom: 6px;
+	font-size: 12px;
+	background: var(--input-bg);
+	border: 1px solid var(--input-border);
+	border-radius: 6px;
+}
+.container .sc-key {
+	padding: 3px 6px;
+	font-family: 'JetBrains Mono';
+	font-size: 10px;
+	font-weight: 800;
+	background: var(--input-border);
+	border-radius: 4px;
+}
+.container .country-btn {
+	display: flex;
+	justify-content: center;
+	padding: 3px;
+	overflow: hidden;
+}
+.container .country-btn.active {
+	background: var(--input-border);
+}
+.container .country-btn img {
+	display: block;
+	height: 28px;
+	max-width: 100%;
+}
+/* --- 10. Form & Global Elements --- */
+.container input[type="range"] {
+	height: 2px;
+	accent-color: var(--accent);
+	appearance: none;
+	background: var(--accent);
+}
+.container .holiday-name.active {
+	color: var(--hq-calendar-color-sun);
+}
+.container .fest-name.active {
+	color: var(--hq-calendar-color-fest);
+}
+.container .schedule-name.active {
+	color: var(--hq-calendar-color-schedule);
+}
+.container .section-explanation {
+	margin-bottom: 1.25rem;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	opacity: 0.8;
+}
+/* ======================================================================
+	Calendar/menu-04-backToToday.css
+   ====================================================================== */
+/* -------------------------------------------------------------------
+ * # Back to Today Button
+ *
+ *	   _..._
+ *	 .'     '.
+ *	:         :
+ *	:  今 日  :
+ *	`.       :'
+ *	  `-...-'
+ * ------------------------------------------------------------------- */
+/* ボタン全体のスタイル */
+#hq-backToToday {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	/* 白ベース */
+	color: var(--hq-calendar-color-general);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* 浮いているような軽い影 */
+	transition: all 0.3s ease;
+	z-index: 10;
+	/* 画面幅に応じてサイズを可変にする（正円を保つため幅と高さは同じ値に） */
+	width: clamp(50px, 10vw, 80px);
+	height: clamp(50px, 10vw, 80px);
+	/* 文字サイズも連動 */
+	font-family: var(--hq-tips-local-font);
+	font-size: clamp(10px, 1.6vw, 14px);
+	font-weight: bold;
+	letter-spacing: 2px;
+	/* Style & Appearance */
+	cursor: pointer;
+	background-color: transparent;
+	border: none;
+	border-radius: 50%;
+	opacity: 0;
+	visibility: hidden;
+}
+/* 表示状態 */
+#hq-backToToday.active {
+	opacity: 1;
+	visibility: visible;
+	box-shadow: 0 0 5px var(--hq-calendar-color-general);
+}
+/* スマホ閲覧時（幅480px以下）の配置調整 */
+@media screen and (max-width: 480px) {
+	#hq-backToToday {
+		right: 15px;
+		bottom: 15px;
+	}
+}
